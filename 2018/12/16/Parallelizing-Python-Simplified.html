@@ -1,0 +1,266 @@
+<h1 id="parallelizing-python-simplified">Parallelizing Python, Simplified</h1>
+
+<p>![](/blog/images/parallelpython.png “”)</p>
+
+<p>So you have some serial task that takes forever, and you’re thinking it should be parallelizable, but you find
+the documentation on this to be obtuse?  Yea.</p>
+
+<p>Usually I’m interested in either <em>creating</em> lots of data in parallel, or <em>inputting</em> lots of data in parallel, and it’s
+often something that I first implemented as a loop but got tired of how slow it runs.  These involve <a href="https://en.wikipedia.org/wiki/Embarrassingly_parallel">embarrassingly parallel</a> tasks in that they don’t depend on one another.</p>
+
+<p>There’s a simple prescription for parallelizing most of these kinds of tasks in Python.  It goes as follows:</p>
+<ol>
+  <li>Have some kind of task performed in a for loop.</li>
+  <li>Write a function that does what you want for one “instance.”  For example, take what’s inside one of your for loops,
+put all that in a separate function.</li>
+  <li>As a check, keep your loop but use only the function call. Make sure it produces the same results as the original version of your code.</li>
+  <li>Use functools.partial to create a wrapper for your function.</li>
+  <li>Replace the loop with a call to Pool.map().</li>
+</ol>
+
+<p>In the following, we’ll cover 3 examples for parallel tasks:</p>
+<ol>
+  <li>Generate a bunch of files</li>
+  <li>Read a bunch of files into a list</li>
+  <li>Filling a numpy array</li>
+</ol>
+
+<h2 id="example-1-generate-a-bunch-of-files">Example 1: Generate a bunch of files</h2>
+<p>Let’s say you have some important synthetic data that you want to generate lots of instances of.
+For now, for simplicity, we’re just going to generate images of, let’s say, random noise.  And to make it interesting
+we’ll generate 2000 of them.</p>
+
+<p>Here’s the serial for-loop version:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">import</span> <span class="nn">cv2</span>
+
+<span class="n">n_images</span> <span class="o">=</span> <span class="mi">2000</span>
+<span class="n">size_x</span><span class="p">,</span> <span class="n">size_y</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_images</span><span class="p">):</span>
+    <span class="n">arr</span> <span class="o">=</span> <span class="mi">255</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">size_x</span><span class="p">,</span><span class="n">size_y</span><span class="p">)</span>
+    <span class="n">filename</span> <span class="o">=</span> <span class="s">'image_'</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">+</span><span class="s">'.png'</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"writing file "</span><span class="p">,</span><span class="n">filename</span><span class="p">)</span>
+    <span class="n">cv2</span><span class="o">.</span><span class="n">imwrite</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span><span class="n">arr</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Now we write a dedicated function, put it in a <code class="highlighter-rouge">partial</code> wrapper, and call it as follows:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">import</span> <span class="nn">cv2</span>
+<span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partial</span>
+
+<span class="k">def</span> <span class="nf">write_one_file</span><span class="p">(</span><span class="n">size_x</span><span class="p">,</span> <span class="n">size_y</span><span class="p">,</span> <span class="n">name_prefix</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
+    <span class="n">arr</span> <span class="o">=</span> <span class="mi">255</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">size_x</span><span class="p">,</span><span class="n">size_y</span><span class="p">)</span>
+    <span class="n">filename</span> <span class="o">=</span> <span class="n">name_prefix</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="s">'.png'</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"writing file "</span><span class="p">,</span><span class="n">filename</span><span class="p">)</span>
+    <span class="n">cv2</span><span class="o">.</span><span class="n">imwrite</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span><span class="n">arr</span><span class="p">)</span>
+
+<span class="n">n_images</span> <span class="o">=</span> <span class="mi">2000</span>
+<span class="n">size_x</span><span class="p">,</span> <span class="n">size_y</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span>
+
+<span class="n">wrapper</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">write_one_file</span><span class="p">,</span> <span class="n">size_x</span><span class="p">,</span> <span class="n">size_y</span><span class="p">,</span> <span class="s">'image_'</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_images</span><span class="p">):</span>
+    <span class="n">wrapper</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Finally we replace the loop with a multiprocessing pool. We can either use all the cpus on the machine (which is the default)
+or specify how many to use, by giving an argument to <code class="highlighter-rouge">Pool()</code>:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">import</span> <span class="nn">cv2</span>
+<span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partial</span>
+<span class="kn">import</span> <span class="nn">multiprocessing</span> <span class="k">as</span> <span class="n">mp</span>
+
+<span class="k">def</span> <span class="nf">write_one_file</span><span class="p">(</span><span class="n">size_x</span><span class="p">,</span> <span class="n">size_y</span><span class="p">,</span> <span class="n">name_prefix</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
+    <span class="n">arr</span> <span class="o">=</span> <span class="mi">255</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">size_x</span><span class="p">,</span><span class="n">size_y</span><span class="p">)</span>
+    <span class="n">filename</span> <span class="o">=</span> <span class="n">name_prefix</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="s">'.png'</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"writing file "</span><span class="p">,</span><span class="n">filename</span><span class="p">)</span>
+    <span class="n">cv2</span><span class="o">.</span><span class="n">imwrite</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span><span class="n">arr</span><span class="p">)</span>
+
+<span class="n">n_images</span> <span class="o">=</span> <span class="mi">2000</span>
+<span class="n">size_x</span><span class="p">,</span> <span class="n">size_y</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span>
+
+<span class="n">wrapper</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">write_one_file</span><span class="p">,</span> <span class="n">size_x</span><span class="p">,</span> <span class="n">size_y</span><span class="p">,</span> <span class="s">'image_'</span><span class="p">)</span>
+
+<span class="n">num_procs</span> <span class="o">=</span> <span class="n">mp</span><span class="o">.</span><span class="n">cpu_count</span><span class="p">()</span> <span class="c1"># or can replace with some number of processes to use
+</span><span class="n">pool</span> <span class="o">=</span> <span class="n">mp</span><span class="o">.</span><span class="n">Pool</span><span class="p">(</span><span class="n">num_procs</span><span class="p">)</span>
+<span class="n">indices</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_images</span><span class="p">)</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">pool</span><span class="o">.</span><span class="nb">map</span><span class="p">(</span><span class="n">wrapper</span><span class="p">,</span> <span class="n">indices</span><span class="p">)</span>
+<span class="n">pool</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="n">pool</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>There are other ways you can do this to get more control, e.g. to have each process in the pool receive a particular
+<em>range</em> of indices, but this basic setup will get the job done.  And if you turn off the printing to screen and time the execution,
+you’ll see the speedup.</p>
+
+<h2 id="example-2-read-a-bunch-of-files-into-a-list">Example 2: Read a bunch of files into a list</h2>
+<p>This example is actually of limited utility and you may want to just skip down to “Example 3: Filling a numpy array,” but
+it’s still an illustrative example that motivates Example 3, and offers a bit of variety in how one might do things.  In this case we’re <em>not</em> going to use Pool.map; instead we’re going to use a context manager for the particular datatype of <code class="highlighter-rouge">list</code>.</p>
+
+<p>Let’s try to load in all the image files we just generated, into a list.  Here’s the serial version:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">glob</span>
+<span class="kn">import</span> <span class="nn">cv2</span>
+
+<span class="n">name_prefix</span> <span class="o">=</span> <span class="s">'image_'</span>
+<span class="c1"># we'll use glob to get the list of available files
+# note that glob order isn't...easily discernible, so we'll sort.
+</span><span class="n">img_file_list</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">name_prefix</span><span class="o">+</span><span class="s">'*.png'</span><span class="p">))</span>
+<span class="n">n_files</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">img_file_list</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">n_files</span><span class="p">,</span><span class="s">"files available."</span><span class="p">)</span>
+
+<span class="n">img_data_list</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_files</span><span class="p">):</span>
+    <span class="n">filename</span> <span class="o">=</span> <span class="n">name_prefix</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="s">'.png'</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"Reading file"</span><span class="p">,</span><span class="n">filename</span><span class="p">)</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+    <span class="n">img_data_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">img_data_list</span><span class="p">),</span><span class="s">"images in list."</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>(If we wanted to, we could easily convert this list of images to a numpy array. But let’s hold off on that.)</p>
+
+<p>This time, we’ll split up the tasks manually into equal numbers for each process.
+Parallelizing this can take the following form:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">multiprocessing</span> <span class="kn">import</span> <span class="n">Process</span><span class="p">,</span> <span class="n">Manager</span><span class="p">,</span> <span class="n">cpu_count</span>
+<span class="kn">import</span> <span class="nn">glob</span>
+<span class="kn">import</span> <span class="nn">cv2</span>
+
+
+<span class="k">def</span> <span class="nf">load_one_proc</span><span class="p">(</span><span class="n">img_data_list</span><span class="p">,</span> <span class="n">img_file_list</span><span class="p">,</span> <span class="n">iproc</span><span class="p">,</span> <span class="n">per_proc</span><span class="p">):</span>
+    <span class="n">istart</span><span class="p">,</span> <span class="n">iend</span> <span class="o">=</span> <span class="n">iproc</span> <span class="o">*</span> <span class="n">per_proc</span><span class="p">,</span> <span class="p">(</span><span class="n">iproc</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">per_proc</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">istart</span><span class="p">,</span><span class="n">iend</span><span class="p">):</span>    <span class="c1"># each process will read a range of files
+</span>        <span class="n">filename</span> <span class="o">=</span> <span class="n">img_file_list</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"Reading file"</span><span class="p">,</span><span class="n">filename</span><span class="p">)</span>
+        <span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+        <span class="n">img_data_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+    <span class="k">return</span>
+
+<span class="n">name_prefix</span> <span class="o">=</span> <span class="s">'image_'</span>
+<span class="c1"># we'll use glob to get the list of available files
+# note that glob order isn't...easily discernible, so we'll sort.
+</span><span class="n">img_file_list</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">name_prefix</span><span class="o">+</span><span class="s">'*.png'</span><span class="p">))</span>
+<span class="n">n_files</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">img_file_list</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">n_files</span><span class="p">,</span><span class="s">"files available."</span><span class="p">)</span>
+
+<span class="c1"># We'll split up the list manually
+</span><span class="n">num_procs</span> <span class="o">=</span> <span class="n">cpu_count</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"Parallelizing across"</span><span class="p">,</span><span class="n">num_procs</span><span class="p">,</span><span class="s">"processes."</span><span class="p">)</span>
+
+<span class="n">per_proc</span> <span class="o">=</span> <span class="n">n_files</span> <span class="o">//</span> <span class="n">num_procs</span>  <span class="c1"># Number of files per processor to load
+</span><span class="k">assert</span> <span class="n">n_files</span> <span class="o">==</span> <span class="n">per_proc</span> <span class="o">*</span> <span class="n">num_procs</span>  <span class="c1"># Make sure tasks divide evenly. Obvously one can do something more sophisticated than this!
+</span>
+<span class="k">with</span> <span class="n">Manager</span><span class="p">()</span> <span class="k">as</span> <span class="n">manager</span><span class="p">:</span>
+    <span class="n">img_data_list</span> <span class="o">=</span> <span class="n">manager</span><span class="o">.</span><span class="nb">list</span><span class="p">()</span>
+    <span class="n">processes</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">iproc</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_procs</span><span class="p">):</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">Process</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">load_one_proc</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">img_data_list</span><span class="p">,</span> <span class="n">img_file_list</span><span class="p">,</span> <span class="n">iproc</span><span class="p">,</span> <span class="n">per_proc</span><span class="p">))</span>
+        <span class="n">p</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+        <span class="n">processes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">processes</span><span class="p">:</span>
+        <span class="n">p</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
+    <span class="n">outside_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">img_data_list</span><span class="p">)</span>   <span class="c1"># Copy out of the Manager context (there may be a better way to do this)
+</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">outside_list</span><span class="p">),</span><span class="s">"images in list."</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Okay, great.  The thing is, that set of processes operates asynchronously, so there’s no telling what <em>order</em> the final list is going to be in.  Maybe you don’t care, but sometimes I care.  One way of dealing with this is to add an index item within the list for each item,
+and then sort on that index.</p>
+
+<p>But most of the time what I really want in the end is a numpy array.  So let’s just look at how to fill one of those, directly.</p>
+
+<h2 id="example-3-filling-a-numpy-array">Example 3: Filling a NumPy array</h2>
+<p>Data scientist Jonas Teuwen made <a href="https://jonasteuwen.github.io/numpy/python/multiprocessing/2017/01/07/multiprocessing-numpy-array.html">a great post</a> which got me started on how to do this, but then it seems I <a href="https://stackoverflow.com/questions/53757856/segmentation-fault-when-creating-multiprocessing-array">uncovered a bug in numpy’s garbage collection</a> for which there’s <a href="https://github.com/numpy/numpy/pull/12566">now a patch</a>.  Even without the patch, there are a couple workarounds one can use, and I’ll choose
+the simpler of the two workarounds.</p>
+
+<p>Let’s load all those images into a numpy array instead of a list. First the serial version:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">import</span> <span class="nn">glob</span>
+<span class="kn">import</span> <span class="nn">cv2</span>
+
+<span class="n">name_prefix</span> <span class="o">=</span> <span class="s">'image_'</span>
+<span class="n">img_file_list</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">name_prefix</span><span class="o">+</span><span class="s">'*.png'</span><span class="p">))</span>
+<span class="n">n_files</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">img_file_list</span><span class="p">)</span>
+
+<span class="n">first_image</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">img_file_list</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">n_files</span><span class="p">,</span><span class="s">"files available.  Shape of first image is"</span><span class="p">,</span><span class="n">first_image</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">"Assuming all images are that size."</span><span class="p">)</span>
+<span class="n">img_data_arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="n">n_files</span><span class="p">]</span><span class="o">+</span><span class="nb">list</span><span class="p">(</span><span class="n">first_image</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>  <span class="c1"># allocate storage
+</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_files</span><span class="p">):</span>
+    <span class="n">filename</span> <span class="o">=</span> <span class="n">img_file_list</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"Reading file"</span><span class="p">,</span><span class="n">filename</span><span class="p">)</span>
+    <span class="n">img_data_arr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">"Finished."</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>For the parallel version, we’re going to have to use a global variable.  Sorry, there’s no away around it, because of Python’s <a href="https://wiki.python.org/moin/GlobalInterpreterLock">Global Interpreter Lock (GIL)</a>.</p>
+
+<p>Without further ado, here’s the parallel, numpy version of the ‘loading a list of images’ shown earlier in Example 2. (One other change: rather than specifying ranges of images for each processor – which I did just for the sake of variety – this time we’ll let Pool.map decide how to – evenly – distribute the tasks.)</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">import</span> <span class="nn">glob</span>
+<span class="kn">import</span> <span class="nn">cv2</span>
+<span class="kn">from</span> <span class="nn">multiprocessing</span> <span class="kn">import</span> <span class="n">Pool</span><span class="p">,</span> <span class="n">sharedctypes</span><span class="p">,</span> <span class="n">cpu_count</span>
+<span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partial</span>
+<span class="kn">import</span> <span class="nn">gc</span>
+
+<span class="n">mp_shared_array</span> <span class="o">=</span> <span class="bp">None</span>                               <span class="c1"># global variable for array
+</span><span class="k">def</span> <span class="nf">load_one_proc</span><span class="p">(</span><span class="n">img_file_list</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">mp_shared_array</span>
+
+    <span class="c1"># tmp will end up pointing to the memory address of the shared array we want to populate
+</span>    <span class="n">tmp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ctypeslib</span><span class="o">.</span><span class="n">as_array</span><span class="p">(</span><span class="n">mp_shared_array</span><span class="p">)</span>
+
+    <span class="n">filename</span> <span class="o">=</span> <span class="n">img_file_list</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"Reading file"</span><span class="p">,</span><span class="n">filename</span><span class="p">)</span>
+    <span class="n">tmp</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>   <span class="c1"># assign the values into the memory of the shared array
+</span>    <span class="k">return</span>
+
+<span class="n">name_prefix</span> <span class="o">=</span> <span class="s">'image_'</span>
+<span class="n">img_file_list</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">name_prefix</span><span class="o">+</span><span class="s">'*.png'</span><span class="p">))</span>
+<span class="n">n_files</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">img_file_list</span><span class="p">)</span>
+
+<span class="n">first_image</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">img_file_list</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">n_files</span><span class="p">,</span><span class="s">"files available.  Shape of first image is"</span><span class="p">,</span><span class="n">first_image</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"Assuming all images are that size."</span><span class="p">)</span>
+<span class="n">img_data_arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="n">n_files</span><span class="p">]</span><span class="o">+</span><span class="nb">list</span><span class="p">(</span><span class="n">first_image</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>  <span class="c1"># allocate storage
+</span><span class="n">tmp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ctypeslib</span><span class="o">.</span><span class="n">as_ctypes</span><span class="p">(</span><span class="n">img_data_arr</span><span class="p">)</span>                  <span class="c1"># tmp variable avoids numpy garbage-collection bug
+</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"Allocating shared storage for multiprocessing (this can take a while)"</span><span class="p">)</span>
+<span class="n">mp_shared_array</span> <span class="o">=</span> <span class="n">sharedctypes</span><span class="o">.</span><span class="n">RawArray</span><span class="p">(</span><span class="n">tmp</span><span class="o">.</span><span class="n">_type_</span><span class="p">,</span> <span class="n">tmp</span><span class="p">)</span>
+
+<span class="n">num_procs</span> <span class="o">=</span> <span class="n">cpu_count</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"Parallelizing across"</span><span class="p">,</span><span class="n">num_procs</span><span class="p">,</span><span class="s">"processes."</span><span class="p">)</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">Pool</span><span class="p">(</span><span class="n">num_procs</span><span class="p">)</span>
+
+<span class="n">wrapper</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">load_one_proc</span><span class="p">,</span> <span class="n">img_file_list</span><span class="p">)</span>
+<span class="n">indices</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_files</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="nb">map</span><span class="p">(</span><span class="n">wrapper</span><span class="p">,</span> <span class="n">indices</span><span class="p">)</span>                <span class="c1"># here's where we farm out the op
+</span><span class="n">img_data_arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ctypeslib</span><span class="o">.</span><span class="n">as_array</span><span class="p">(</span><span class="n">mp_shared_array</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="n">img_data_arr</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>  <span class="c1"># this actually happens pretty fast
+</span><span class="n">p</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="n">p</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
+
+<span class="c1"># Next couple lines are here just in case you want to move on to other things
+#   and force garbage collection
+</span><span class="n">mp_shared_array</span> <span class="o">=</span> <span class="bp">None</span>
+<span class="n">gc</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">"Finished."</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>So that’s the basic implementation.  Let me know in the comments if you have suggestions for improvements, or other ideas!</p>
+
+<h2 id="ps--final-remarks">P.S.- Final Remarks</h2>
+<p>Added in a couple thoughts, post-facto:</p>
+
+<p><strong>1. Performance.</strong> Notice that what gets passed to <code class="highlighter-rouge">p.map()</code> is an <em>iterator</em>, which typically you’ll use as either the indices of the members of an array (as we did just now), or it as a range over the number of processors (kinda like we did in Example 2).  In the former case, the system is likely to spawn lots and lots of processes (not all at the same time, but as one ‘job’ finishes the system will spawn a new one, and will keep the “pool” going), which will have a bit of overhead – i.e. latency – each time these start and stop. It’s not much though, and so you probably won’t notice if your goal is merely, “I’m doing this so that I only have to wait 5 minutes instead of an hour to get something done.”  If instead you make the indices in the map over the range of processors on your machine and manually break up
+the array indices into chunks (sort of like we did in Example 2), then you won’t be spawning as many processes and so your latency will be considerably lower.  But the gain may be small enough (depending on your system) that you may not notice the difference in performance.  Still, if you want to go all-out for performance, then make the pool.map go over the number of procs you want.  Otherwise, feel free to trust the system to do its thing for you and just use the array (or list) indices for the iterator.</p>
+
+<p><strong>2. When Processes Die.</strong>  Debugging <code class="highlighter-rouge">multiprocessing</code> runs is <em>a pain</em>.  If one process dies (crashes, seg faults, generates any kind of “Error”), it will hang the entire pool and you won’t know why because the error messages won’t come to <code class="highlighter-rouge">stdout</code> or <code class="highlighter-rouge">stderr</code>.  Look elsewhere for tutorials on tools for debugging multiprocessing runs.  Good news is that regular <code class="highlighter-rouge">print</code> statements still come to <code class="highlighter-rouge">stdout</code> for all processes, so one way of debugging is the age-old method of just loading your code with <code class="highlighter-rouge">print</code> statements.</p>

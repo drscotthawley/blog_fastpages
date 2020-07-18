@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>My First Neural Network, Part 1 | fastpages</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="My First Neural Network, Part 1" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="First in a series on understanding neural network models." />
+<meta property="og:description" content="First in a series on understanding neural network models." />
+<link rel="canonical" href="https://drscotthawley.github.io/blog/2019/01/30/My-First-Neural-Network.html" />
+<meta property="og:url" content="https://drscotthawley.github.io/blog/2019/01/30/My-First-Neural-Network.html" />
+<meta property="og:site_name" content="fastpages" />
+<meta property="og:image" content="https://i.imgur.com/7Oj5Ksn.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-01-30T00:00:00-06:00" />
+<script type="application/ld+json">
+{"description":"First in a series on understanding neural network models.","headline":"My First Neural Network, Part 1","@type":"BlogPosting","dateModified":"2019-01-30T00:00:00-06:00","datePublished":"2019-01-30T00:00:00-06:00","image":"https://i.imgur.com/7Oj5Ksn.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://drscotthawley.github.io/blog/2019/01/30/My-First-Neural-Network.html"},"url":"https://drscotthawley.github.io/blog/2019/01/30/My-First-Neural-Network.html","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/blog/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://drscotthawley.github.io/blog/feed.xml" title="fastpages" /><link rel="shortcut icon" type="image/x-icon" href="/blog/images/favicon.ico"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>My First Neural Network, Part 1 | fastpages</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="My First Neural Network, Part 1" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="First in a series on understanding neural network models." />
+<meta property="og:description" content="First in a series on understanding neural network models." />
+<link rel="canonical" href="https://drscotthawley.github.io/blog/2019/01/30/My-First-Neural-Network.html" />
+<meta property="og:url" content="https://drscotthawley.github.io/blog/2019/01/30/My-First-Neural-Network.html" />
+<meta property="og:site_name" content="fastpages" />
+<meta property="og:image" content="https://i.imgur.com/7Oj5Ksn.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-01-30T00:00:00-06:00" />
+<script type="application/ld+json">
+{"description":"First in a series on understanding neural network models.","headline":"My First Neural Network, Part 1","@type":"BlogPosting","dateModified":"2019-01-30T00:00:00-06:00","datePublished":"2019-01-30T00:00:00-06:00","image":"https://i.imgur.com/7Oj5Ksn.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://drscotthawley.github.io/blog/2019/01/30/My-First-Neural-Network.html"},"url":"https://drscotthawley.github.io/blog/2019/01/30/My-First-Neural-Network.html","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+<link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
+<link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css"><link type="application/atom+xml" rel="alternate" href="https://drscotthawley.github.io/blog/feed.xml" title="fastpages" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"> </script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement( document.body, {
+        delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "[%", right: "%]", display: true},
+            {left: "$", right: "$", display: false}
+        ]}
+        );
+    });
+    </script>
+
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head><body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/blog/">fastpages</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/blog/about/">About Me</a><a class="page-link" href="/blog/search/">Search</a><a class="page-link" href="/blog/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">My First Neural Network, Part 1</h1><p class="page-description">First in a series on understanding neural network models.</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2019-01-30T00:00:00-06:00" itemprop="datePublished">
+        Jan 30, 2019
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      15 min read
+    
+</span></p>
+
+    
+
+    
+      
+        <div class="pb-5 d-flex flex-wrap flex-justify-end">
+          <div class="px-2">
+
+    <a href="https://github.com/drscotthawley/blog/tree/master/_notebooks/2019-01-30-My-First-Neural-Network.ipynb" role="button" target="_blank">
+<img class="notebook-badge-image" src="/blog/assets/badges/github.svg" alt="View On GitHub">
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://mybinder.org/v2/gh/drscotthawley/blog/master?filepath=_notebooks%2F2019-01-30-My-First-Neural-Network.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/blog/assets/badges/binder.svg" alt="Open In Binder"/>
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://colab.research.google.com/github/drscotthawley/blog/blob/master/_notebooks/2019-01-30-My-First-Neural-Network.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/blog/assets/badges/colab.svg" alt="Open In Colab"/>
+    </a>
+</div>
+        </div>
+      </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul class="section-nav">
+<li class="toc-entry toc-h2"><a href="#The-Sample-Problem">The Sample Problem </a></li>
+<li class="toc-entry toc-h2"><a href="#Actual-Code">Actual Code </a></li>
+<li class="toc-entry toc-h2"><a href="#Change-the-activation-function">Change the activation function </a></li>
+<li class="toc-entry toc-h2"><a href="#Exercise:-Read-a-7-segment-display">Exercise: Read a 7-segment display </a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#Diagram-of-the-network">Diagram of the network </a></li>
+<li class="toc-entry toc-h3"><a href="#Create-the-dataset">Create the dataset </a></li>
+<li class="toc-entry toc-h3"><a href="#Initialize-the-weights">Initialize the weights </a></li>
+<li class="toc-entry toc-h3"><a href="#Train-the-network">Train the network </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#Final-Check:-Keras-version">Final Check: Keras version </a></li>
+<li class="toc-entry toc-h1"><a href="#Follow-up:-Remarks">Follow-up: Remarks </a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#Re-stating-what-we-just-did">Re-stating what we just did </a></li>
+<li class="toc-entry toc-h3"><a href="#One-thing-we-glossed-over:-"batch-size"">One thing we glossed over: &quot;batch size&quot; </a></li>
+<li class="toc-entry toc-h2"><a href="#Optional:-If-you-want-to-go-really-crazy">Optional: If you want to go really crazy </a></li>
+<li class="toc-entry toc-h2"><a href="#Additional-Optional-Exercise:-Binary-Math-vs.-One-Hot-Encoding">Additional Optional Exercise: Binary Math vs. One-Hot Encoding </a></li>
+</ul>
+</li>
+</ul><!--
+#################################################
+### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
+#################################################
+# file to edit: _notebooks/2019-01-30-My-First-Neural-Network.ipynb
+-->
+
+<div class="container" id="notebook-container">
+        
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Links to lessons:
+<a href="https://drscotthawley.github.io/Following-Gravity/">Part 0</a>,
+<a href="https://colab.research.google.com/drive/1CPueDKDYOC33U_0qHxBhsDPpzYMpD8c8">Part 1</a>, 
+<a href="https://colab.research.google.com/drive/1O9xcdAQUxo7KdVhbggqLCvabc77Rj-yH">Part 2</a>
+<a href="https://colab.research.google.com/drive/1UZDEK-3v-SWxpDYBfamBoD4xhy7H2DEZ#scrollTo=14tOCcvT_a0I">Part 3</a></p>
+<p>We will be reproducing work from Andrew Trask's excellent tutorial <a href="https://iamtrask.github.io/2015/07/12/basic-python-network/">"A Neural Network in 11 lines of Python"</a>, albeit with a different emphasis, and in a different way.  You may regard this treatment and his original treatment as complimentary, and feel free to refer to both.  This lesson is written with the intent of building on the lesson about linear regression -- which we might call "Part 0" -- at the link <a href="https://drscotthawley.github.io/Following-Gravity/">"Following Gravity - ML Foundations Part Ia."</a></p>
+<h2 id="The-Sample-Problem">
+<a class="anchor" href="#The-Sample-Problem" aria-hidden="true"><span class="octicon octicon-link"></span></a>The Sample Problem<a class="anchor-link" href="#The-Sample-Problem"> </a>
+</h2>
+<p>Consider a system that tries to map groups of 3 inputs to some corresponding output which is a single number. In the following picture, we'll show each set of 3 inputs as a row of a matrix $X$, and each output as the corresponding row of $Y$:</p>
+$$ \overbrace{
+ \left[ {\begin{array}{ccc}
+   0 &amp; 0 &amp; 1 \\
+   0 &amp; 1 &amp; 1\\
+   1 &amp; 0 &amp; 1\\
+   1 &amp; 1 &amp; 1\\
+  \end{array} } \right]
+}^{X} \rightarrow
+\overbrace{
+ \left[ {\begin{array}{c}
+   0   \\
+   0  \\
+   1  \\
+   1 \\
+  \end{array} } \right]
+  }^Y.
+$$<p>Even though this system has an exact solution (namely, $Y$ equals the first column of $X$), usually we'll need to be satisfied with a system that maps our inputs $X$ to some approximate "prediction" $\tilde{Y}$, which we hope to bring closer to the "target" $Y$ by means of successive improvements.</p>
+<p>The way we'll get our prediction $\tilde{Y}$ is by means of a weighted sum of each set of 3 inputs, and some nonlinear function $f$ which we call the "<a href="https://en.wikipedia.org/wiki/Activation_function">activation function</a>" (or just "activation").   Pictorially, the process looks like the following, for each row $i$ of $X$ and $Y$, (where the columns of $X$ are shown arranged vertically instead of horizonally):</p>
+<p><img src="https://i.imgur.com/7Oj5Ksn.png" alt="image of NN"></p>
+<p>In terms of matrix multiplication, since X is a 4x3 matrix, and Y is a 4x1 matrix, that implies that our weights should be a 3x1 matrix consisting of (unknown) values $w_0$, $w_1$ and $w_2$. The calculation can be written as:</p>
+$$
+f\left(
+  \overbrace{
+ \left[ {\begin{array}{ccc}
+   0 &amp; 0 &amp; 1 \\
+   0 &amp; 1 &amp; 1\\
+   1 &amp; 0 &amp; 1\\
+   1 &amp; 1 &amp; 1\\
+  \end{array} } \right]
+}^\text{X} 
+\overbrace{
+   \left[ {\begin{array}{c}
+   w_0  \\
+    w_1\\
+   w_2\\
+  \end{array} } \right]
+ }^{w}
+\right)
+  = 
+  \overbrace{
+ \left[ {\begin{array}{c}
+   0   \\
+   0  \\
+   1  \\
+   1 \\
+  \end{array} } \right]
+ }^{\tilde{Y}}
+$$<p>Our nonlinear activation function $f$ is taken to operate on each row element one at a time, and we'll let $f_i$ denote the $i$th row of this completed activation, i.e.:</p>
+$$
+f_i = f\left( \sum_j X_{ij}w_j \right) = \tilde{Y}_i .
+$$<p>The particular activation function we will use is the "sigmoid",</p>
+$$
+f(x) = {1\over{1+e^{-x}}}, 
+$$<p>-- <a href="https://www.google.com/search?q=plot+1%2F(1%2Bexp(-x">click here to see a plot of this function</a> -- which has the derivative</p>
+$$
+{df\over dx} = {e^{-x}\over(1 + e^{-x})^2}
+$$<p>which can be shown (<em>Hint: exercise for "mathy" students!</em>) to simplify to
+$$
+ {df\over dx}= f(1-f).
+$$</p>
+<p>The overall problem then amounts to finding the values of the "weights" $w_0, w_1,$ and $w_2$ so that the $\tilde{Y}$ we calculate is as close to the target $Y$ as possible.</p>
+<p>To do this, we will seek to minimize a loss function defined as a sum across all data points we have, i.e. all 4 rows. The loss function $L$ we will choose is the mean square error loss, or MSE (note: later in <a href="https://colab.research.google.com/drive/1O9xcdAQUxo7KdVhbggqLCvabc77Rj-yH#scrollTo=AFGL_ThJKJfM">Part 2</a> we will use a 'better' loss function for this problem):</p>
+$$
+L = {1\over N}\sum_{i=0}^{N-1} \left[ \tilde{Y}_i - Y_i\right]^2,
+$$<p>or in terms of the activation function
+$$
+L = {1\over N}\sum_{i=0}^{N-1} \left[ f_i - Y_i\right]^2.
+$$</p>
+<p>Each of the weights $w_j$ ($j=0..2$) will start with random values, and then be updated via gradient descent, i.e.</p>
+$$
+w_j^{new} = w_j^{old} - \alpha{\partial L\over \partial w_j}
+$$<p>where $\alpha$ is the <em>learning rate</em>, chosen to be some small parameter.
+For the MSE loss shown above,  the partial derivatives with respect to each of the weights is</p>
+$$
+{\partial L\over \partial w_j} = {2\over N}\sum_{i=0}^{N-1} \left[ \tilde{Y}_i - Y_i\right]{\partial f_i \over \partial w_j}\\
+= {2\over N}\sum_{i=0}^{N-1} \left[ \tilde{Y}_i - Y_i\right]f_i(1-f_i)X_{ij}.
+$$<p>Absorbing the factor of 2/N into our choice of $\alpha$, and writing the summation as a dot product, and noting that $f_i = \tilde{Y}_i$, we can write the update for all the weights together as</p>
+$$
+w = w - \alpha  X^T \cdot \left( [\tilde{Y}-Y]*\tilde{Y}*(1-\tilde{Y})\right)
+$$<p>where the $\cdot$ denotes a matrix-matrix product (i.e. a dot product for successive rows of $X^T$) and $*$ denotes elementwise multiplication.</p>
+<p>To clarify the above expression in terms of matrix dimensions, we can see that $w$, a 3x1 matrix, can be made by multipyting $X^T$ (a 3 x4 matrix) with the term in parentheses, i.e. the product of elementwise terms involving $\tilde{Y}$, which is a 4x1 matrix.  In other words, a 3x4 matrix, times a 4x1 matrix, yields a 3x1 matrix.</p>
+<h2 id="Actual-Code">
+<a class="anchor" href="#Actual-Code" aria-hidden="true"><span class="octicon octicon-link"></span></a>Actual Code<a class="anchor-link" href="#Actual-Code"> </a>
+</h2>
+<p>The full code for all of this is then...</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Source: Slightly modified from Andrew Trask's code posted at </span>
+<span class="c1">#         https://iamtrask.github.io/2015/07/12/basic-python-network/</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># sigmoid activation</span>
+<span class="k">def</span> <span class="nf">sigmoid</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">deriv</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span> 
+  <span class="k">if</span><span class="p">(</span><span class="n">deriv</span><span class="o">==</span><span class="kc">True</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">x</span><span class="p">)</span>
+  <span class="k">return</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">))</span>
+    
+<span class="c1"># input dataset</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>  <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span>
+                <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span>
+                <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span>
+                <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="p">])</span>
+    
+<span class="c1"># target output dataset            </span>
+<span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]])</span><span class="o">.</span><span class="n">T</span>
+
+<span class="c1"># seed random numbers to make calculation</span>
+<span class="c1"># deterministic (just a good practice)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># initialize weights randomly with mean 0</span>
+<span class="n">w</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span> <span class="o">-</span> <span class="mi">1</span>
+
+<span class="n">alpha</span> <span class="o">=</span> <span class="mf">1.0</span>   <span class="c1"># learning rate</span>
+
+<span class="n">loss_history</span> <span class="o">=</span> <span class="p">[]</span>    <span class="c1"># keep a record of how the loss proceeded, blank for now</span>
+<span class="k">for</span> <span class="nb">iter</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">):</span>
+
+    <span class="c1"># forward propagation</span>
+    <span class="n">Y_pred</span> <span class="o">=</span> <span class="n">sigmoid</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">w</span><span class="p">))</span> <span class="c1"># prediction, i.e. tilde{Y}</span>
+
+    <span class="c1"># how much did we miss?</span>
+    <span class="n">diff</span> <span class="o">=</span> <span class="n">Y_pred</span> <span class="o">-</span> <span class="n">Y</span>
+    <span class="n">loss_history</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">diff</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>   <span class="c1"># add to the history of the loss</span>
+
+    <span class="c1"># update weights</span>
+    <span class="n">w</span> <span class="o">-=</span> <span class="n">alpha</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span> <span class="n">X</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">diff</span><span class="o">*</span><span class="n">sigmoid</span><span class="p">(</span><span class="n">Y_pred</span><span class="p">,</span> <span class="n">deriv</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Output After Training:"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Y_pred = (should be two 0's followed by two 1's)</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span><span class="n">Y_pred</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"weights =</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span><span class="n">w</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Output After Training:
+Y_pred = (should be two 0's followed by two 1's)
+ [[0.03178421]
+ [0.02576499]
+ [0.97906682]
+ [0.97414645]]
+weights =
+ [[ 7.26283009]
+ [-0.21614618]
+ [-3.41703015]]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Note that, because of our nonlinear activation, we <em>don't</em> get the solution $w_0=1, w_1=0, w_2=0$.</p>
+<p>Plotting the loss vs. iteration number, we see...</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">loss_history</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"Iteration"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"Loss"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,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%0A">
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Change-the-activation-function">
+<a class="anchor" href="#Change-the-activation-function" aria-hidden="true"><span class="octicon octicon-link"></span></a>Change the activation function<a class="anchor-link" href="#Change-the-activation-function"> </a>
+</h2>
+<p>Another popular choice of activation function is the <em>rectified linear unit</em> or ReLU.  The function ReLU(x) is zero for x &lt;= 0, and equal to x (i.e. a straight line at 45 degrees for)  x &gt;0.  It can be written as max(x,0) or  x * (x&gt;0), and its derivative is 1 for positive x, and zero otherwise.</p>
+<p><a href="https://www.desmos.com/calculator/vjqfxlgmzl">Click here to see a graph of ReLU</a></p>
+<p>Modifying our earlier code to use ReLU activation instead of sigmoid looks like this:</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">relu</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">deriv</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>   <span class="c1"># relu activation</span>
+  <span class="k">if</span><span class="p">(</span><span class="n">deriv</span><span class="o">==</span><span class="kc">True</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mi">1</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span> 
+  <span class="k">return</span> <span class="n">x</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># seed random numbers to make calculation</span>
+<span class="c1"># deterministic (just a good practice)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># initialize weights randomly  (but only &gt;0 because ReLU clips otherwise)</span>
+<span class="n">w</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+
+<span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.3</span>   <span class="c1"># learning rate</span>
+
+<span class="n">new_loss_history</span> <span class="o">=</span> <span class="p">[]</span>    <span class="c1"># keep a record of how the error proceeded</span>
+<span class="k">for</span> <span class="nb">iter</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">):</span>
+
+    <span class="c1"># forward propagation</span>
+    <span class="n">Y_pred</span> <span class="o">=</span> <span class="n">relu</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">w</span><span class="p">))</span>
+
+    <span class="c1"># how much did we miss?</span>
+    <span class="n">diff</span> <span class="o">=</span> <span class="n">Y_pred</span> <span class="o">-</span> <span class="n">Y</span>
+    <span class="n">new_loss_history</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">diff</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>   <span class="c1"># add to the record of the loss</span>
+
+    <span class="c1"># update weights</span>
+    <span class="n">w</span> <span class="o">-=</span> <span class="n">alpha</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span> <span class="n">X</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">diff</span><span class="o">*</span><span class="n">relu</span><span class="p">(</span><span class="n">Y_pred</span><span class="p">,</span> <span class="n">deriv</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Output After Training:"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Y_pred = (should be two 0's followed by two 1's)</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span><span class="n">Y_pred</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"weights =</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span><span class="n">w</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Output After Training:
+Y_pred = (should be two 0's followed by two 1's)
+ [[-0.]
+ [-0.]
+ [ 1.]
+ [ 1.]]
+weights =
+ [[ 1.01784368e+00]
+ [ 8.53961786e-17]
+ [-1.78436793e-02]]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Aside/Trivia (you can skip this cell): I find it interesting that apparently w2 = 1-w0</span>
+<span class="nb">print</span><span class="p">(</span> <span class="n">w</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">w</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[-3.46944695e-17]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Plot old results with new results:</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">loss_history</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">"sigmoid"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">new_loss_history</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">"relu"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"Iteration"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"Loss"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,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%0A">
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Looks like ReLU may be a better choice than sigmoid for this problem!</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Exercise:-Read-a-7-segment-display">
+<a class="anchor" href="#Exercise:-Read-a-7-segment-display" aria-hidden="true"><span class="octicon octicon-link"></span></a>Exercise: Read a 7-segment display<a class="anchor-link" href="#Exercise:-Read-a-7-segment-display"> </a>
+</h2>
+<p>A <a href="https://en.wikipedia.org/wiki/Seven-segment_display">7-segment display</a> is used for displaying numerical digits 0 through 9, usually by lighting up LEDs or parts of a liquid crystal display (LCD).  The segments are labelled $a$ through $g$ according to the following diagram:</p>
+<p><img src="https://i.imgur.com/ZyHGDKy.png%20=100x150" alt="7-segment diagram"></p>
+<h3 id="Diagram-of-the-network">
+<a class="anchor" href="#Diagram-of-the-network" aria-hidden="true"><span class="octicon octicon-link"></span></a>Diagram of the network<a class="anchor-link" href="#Diagram-of-the-network"> </a>
+</h3>
+<p>The 7 inputs "a" through "g" will be mapped to 10 outputs for the individual digits, and each output can range from 0 ("false" or "no") to 1 ("true" or "yes") for that digit.  The input and outputs will be connected by a matrix of weights.  Pictorially, this looks like the following (Not shown: activation function $f$):</p>
+<p><img src="https://i.imgur.com/mERzmFE.png" alt="diagram of 7-seg network"></p>
+<p>...where again, this network operates on a single data point at a time, datapoints which are <em>rows</em> of <em>X</em> and <em>Y</em>.  What is shown in the above diagram are the <em>columns</em> of $X$ and $Y$ for a single row (/ single data point).</p>
+<h3 id="Create-the-dataset">
+<a class="anchor" href="#Create-the-dataset" aria-hidden="true"><span class="octicon octicon-link"></span></a>Create the dataset<a class="anchor-link" href="#Create-the-dataset"> </a>
+</h3>
+<p>Let the input X be the segments $a$ through $g$ are the columns of the input $X$, and are either 1 for on or 0 for off.  Let the columns of the target $Y$ be the digits 0-9 themselves arranged in a <a href="https://machinelearningmastery.com/why-one-hot-encode-data-in-machine-learning/">"one hot" encoding</a> scheme, as follows:</p>
+<p></p>
+<table>
+  <tr>
+<td>Digit</td>
+<td>One-Hot Encoding for $Y$</td>
+</tr>
+    <tr>
+<td>0</td>
+<td>1,0,0,0,0,0,0,0,0,0</td>
+</tr>
+    <tr>
+<td>1</td>
+<td>0,1,0,0,0,0,0,0,0,0</td>
+</tr>
+    <tr>
+<td>2</td>
+<td>0,0,1,0,0,0,0,0,0,0</td>
+</tr>
+  <tr>
+<td>...</td>
+<td>...</td>
+</tr>
+    <tr>
+<td>9</td>
+<td>0,0,0,0,0,0,0,0,0,1</td>
+</tr>
+  </table>
+  The values in the columns for $Y$ are essentially true/false "bits" for each digit, answering the question "Is this digit the appropriate output?" with a "yes"(=1) or "no" (=0) response.
+<p>The input $X$ will be a 10x7 matrix, and the target $Y$ will be a 10x10 matrix. Each row of $X$ will be the segments to produce the digit for that row.  For example, the zeroth row of $X$ should show segments on which make an image of the digit zero, namely segments a, b, c, d, e, and f but not g, so that the zeroth row of X should be [1,1,1,1,1,1,0].</p>
+<p>Define numpy arrays for both $X$ and $Y$  (Hint: for $Y$, check out <a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.eye.html">np.eye()</a>):</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Students: fill these out completely for what the X and Y *should* be</span>
+<span class="c1"># for the 7-segment display.  The following is just a "stub" to get you started.</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
+               <span class="p">[],</span>
+               <span class="p">[],</span>
+               <span class="p">[]</span> <span class="p">])</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
+               <span class="p">[],</span>
+               <span class="p">[]</span> <span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Initialize-the-weights">
+<a class="anchor" href="#Initialize-the-weights" aria-hidden="true"><span class="octicon octicon-link"></span></a>Initialize the weights<a class="anchor-link" href="#Initialize-the-weights"> </a>
+</h3>
+<p>Previously the dimensions of the weight matrix $w$ were 3x1 because we were mapping each row of 3 elements in $X$ to each row of 1 element of $Y$.  For this new problem,
+each row of $X$ has 7 elements, and we want to map those to the 10 elements in each 1-hot-encoded row of $Y$, so what should the dimensions of the weights matrix $w$ be?</p>
+<p>Write some numpy code to randomly initialize the weights matrix:</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># initial RNG so everybody gets similar results</span>
+
+<span class="n">w</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span> <span class="p">,</span> <span class="p">))</span>    <span class="c1"># Students, fill in the array dimensions here</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-cyan-fg">  File </span><span class="ansi-green-fg">"&lt;ipython-input-7-20f53a51cded&gt;"</span><span class="ansi-cyan-fg">, line </span><span class="ansi-green-fg">1</span>
+<span class="ansi-red-fg">    w = np.random.random(( , ))</span>
+                           ^
+<span class="ansi-red-fg">SyntaxError</span><span class="ansi-red-fg">:</span> invalid syntax
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Train-the-network">
+<a class="anchor" href="#Train-the-network" aria-hidden="true"><span class="octicon octicon-link"></span></a>Train the network<a class="anchor-link" href="#Train-the-network"> </a>
+</h3>
+<p>Having created an $X$ and its matching $Y$, and initalized the weights $w$ randomly, train a neural network such as the ones above to learn to map a row of X to a row of Y, i.e. train it to recognize digits on 7-segment displays.  Do this below.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Students, copy training code from above and paste it here. </span>
+<span class="c1">#  Use sigmoid activation, and 1000 iterations, and learning rate of 0.9</span>
+<span class="c1">#    Question: What happens if you use ReLU instead? Try it later. Is ReLU always the best choice?</span>
+
+
+<span class="c1"># And then print out your Y_pred &amp; weights matrix, and limit it to 3 significant digits</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Output After Training:"</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">set_printoptions</span><span class="p">(</span><span class="n">formatter</span><span class="o">=</span><span class="p">{</span><span class="s1">'float'</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s2">"</span><span class="si">{0:0.3f}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">)})</span> <span class="c1"># 3 sig figs</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Y_pred=</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span><span class="n">Y_pred</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"weights =</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span><span class="nb">repr</span><span class="p">(</span><span class="n">w</span><span class="p">))</span>  <span class="c1"># the repr() makes it so it can be copied &amp; pasted back into Python code</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Final-Check:-Keras-version">
+<a class="anchor" href="#Final-Check:-Keras-version" aria-hidden="true"><span class="octicon octicon-link"></span></a>Final Check: Keras version<a class="anchor-link" href="#Final-Check:-Keras-version"> </a>
+</h2>
+<p><a href="https://keras.io/">Keras</a> is a neural network library that lets us write NN applications very compactly.  Try running the following using the X and Y from your 7-segment dataset:</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Just a demo of how one might similarly train a network using Keras</span>
+<span class="kn">import</span> <span class="nn">keras</span>
+<span class="kn">from</span> <span class="nn">keras.models</span> <span class="kn">import</span> <span class="n">Sequential</span>
+<span class="kn">from</span> <span class="nn">keras.layers</span> <span class="kn">import</span> <span class="n">Dense</span><span class="p">,</span> <span class="n">Activation</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">([</span>
+    <span class="n">Dense</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">input_shape</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,)),</span>
+    <span class="n">Activation</span><span class="p">(</span><span class="s1">'sigmoid'</span><span class="p">)</span> <span class="p">])</span>
+<span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s1">'adam'</span><span class="p">,</span>   <span class="c1"># We'll talk about optimizer choices and loss choices later</span>
+              <span class="n">loss</span><span class="o">=</span><span class="s1">'categorical_crossentropy'</span><span class="p">,</span>
+              <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s1">'accuracy'</span><span class="p">])</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">Y_tilde = </span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Follow-up:-Remarks">
+<a class="anchor" href="#Follow-up:-Remarks" aria-hidden="true"><span class="octicon octicon-link"></span></a>Follow-up: Remarks<a class="anchor-link" href="#Follow-up:-Remarks"> </a>
+</h1>
+<h3 id="Re-stating-what-we-just-did">
+<a class="anchor" href="#Re-stating-what-we-just-did" aria-hidden="true"><span class="octicon octicon-link"></span></a>Re-stating what we just did<a class="anchor-link" href="#Re-stating-what-we-just-did"> </a>
+</h3>
+<p>The original problem (posed at the top of this notebook) involves mapping some points from a 3-dimensional space into points in a 1-dimensional space, i.e. to points on the number line.  The mapping is done by the combination of a weighted sum (a linear operation) and a nonlinear "<a href="https://en.wikipedia.org/wiki/Activation_function">activation function</a>" applied to that sum. The use of an activation function like a sigmoid was originally intended to serve as an analogy of activation of biological neurons.   Nonlinear activation functions are source of the "power" of neural networks  (essentially we approximate some other function by means of a sum of <em>basis functions</em> in some <a href="https://en.wikipedia.org/wiki/Function_space">function space</a>, but don't worry about that if you're not math-inclined).   The algorithm 'learns' to approximate this operation via supervised learning and gradient descent according to some loss function.  We used the mean squared error (MSE) for our loss, but <a href="https://towardsdatascience.com/common-loss-functions-in-machine-learning-46af0ffc4d23">lots</a> and <a href="https://heartbeat.fritz.ai/5-regression-loss-functions-all-machine-learners-should-know-4fb140e9d4b0">lots</a> of different loss functions could be used, a few of which we'll look at another time.</p>
+<p><strong>Question for reflection:</strong> Unlike fitting a line $y = mx+b$, the weighted sum in our models in this notebook had no constant "bias" term like $b$. How might we include such a term?</p>
+<h3 id='One-thing-we-glossed-over:-"batch-size"'>
+<a class="anchor" href="#One-thing-we-glossed-over:-" batch-size aria-hidden="true"><span class="octicon octicon-link"></span></a>One thing we glossed over: "<a href="https://www.youtube.com/watch?v=vVX9vld3vrY">batch size</a>"<a class="anchor-link" href="#One-thing-we-glossed-over:-%22batch-size%22"> </a>
+</h3>
+<p>Question: Should we apply the gradient descent "update" to the weights <em>each time</em> we process a single row of $X$ &amp; $Y$, or should we compute the combined loss of all the rows together at the same time, and <em>then</em> do the update?   This is essentially asking the same question as "When fitting a line $mx+b$ to a bunch of data points, should we use all the points together to update $m$ and $b,$ or should we do this one point at a time -- compute the gradients of the loss at one point, update the weights, compute gradients at another point, etc.?"</p>
+<p>The number of points you use is called the <em>batch size</em> and it is what's known as a "hyperparameter" -- it is not part of the model <em>per se</em>, but it is a(n important) choice <em>you</em> make when training the model.  The batch size affects the learning as follows:   Averaging the gradints for  many data points (i..e. a large batch size) will produce a smoother loss function and will also usually make the code execute more quickly through the dataset, but updating the weights for every point will cause the algorithm to learn with fewer iterations.</p>
+<p>One quick way to observe this is to go up to the Keras code above and change <code>batch_size</code> from 1 to 10, and re-execute the cell.  How is the accuracy after 200 iteractions, compared to when <code>batch_size=1</code>?</p>
+<p><em>Terminology:</em> Technically, it's called "batch training" when you sum the gradients for <em>all</em> the data points before updating the weights, whereas using fewer points is  "minibatch training", and updating for each point (i.e. each row, for us) is Stochastic Gradient Descent*  (SGD -- more on these terms <a href="https://machinelearningmastery.com/difference-between-a-batch-and-an-epoch/">here</a>).  In practice, there is a tradeoff between smaller vs. larger (mini)batches, which has been the subject of intense scrutiny by researchers over the years.  We will have more to say on this later.</p>
+<p><strong>For discussion later:</strong> In our presentation above, were we using batch training, minibatch training or SGD?</p>
+<p>.</p>
+<p>*Note: many people will regard SGD as an optimization algorithm <em>per se</em>, and refer to doing SGD <em>even</em> for (mini)batch sizes larger than 1.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Optional:-If-you-want-to-go-really-crazy">
+<a class="anchor" href="#Optional:-If-you-want-to-go-really-crazy" aria-hidden="true"><span class="octicon octicon-link"></span></a>Optional: If you want to go really crazy<a class="anchor-link" href="#Optional:-If-you-want-to-go-really-crazy"> </a>
+</h2>
+<p>How about training on this dataset:
+$$ \overbrace{
+ \left[ {\begin{array}{cc}
+   0 &amp; 0 \\
+   0 &amp; 1 \\
+   1 &amp; 0 \\
+   1 &amp; 1 \\
+  \end{array} } \right]
+}^{X} \rightarrow
+\overbrace{
+ \left[ {\begin{array}{c}
+   0   \\
+   1  \\
+   1  \\
+   0 \\
+  \end{array} } \right]
+  }^Y.
+$$
+Good luck! ;-)<br>
+(Hint 1: This problem features prominently in <a href="https://beamandrew.github.io/deeplearning/2017/02/23/deep_learning_101_part1.html">the history of Neural Networks</a>, involving Marvin Minsky and "AI Winter."<br>
+Hint 2: This whole lesson could instead be entitled "My First Artificial Neuron.")</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Next time, we will go on to <a href="https://colab.research.google.com/drive/1O9xcdAQUxo7KdVhbggqLCvabc77Rj-yH#scrollTo=UwVdMLHqk1g0">Part 2: Bias and CE Loss</a>.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Additional-Optional-Exercise:-Binary-Math-vs.-One-Hot-Encoding">
+<a class="anchor" href="#Additional-Optional-Exercise:-Binary-Math-vs.-One-Hot-Encoding" aria-hidden="true"><span class="octicon octicon-link"></span></a>Additional Optional Exercise: Binary Math vs. One-Hot Encoding<a class="anchor-link" href="#Additional-Optional-Exercise:-Binary-Math-vs.-One-Hot-Encoding"> </a>
+</h2>
+<p>For the 7-segment display, we used a one-hot encoding for our output, namely a set of true/false "bits" for each digit.  One may wonder how effective this ouput-encoding method is, compared to a different bit-setting encoding method, namely binary representations.</p>
+<ol>
+<li>Construct the target output matrix $Y$ for binary representations of the numbers 0 through 9.  Your target matrix should have 10 rows and 4 columns (i.e, output bits for 1s, 2s, 4s, and 8s). </li>
+<li>Using this $Y$ array, train the network as before, and plot the loss as a function of iteration.</li>
+</ol>
+<p>Question: Which method works 'better'?  One-hot encoding or binary encoding?</p>
+
+</div>
+</div>
+</div>
+</div>
+
+
+
+  </div><!-- from https://github.com/utterance/utterances -->
+<script src="https://utteranc.es/client.js"
+        repo="drscotthawley/blog"
+        issue-term="title"
+        label="blogpost-comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script><a class="u-url" href="/blog/2019/01/30/My-First-Neural-Network.html" hidden></a>
+</article>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/blog/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/blog/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/blog/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>An easy to use blogging platform with support for Jupyter Notebooks.</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/drscotthawley" title="drscotthawley"><svg class="svg-icon grey"><use xlink:href="/blog/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/drscotthawley" title="drscotthawley"><svg class="svg-icon grey"><use xlink:href="/blog/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
