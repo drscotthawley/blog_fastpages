@@ -24,6 +24,7 @@ group :jekyll_plugins do
   gem 'jekyll-gist'
   gem 'jekyll-paginate'
   gem 'jekyll-sitemap'
+  gem 'jekyll-scholar'
 end
 
 gem "kramdown-math-katex"
@@ -40,4 +41,3 @@ end
 gem "wdm", "~> 0.1.1", :install_if => Gem.win_platform?
 
 gem "faraday", "< 1.0"
-
