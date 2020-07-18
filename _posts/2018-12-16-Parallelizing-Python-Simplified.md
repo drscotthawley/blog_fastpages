@@ -1,7 +1,7 @@
 ---
 toc: true
 description: Basic use of multiprocessing.
-image:  ../images/parallelpython.png
+image:  images/parallelpython.png
 comments: true
 ---
 # Parallelizing Python, Simplified
