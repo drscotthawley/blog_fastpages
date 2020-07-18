@@ -1,8 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>https://drscotthawley.github.io/blog/2017/02/03/How-To-Port-Forward-Jupyter-Notebooks.html</loc>
+<lastmod>2017-02-03T00:00:00-06:00</lastmod>
+</url>
+<url>
+<loc>https://drscotthawley.github.io/blog/2017/02/06/Machine-Learning-Reference-List.html</loc>
+<lastmod>2017-02-06T00:00:00-06:00</lastmod>
+</url>
+<url>
 <loc>https://drscotthawley.github.io/blog/2017/02/23/Following-Gravity-Colab.html</loc>
 <lastmod>2017-02-23T00:00:00-06:00</lastmod>
+</url>
+<url>
+<loc>https://drscotthawley.github.io/blog/2017/05/04/Learning-Room-Shapes.html</loc>
+<lastmod>2017-05-04T00:00:00-05:00</lastmod>
+</url>
+<url>
+<loc>https://drscotthawley.github.io/blog/2017/05/05/Crash-Course-On-GANs.html</loc>
+<lastmod>2017-05-05T00:00:00-05:00</lastmod>
+</url>
+<url>
+<loc>https://drscotthawley.github.io/blog/2017/11/22/Notes-On-Convexity.html</loc>
+<lastmod>2017-11-22T00:00:00-06:00</lastmod>
 </url>
 <url>
 <loc>https://drscotthawley.github.io/blog/2018/02/21/Resolving-OSX-Aliases.html</loc>

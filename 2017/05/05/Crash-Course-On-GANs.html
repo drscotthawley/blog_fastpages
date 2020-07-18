@@ -1,0 +1,174 @@
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*-gFsbymY9oJUQJ-A3GTfeg.png?h" alt="header-img" /></p>
+<p style="text-align: right"><i>Image credit: <a href="https://medium.com/@devnag/generative-adversarial-networks-gans-in-50-lines-of-code-pytorch-e81b79659e3f">Dev Nag</a></i></p>
+
+<p><em>This post is not necessarily a crash course on GANs. It is at least a record of me giving myself a crash course on GANs.  Adding to this as I go.</em></p>
+
+<h2 id="intromotivation">Intro/Motivation</h2>
+<p>I’ve been wanting to grasp the seeming-magic of Generative Adversarial Networks (GANs) since I started seeing <a href="https://github.com/SKTBrain/DiscoGAN">handbags turned into shoes and brunettes turned to blondes</a>… 
+<img src="https://raw.githubusercontent.com/SKTBrain/DiscoGAN/master/assets/discogan.png" alt="hbg-shoe" />
+…and seeing <a href="https://techcrunch.com/2016/04/14/magic-ponys-neural-network-dreams-up-new-imagery-to-expand-an-existing-picture/">Magic Pony’s image super-resolution results</a> and hearing that <a href="https://twitter.com/ylecun">Yann Lecun</a> had called GANs <a href="https://www.quora.com/session/Yann-LeCun/1">the most important innovation in machine learning in recent years</a>.</p>
+
+<p>Finally, seeing Google’s <a href="https://research.googleblog.com/2017/04/teaching-machines-to-draw.html">Cat-Pig Sketch-Drawing Math</a>…
+<img src="https://4.bp.blogspot.com/-yK7t-68XTzA/WO6XNTIb66I/AAAAAAAABuM/PqB64rz_YgMYM3EkP2BEJojnCLHsAMXqgCLcB/s640/image05.png" alt="catpig" /></p>
+
+<p>…broke me, and so…I need to ‘get’ this.</p>
+
+<p>I’ve noticed that, although people use GANs with great success for images, not many have tried using them for audio yet (<strong>Note:</strong> see SEGAN paper, below).  Maybe with already-successful generative audio systems like <a href="https://deepmind.com/blog/wavenet-generative-model-raw-audio/">WaveNet</a>, <a href="https://github.com/soroushmehr/sampleRNN_ICLR2017">SampleRNN</a> (listen to those piano sounds!!) and <a href="https://google.github.io/tacotron/">TacoTron</a> there’s less of a push for trying GANs.  Or maybe GANs just suck for audio.  Guess I’ll find out…</p>
+
+<h2 id="steps-i-took">Steps I Took</h2>
+<h3 id="day-1">Day 1:</h3>
+<ol>
+  <li>Gathered list of some prominent papers (below).</li>
+  <li>Watched video of <a href="https://www.youtube.com/watch?v=JRKl9QPiRok">Ian Goodfellow’s Berkeley lecture</a> (notes below).</li>
+  <li>Started reading the <a href="https://arxiv.org/abs/1609.03126">EBGAN paper</a> (notes below)…</li>
+  <li>…but soon switched to <a href="https://arxiv.org/abs/1703.10717">BEGAN paper</a> – because wow! Look at these generated images: <img src="https://heuritech.files.wordpress.com/2017/04/1_face_teaser.png?w=1595&amp;h=955" alt="Sample Images" /></li>
+  <li>Googled for Keras-based BEGAN implementations and other code repositories (below)…Noticed <a href="https://arxiv.org/abs/1703.09452">SEGAN</a>…</li>
+  <li>…Kept reading BEGAN, making notes as I went (below).</li>
+  <li>
+    <p>Finished paper, started looking through BEGAN codes from GitHub (below) &amp; began trying them out…<br />
+ a. Cloned <a href="https://github.com/mokemokechicken/keras_BEGAN">@mokemokechicken’s Keras repo</a>, grabbed suggested LFW database, converted images via script, ran training… Takes 140 seconds per epoch on Titan X Pascal.</p>
+
+    <ul>
+      <li>Main part of code is in <a href="https://github.com/mokemokechicken/keras_BEGAN/blob/master/src/began/models.py">models.py</a></li>
+    </ul>
+
+    <p>b. Cloned <a href="https://github.com/carpedm20/BEGAN-tensorflow">@carpedm’s Tensorflow repo</a>, looked through it, got CelebA dataset, started running code.</p>
+  </li>
+  <li>Leaving codes to train overnight. Next time, I’d like to try to better understand the use of an autoencoder as the discriminator.</li>
+</ol>
+
+<h3 id="day-2">Day 2:</h3>
+<ol>
+  <li>My office is <span style="color:red">hot</span>.  Two Titan X GPUs pulling ~230W for 10 hours straight has put the cards up towards annoyingly high temperatures, as in ~ 85 Celsius!  My previous nightly runs wouldn’t even go above 60 C.   But the results – espically from the straight-Tensorflow code trained on the CelebA dataset – are as incredible as advertised!  (Not that I understand them yet. LOL.)  The Keras version, despite claiming to be a BEGAN implementation, seems to suffer from “mode collapse,” i.e. that too many very similar images get generated.</li>
+  <li>Fished around a little more on the web for audio GAN applications.  Found an <a href="https://arxiv.org/abs/1611.09904">RNN-GAN application to MIDI</a>, and found actual audio examples of <a href="http://deepsound.io/dcgan_spectrograms.html">what not to do: don’t try to just produce spectrograms with DCGAN and convert them to audio</a>.  The latter authors seem to have decided to switch to a SampleRNN approach.  Perhaps it would be wise to heed their example? ;-)</li>
+  <li>Since EBGAN implemented autoencoders as discriminators before BEGAN did, I went back to read that part of the EBGAN paper. Indeed, section “2.3 - Using AutoEncoders” (page 4). (see notes below)</li>
+  <li>Ok, I basically get the autoencoder-discriminator thing now. :-)</li>
+</ol>
+
+<h3 id="day-3">Day 3:</h3>
+<p>“Life” intervened. :-/  Hope to pick this up later.</p>
+
+<h2 id="papers">Papers</h2>
+<p>Haven’t read hardly any of these yet, just gathering them here for reference:</p>
+
+<ul>
+  <li>Original GAN Paper: <a href="https://arxiv.org/abs/1406.2661">” Generative Adversarial Networks”</a> by GoodFellow (2014)</li>
+  <li>DCGAN: <a href="https://arxiv.org/abs/1511.06434">“Unsupervised Representation Learning with Deep Convolutional Generative Adversarial Networks”</a> by Radford, Metz \&amp; Chintala (2015)</li>
+  <li><a href="https://arxiv.org/abs/1611.07004">“Image-to-Image Translation with Conditional Adversarial Networks”</a> by Isola et al (2016)</li>
+  <li><a href="https://arxiv.org/abs/1606.03498">“Improved Techniques for Training GANs”</a> by Salimans et al (2016).</li>
+  <li>DiscoGAN: <a href="https://arxiv.org/pdf/1703.05192.pdf">“Learning to Discover Cross-Domain Relations
+with Generative Adversarial Networks”</a> by Kim et al. (2017)</li>
+  <li>EBGAN: <a href="https://arxiv.org/abs/1609.03126">“Energy-based Generative Adversarial Network</a> by Zhao, Matheiu \&amp; Lecun (2016/2017).
+    <ul>
+      <li><strong>Remarks/Notes:</strong></li>
+      <li>“This variant [EBGAN] converges more stably [than previous GANs] and is both easy to train and robust to hyper-parameter variations” (quoting from BEGAN paper, below).</li>
+      <li>If it’s energy-based, does that mean we get a Lagrangian, and Euler-Lagrange Equations, and Lagrange Multipliers?  And thus can physics students (&amp; professors!) grasp these networks in a straightforward way?  Should perhaps take a look at Lecun’s <a href="http://yann.lecun.com/exdb/publis/pdf/lecun-06.pdf">Tutorial on Energy-Based Learning</a>.</li>
+      <li>“The energy is the resconstruction error [of the autoencoder]” (Section 1.3, bullet points)</li>
+      <li><img src="http://kordinglab.com/lab_teaching_2016/session_4/images/ebgan.jpg" alt="ebgan-pic" /></li>
+    </ul>
+    <p style="text-align: right"><i>Image credit: <a href="http://kordinglab.com/lab_teaching_2016/session_4/">Roozbeh Farhoodi</a> + EBGAN authors</i></p>
+    <ul>
+      <li>“…256×256 pixel resolution, without a multi-scale approach.” (ibid)</li>
+      <li>Section 2.3 covers on the use of the autoencoder as a discriminator.  Wow, truly, the discriminator’s “energy”/ “loss” criterion is literally just the reconstruction error of the autoencoder. How does that get you a discriminator??</li>
+      <li>It gets you a discriminator because the outputs of the generator are likely to have high energies whereas the real data (supposedly) will produce low energies: “We argue that the energy function (the discriminator) in the EBGAN framework is also seen as
+being regularized by having a generator producing the contrastive samples, to which the discrim-
+inator ought to give high reconstruction energies” (bottom of page 4).</li>
+    </ul>
+  </li>
+  <li>
+    <p><a href="https://arxiv.org/pdf/1701.07875.pdf">“Wasserstein GAN (WGAN)</a> by Arjovsky, Chintala, \&amp; Bottou (2017)</p>
+  </li>
+  <li>
+    <h3 id="began-boundary-equilibrium-generative-adversarial-networks-by-berthelot-schumm--metz-april-2017"><a href="https://arxiv.org/abs/1703.10717">“BEGAN: Boundary Equilibrium Generative Adversarial Networks”</a> by Berthelot, Schumm &amp; Metz (April 2017).</h3>
+    <ul>
+      <li><strong>Remarks/Notes:</strong></li>
+      <li><em>“Our model is easier to train and simpler than other GANs architectures: no batch normalization, no dropout, no transpose convolutions and no exponential growth for convolution filters.”</em> (end of section 3.5, page 5)</li>
+      <li>This is probably not the kind of paper that anyone off the street can just pick up \&amp; read.  <em>There will be math.</em></li>
+      <li>Uses an autoencoder for the discriminator.</li>
+      <li>I notice that Table 1, page 8 shows “DFM” (from <a href="https://openreview.net/pdf?id=S1X7nhsxl">“Improving Generative Adversarial Networks
+with Denoising Feature Matching”</a> by Warde-Farley &amp; Bengio, 2017) as scoring higher than BEGAN.</li>
+      <li>page 2: “Given two normal distributions…with covariances <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mn>1</mn></msub><mo separator="true">,</mo><msub><mi>C</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">C_1, C_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.07153em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.07153em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>,…”: see <a href="https://en.wikipedia.org/wiki/Multivariate_normal_distribution">“Multivariate Normal Distribution”</a>.</li>
+      <li>Section 3.3, Equilibrium: The “<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="double-struck">E</mi><mo stretchy="false">[</mo><mtext> </mtext><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">\mathbb{E}[\  ]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathbb">E</span></span><span class="mopen">[</span><span class="mspace"> </span><span class="mclose">]</span></span></span></span>” notation – as in <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="double-struck">E</mi><mrow><mo fence="true">[</mo><mi mathvariant="script">L</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo fence="true">]</mo></mrow></mrow><annotation encoding="application/x-tex">\mathbb{E}\left[\mathcal{L}(x)\right]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathbb">E</span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;">[</span><span class="mord"><span class="mord mathcal">L</span></span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mclose">)</span><span class="mclose delimcenter" style="top:0em;">]</span></span></span></span></span> – means “expected value.”  See <a href="https://en.wikipedia.org/wiki/Expected_value">https://en.wikipedia.org/wiki/Expected_value</a></li>
+      <li>Introduces the <em>diversity ratio</em>: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>γ</mi><mo>=</mo><mfrac><mrow><mi mathvariant="double-struck">E</mi><mrow><mo fence="true">[</mo><mi mathvariant="script">L</mi><mo stretchy="false">(</mo><mi>G</mi><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo><mo fence="true">]</mo></mrow></mrow><mrow><mi mathvariant="double-struck">E</mi><mrow><mo fence="true">[</mo><mi mathvariant="script">L</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo fence="true">]</mo></mrow></mrow></mfrac></mrow><annotation encoding="application/x-tex">\gamma=\frac{\mathbb{E}\left[\mathcal{L}(G(z))\right]}{\mathbb{E}\left[\mathcal{L}(x)\right]}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.05556em;">γ</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.53em;vertical-align:-0.52em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.01em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathbb mtight">E</span></span><span class="minner mtight"><span class="mopen mtight delimcenter" style="top:0em;"><span class="mtight">[</span></span><span class="mord mtight"><span class="mord mathcal mtight">L</span></span><span class="mopen mtight">(</span><span class="mord mathdefault mtight">x</span><span class="mclose mtight">)</span><span class="mclose mtight delimcenter" style="top:0em;"><span class="mtight">]</span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.485em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathbb mtight">E</span></span><span class="minner mtight"><span class="mopen mtight delimcenter" style="top:0em;"><span class="mtight">[</span></span><span class="mord mtight"><span class="mord mathcal mtight">L</span></span><span class="mopen mtight">(</span><span class="mord mathdefault mtight">G</span><span class="mopen mtight">(</span><span class="mord mathdefault mtight" style="margin-right:0.04398em;">z</span><span class="mclose mtight">)</span><span class="mclose mtight">)</span><span class="mclose mtight delimcenter" style="top:0em;"><span class="mtight">]</span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.52em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span>.  “Lower values of <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>γ</mi></mrow><annotation encoding="application/x-tex">\gamma</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.05556em;">γ</span></span></span></span> lead to lower image diversity because the discriminator focuses more heavily on auto-encoding real images.”</li>
+      <li>“3.5 Model architecture”: Did not actually get the bit about the autoencoder as the discriminator: “How does an autoencoder output a 1 or a zero?”</li>
+      <li>Ok, done. Will come back later if needed; maybe looking at code will make things clearer…</li>
+    </ul>
+  </li>
+  <li><a href="https://arxiv.org/pdf/1703.09452.pdf">“SEGAN: Speech Enhancement Generative Adversarial Network”</a> by Pascual, Bonafonte \&amp; Serra (April 2017). <strong>Actual audio GAN!</strong> They only used it to remove noise.</li>
+</ul>
+
+<h2 id="videos">Videos</h2>
+
+<ul>
+  <li><a href="https://www.youtube.com/watch?v=JRKl9QPiRok">Ian Goodfellow (original GAN author), Guest lecture on GANs for UC Berkeley CS295</a> (Oct 2016). 1 hour 27 minutes. <em>NOTE: actually starts at 4:33.</em> Watch at 1.25 speed.
+    <ul>
+      <li><strong>Remarks/Notes:</strong></li>
+      <li><em>This is on a fairly “high” level</em>, which may be too much for some viewers; if hearing the words “probability distribution” over &amp; over again makes you tune out, and e.g. if you don’t know what a Jacobian is, then you may not want to watch this.</li>
+      <li>His “Taxonomy of Generative Models” is <strong>GREAT!</strong></li>
+      <li>The discriminator is just an ordinary classifier.</li>
+      <li>So, the generator’s cost function can be just the negative of the discriminator’s cost function, (i.e. it tries to “mess up” the discriminator), however that can saturate (i.e. produce small gradients) so instead they try to “maximize the probability that the discriminator will make a mistake” (44:12).</li>
+      <li><a href="https://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence">“KL divergence”</a> is a measure of the ‘difference’ between two PD’s.</li>
+      <li><a href="https://en.wikipedia.org/wiki/Logit">“Logit”</a> is the inverse of the sigmoid/logistical function. (logit&lt;–&gt;sigmoid :: tan&lt;–&gt;arctan)</li>
+      <li><a href="https://en.wikipedia.org/wiki/Jensen%E2%80%93Shannon_divergence">Jensen-Shannon divergence</a> is a measure of the ‘similarity’ between two PD’s.  Jensen-Shannon produces better results for GANs than KL/maximum likelihood.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="web-poststutorials">Web Posts/Tutorials</h2>
+<ul>
+  <li><a href="https://medium.com/@ageitgey/abusing-generative-adversarial-networks-to-make-8-bit-pixel-art-e45d9b96cee7">“Machine Learning is Fun Part 7: Abusing Generative Adversarial Networks to Make 8-bit Pixel Art”</a> by Adam Geitgey, <em>skip down to “How DCGANs Work”</em> (2017)</li>
+  <li>Post on BEGAN: <a href="https://blog.heuritech.com/2017/04/11/began-state-of-the-art-generation-of-faces-with-generative-adversarial-networks/">https://blog.heuritech.com/2017/04/11/began-state-of-the-art-generation-of-faces-with-generative-adversarial-networks/</a></li>
+  <li><a href="http://blog.aylien.com/introduction-generative-adversarial-networks-code-tensorflow">An introduction to Generative Adversarial Networks (with code in TensorFlow)</a></li>
+  <li><a href="https://medium.com/@devnag/generative-adversarial-networks-gans-in-50-lines-of-code-pytorch-e81b79659e3f">“Generative Adversarial Networks (GANs) in 50 lines of code (PyTorch)”</a> by Dev Nag (2017)</li>
+  <li><a href="http://www.araya.org/archives/1183">“Stability of Generative Adversarial Networks”</a> by Nicholas Guttenberg (2016)</li>
+  <li>
+    <p><a href="http://dmlc.ml/mxnet/2016/06/20/end-to-end-neural-style.html">“End to End Neural Art with Generative Models”</a> by Bing Xu (2016)</p>
+  </li>
+  <li>
+    <h3 id="kording-lab-gan-tutorial-by-roozbeh-farhoodi----nicely-done-has-code-too"><a href="http://kordinglab.com/lab_teaching_2016/session_4/#1">Kording Lab GAN Tutorial</a> by Roozbeh Farhoodi :-).  Nicely done, <a href="https://github.com/KordingLab/lab_teaching_2016">has code too</a>.</h3>
+  </li>
+</ul>
+
+<h2 id="code">Code</h2>
+<h3 id="keras">Keras:</h3>
+<ul>
+  <li>‘Basic’ GAN with MNIST example: <a href="http://www.kdnuggets.com/2016/07/mnist-generative-adversarial-model-keras.html">http://www.kdnuggets.com/2016/07/mnist-generative-adversarial-model-keras.html</a></li>
+  <li>GAN, BiGAN \&amp; Adversarial AutoEncoder: <a href="https://github.com/bstriner/keras-adversarial">https://github.com/bstriner/keras-adversarial</a></li>
+  <li><strong>Kording Lab’s GAN tutorial, Jupyter Notebook <a href="https://github.com/KordingLab/lab_teaching_2016/blob/master/session_4/Generative%20Adversarial%20Networks.ipynb">https://github.com/KordingLab/lab_teaching_2016/blob/master/session_4/Generative%20Adversarial%20Networks.ipynb</a>.  (Code is short and understandable.)</strong></li>
+  <li>Keras BEGAN:
+    <ul>
+      <li><a href="https://github.com/mokemokechicken/keras_BEGAN">https://github.com/mokemokechicken/keras_BEGAN</a>: Only works on 64x64 images; BEGAN paper shows some 128x128</li>
+      <li><a href="https://github.com/pbontrager/BEGAN-keras">https://github.com/pbontrager/BEGAN-keras</a>: No documentation, and I don’t see how it could run.  I notice local variables being referenced in <a href="https://github.com/pbontrager/BEGAN-keras/blob/master/models.py">models.py</a> as if they’re global.</li>
+    </ul>
+  </li>
+  <li>Keras DCGAN (MNIST): <a href="https://github.com/jacobgil/keras-dcgan">https://github.com/jacobgil/keras-dcgan</a></li>
+  <li>Auxiliary Classifier GAN: <a href="https://github.com/lukedeo/keras-acgan">https://github.com/lukedeo/keras-acgan</a></li>
+</ul>
+
+<h3 id="tensorflow">Tensorflow:</h3>
+<ul>
+  <li>BEGAN-Tensorflow: <a href="https://github.com/carpedm20/BEGAN-tensorflow">https://github.com/carpedm20/BEGAN-tensorflow</a></li>
+  <li>EBGAN.Tensorflow: <a href="https://github.com/shekkizh/EBGAN.tensorflow">https://github.com/shekkizh/EBGAN.tensorflow</a></li>
+  <li>SEGAN: <a href="https://github.com/santi-pdp/segan">https://github.com/santi-pdp/segan</a></li>
+  <li>DCGAN-Tensorflow: <a href="https://github.com/carpedm20/DCGAN-tensorflow">https://github.com/carpedm20/DCGAN-tensorflow</a></li>
+</ul>
+
+<h3 id="pytorch">PyTorch:</h3>
+<ul>
+  <li>Tutorial &amp; simple implementation: <a href="https://github.com/devnag/pytorch-generative-adversarial-networks">https://github.com/devnag/pytorch-generative-adversarial-networks</a></li>
+</ul>
+
+<h2 id="datasets">Datasets</h2>
+<ul>
+  <li>CelebA: <a href="http://mmlab.ie.cuhk.edu.hk/projects/CelebA.html">http://mmlab.ie.cuhk.edu.hk/projects/CelebA.html</a></li>
+  <li>MNIST: <a href="http://yann.lecun.com/exdb/mnist/">http://yann.lecun.com/exdb/mnist/</a></li>
+  <li>Speech enhancement: <a href="http://datashare.is.ed.ac.uk/handle/10283/1942">http://datashare.is.ed.ac.uk/handle/10283/1942</a></li>
+  <li>“Labelled Faces in the Wild” <a href="http://vis-www.cs.umass.edu/lfw/">http://vis-www.cs.umass.edu/lfw/</a></li>
+</ul>
+
+<h2 id="more-references-lists">More References (Lists)</h2>
+<ul>
+  <li><a href="https://github.com/GKalliatakis/Delving-deep-into-GANs">“Delving deep into Generative Adversarial Networks (GANs): A curated list of state-of-the-art publications and resources about Generative Adversarial Networks (GANs) and their applications.”</a></li>
+</ul>
