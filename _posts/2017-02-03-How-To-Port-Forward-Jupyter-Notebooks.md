@@ -2,6 +2,7 @@
 layout: post
 title: How to Port-Forward Jupyter Notebooks
 subtitle: ...to enable efficient remote-working.
+image: images/forward_small.jpg
 ---
 
 [Jupyter notebooks](http://jupyter.org/) and  their related [iTorch notebooks](https://github.com/facebook/iTorch) seem to be popular for tutorials, e.g the [Deep Learning with Torch](https://github.com/soumith/cvpr2015/blob/master/Deep%20Learning%20with%20Torch.ipynb) tutorial I started today, but I hated them and avoided them -- not just for [the reasons on this list](http://opiateforthemass.es/articles/why-i-dont-like-jupyter-fka-ipython-notebook/), but mainly because I keep my "machine learning machine" inside my university's firewall and this has made it a pain to run "notebooks" if you're off-site.
