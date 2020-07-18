@@ -4,7 +4,7 @@ description: Supporting scholarly blogging by drawing references from your datab
 layout: post
 toc: true
 comments: true
-image:
+image: ../images/book_image_smaller.jpg
 hide: false
 search_exclude: false
 ---
