@@ -114,8 +114,8 @@
   
     
         ,"post11": {
-            "title": "or is this the title",
-            "content": "testing .",
+            "title": "Title",
+            "content": "title: NEW Notes on Convexity of Loss Functions for Classification | toc: true | branch: master | badges: true | hide: false | comments: true | metadata_key1: metadata_value1 | metadata_key2: metadata_value2 | description: Following up on a question that arose in Week 3 of Andrew Ng&#39;s Machine Learning course. | image: images/convexity/convexity_header_new.jpg | . This is a post where I&#39;m investigating convexity a bit, as it relates to neural networks. . Andrew Ng, in Week 3 of his Coursera course on Machine Learning, shows the following image with respect to the &quot;cost function&quot; to be optimized... .",
             "url": "https://drscotthawley.github.io/blog/2017/11/22/Convex-Loss-Test.html",
             "relUrl": "/2017/11/22/Convex-Loss-Test.html",
             "date": " • Nov 22, 2017"
