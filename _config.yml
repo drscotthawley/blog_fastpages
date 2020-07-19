@@ -42,6 +42,7 @@ minima:
   social_links:
     twitter: drscotthawley
     github: drscotthawley
+    linkedin: drscotthawley
 
 # Set this to true to get LaTeX math equation support
 use_math: true
