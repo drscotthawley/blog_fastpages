@@ -1,9 +1,12 @@
 ---
 title: "Getting Started in ML+Audio"
-toc: true
 description: For audio students interest in machine learning
 image:  images/class_chairs.jpg
+layout: post
+toc: true
 comments: true
+hide: false
+search_exclude: false
 ---
 
 Recently, after co-chairing the session on Machine Learning for Musical Acoustics along with the wonderful [Bozena Kostek](http://audioakustyka.org/head-of-laboratory/) at the [Acoustical Society of America Meeting in San Diego](https://acousticalsociety.org/program-of-178th-meeting-of-the-acoustical-society-of-america/), a student came up to me to ask for advice or resources on how to start learning machine learning for audio applications.  
@@ -16,7 +19,4 @@ SO!  Now, with graduate student [Ryan Miller](https://www.linkedin.com/in/ryan-m
 
 ... and soliciting contributions from the community.
 
-EDIT 02/01/2020: We now have contributions from accomplished researchers at Google, Adobe, and others! 
-
-
-
+EDIT 02/01/2020: We now have contributions from accomplished researchers at Google, Adobe, and others!
