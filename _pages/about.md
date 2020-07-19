@@ -4,8 +4,9 @@ title: About Me
 permalink: /about/
 ---
 
-I dabble in a variety of technologies, usually with the goal of improving the physics education of audio engineering students.
-[Professorly Web Page](https://hedges.belmont.edu/~shawley)
+I dabble in a variety of technologies, usually with the goal of improving the physics education of audio engineering students. [Professorly Web Page](https://hedges.belmont.edu/~shawley)
+
+![me in studio](https://hedges.belmont.edu/tada_small.jpg)
 
 ### Affiliations
 
