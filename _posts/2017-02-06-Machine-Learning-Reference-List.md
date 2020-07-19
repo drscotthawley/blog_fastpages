@@ -1,7 +1,7 @@
 ---
 title: "Machine Learning Reference List"
 layout: post
-image: https://www.publicdomainpictures.net/pictures/270000/t2/netzwerk-total-002.jpg
+image: https://www.publicdomainpictures.net/pictures/270000/t2/netzwerk-total-001.jpg
 ---
 This has been my personal reading list, first compiled ca. February 2016 & updated very infrequently (e.g. Oct 2016, Feb 2017, Sept 2017).  The field moves so quickly, much of this may have been superseded by now.  If you find it useful as well, that's great.
 
