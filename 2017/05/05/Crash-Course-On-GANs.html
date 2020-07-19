@@ -148,7 +148,7 @@ ol li li li{
 <p><em>This post is not necessarily a crash course on GANs. It is at least a record of me giving myself a crash course on GANs.  Adding to this as I go.</em></p>
 
 <h2 id="intromotivation">Intro/Motivation</h2>
-<p>I’ve been wanting to grasp the seeming-magic of Generative Adversarial Networks (GANs) since I started seeing <a href="https://github.com/SKTBrain/DiscoGAN">handbags turned into shoes and brunettes turned to blondes</a>… 
+<p>I’ve been wanting to grasp the seeming-magic of Generative Adversarial Networks (GANs) since I started seeing <a href="https://github.com/SKTBrain/DiscoGAN">handbags turned into shoes and brunettes turned to blondes</a>…
 <img src="https://raw.githubusercontent.com/SKTBrain/DiscoGAN/master/assets/discogan.png" alt="hbg-shoe" />
 …and seeing <a href="https://techcrunch.com/2016/04/14/magic-ponys-neural-network-dreams-up-new-imagery-to-expand-an-existing-picture/">Magic Pony’s image super-resolution results</a> and hearing that <a href="https://twitter.com/ylecun">Yann Lecun</a> had called GANs <a href="https://www.quora.com/session/Yann-LeCun/1">the most important innovation in machine learning in recent years</a>.</p>
 
@@ -184,7 +184,7 @@ ol li li li{
 <h3 id="day-2">Day 2:</h3>
 <ol>
   <li>My office is <span style="color:red">hot</span>.  Two Titan X GPUs pulling ~230W for 10 hours straight has put the cards up towards annoyingly high temperatures, as in ~ 85 Celsius!  My previous nightly runs wouldn’t even go above 60 C.   But the results – espically from the straight-Tensorflow code trained on the CelebA dataset – are as incredible as advertised!  (Not that I understand them yet. LOL.)  The Keras version, despite claiming to be a BEGAN implementation, seems to suffer from “mode collapse,” i.e. that too many very similar images get generated.</li>
-  <li>Fished around a little more on the web for audio GAN applications.  Found an <a href="https://arxiv.org/abs/1611.09904">RNN-GAN application to MIDI</a>, and found actual audio examples of <a href="http://deepsound.io/dcgan_spectrograms.html">what not to do: don’t try to just produce spectrograms with DCGAN and convert them to audio</a>.  The latter authors seem to have decided to switch to a SampleRNN approach.  Perhaps it would be wise to heed their example? ;-)</li>
+  <li>Fished around a little more on the web for audio GAN applications.  Found an <a href="https://arxiv.org/abs/1611.09904">RNN-GAN application to MIDI</a>, and found actual audio examples of <a href="https://deepsound.io/dcgan_spectrograms.html">what not to do: don’t try to just produce spectrograms with DCGAN and convert them to audio</a>.  The latter authors seem to have decided to switch to a SampleRNN approach.  Perhaps it would be wise to heed their example? ;-)</li>
   <li>Since EBGAN implemented autoencoders as discriminators before BEGAN did, I went back to read that part of the EBGAN paper. Indeed, section “2.3 - Using AutoEncoders” (page 4). (see notes below)</li>
   <li>Ok, I basically get the autoencoder-discriminator thing now. :-)</li>
 </ol>
@@ -206,11 +206,11 @@ with Generative Adversarial Networks”</a> by Kim et al. (2017)</li>
     <ul>
       <li><strong>Remarks/Notes:</strong></li>
       <li>“This variant [EBGAN] converges more stably [than previous GANs] and is both easy to train and robust to hyper-parameter variations” (quoting from BEGAN paper, below).</li>
-      <li>If it’s energy-based, does that mean we get a Lagrangian, and Euler-Lagrange Equations, and Lagrange Multipliers?  And thus can physics students (&amp; professors!) grasp these networks in a straightforward way?  Should perhaps take a look at Lecun’s <a href="http://yann.lecun.com/exdb/publis/pdf/lecun-06.pdf">Tutorial on Energy-Based Learning</a>.</li>
+      <li>If it’s energy-based, does that mean we get a Lagrangian, and Euler-Lagrange Equations, and Lagrange Multipliers?  And thus can physics students (&amp; professors!) grasp these networks in a straightforward way?  Should perhaps take a look at Lecun’s <a href="https://yann.lecun.com/exdb/publis/pdf/lecun-06.pdf">Tutorial on Energy-Based Learning</a>.</li>
       <li>“The energy is the resconstruction error [of the autoencoder]” (Section 1.3, bullet points)</li>
-      <li><img src="http://kordinglab.com/lab_teaching_2016/session_4/images/ebgan.jpg" alt="ebgan-pic" /></li>
+      <li><img src="https://kordinglab.com/lab_teaching_2016/session_4/images/ebgan.jpg" alt="ebgan-pic" /></li>
     </ul>
-    <p style="text-align: right"><i>Image credit: <a href="http://kordinglab.com/lab_teaching_2016/session_4/">Roozbeh Farhoodi</a> + EBGAN authors</i></p>
+    <p style="text-align: right"><i>Image credit: <a href="https://kordinglab.com/lab_teaching_2016/session_4/">Roozbeh Farhoodi</a> + EBGAN authors</i></p>
     <ul>
       <li>“…256×256 pixel resolution, without a multi-scale approach.” (ibid)</li>
       <li>Section 2.3 covers on the use of the autoencoder as a discriminator.  Wow, truly, the discriminator’s “energy”/ “loss” criterion is literally just the reconstruction error of the autoencoder. How does that get you a discriminator??</li>
@@ -262,21 +262,21 @@ with Denoising Feature Matching”</a> by Warde-Farley &amp; Bengio, 2017) as sc
 <ul>
   <li><a href="https://medium.com/@ageitgey/abusing-generative-adversarial-networks-to-make-8-bit-pixel-art-e45d9b96cee7">“Machine Learning is Fun Part 7: Abusing Generative Adversarial Networks to Make 8-bit Pixel Art”</a> by Adam Geitgey, <em>skip down to “How DCGANs Work”</em> (2017)</li>
   <li>Post on BEGAN: <a href="https://blog.heuritech.com/2017/04/11/began-state-of-the-art-generation-of-faces-with-generative-adversarial-networks/">https://blog.heuritech.com/2017/04/11/began-state-of-the-art-generation-of-faces-with-generative-adversarial-networks/</a></li>
-  <li><a href="http://blog.aylien.com/introduction-generative-adversarial-networks-code-tensorflow">An introduction to Generative Adversarial Networks (with code in TensorFlow)</a></li>
+  <li><a href="https://blog.aylien.com/introduction-generative-adversarial-networks-code-tensorflow">An introduction to Generative Adversarial Networks (with code in TensorFlow)</a></li>
   <li><a href="https://medium.com/@devnag/generative-adversarial-networks-gans-in-50-lines-of-code-pytorch-e81b79659e3f">“Generative Adversarial Networks (GANs) in 50 lines of code (PyTorch)”</a> by Dev Nag (2017)</li>
-  <li><a href="http://www.araya.org/archives/1183">“Stability of Generative Adversarial Networks”</a> by Nicholas Guttenberg (2016)</li>
+  <li><a href="https://www.araya.org/archives/1183">“Stability of Generative Adversarial Networks”</a> by Nicholas Guttenberg (2016)</li>
   <li>
-    <p><a href="http://dmlc.ml/mxnet/2016/06/20/end-to-end-neural-style.html">“End to End Neural Art with Generative Models”</a> by Bing Xu (2016)</p>
+    <p><a href="https://dmlc.ml/mxnet/2016/06/20/end-to-end-neural-style.html">“End to End Neural Art with Generative Models”</a> by Bing Xu (2016)</p>
   </li>
   <li>
-    <h3 id="kording-lab-gan-tutorial-by-roozbeh-farhoodi----nicely-done-has-code-too"><a href="http://kordinglab.com/lab_teaching_2016/session_4/#1">Kording Lab GAN Tutorial</a> by Roozbeh Farhoodi :-).  Nicely done, <a href="https://github.com/KordingLab/lab_teaching_2016">has code too</a>.</h3>
+    <h3 id="kording-lab-gan-tutorial-by-roozbeh-farhoodi----nicely-done-has-code-too"><a href="https://kordinglab.com/lab_teaching_2016/session_4/#1">Kording Lab GAN Tutorial</a> by Roozbeh Farhoodi :-).  Nicely done, <a href="https://github.com/KordingLab/lab_teaching_2016">has code too</a>.</h3>
   </li>
 </ul>
 
 <h2 id="code">Code</h2>
 <h3 id="keras">Keras:</h3>
 <ul>
-  <li>‘Basic’ GAN with MNIST example: <a href="http://www.kdnuggets.com/2016/07/mnist-generative-adversarial-model-keras.html">http://www.kdnuggets.com/2016/07/mnist-generative-adversarial-model-keras.html</a></li>
+  <li>‘Basic’ GAN with MNIST example: <a href="https://www.kdnuggets.com/2016/07/mnist-generative-adversarial-model-keras.html">https://www.kdnuggets.com/2016/07/mnist-generative-adversarial-model-keras.html</a></li>
   <li>GAN, BiGAN \&amp; Adversarial AutoEncoder: <a href="https://github.com/bstriner/keras-adversarial">https://github.com/bstriner/keras-adversarial</a></li>
   <li><strong>Kording Lab’s GAN tutorial, Jupyter Notebook <a href="https://github.com/KordingLab/lab_teaching_2016/blob/master/session_4/Generative%20Adversarial%20Networks.ipynb">https://github.com/KordingLab/lab_teaching_2016/blob/master/session_4/Generative%20Adversarial%20Networks.ipynb</a>.  (Code is short and understandable.)</strong></li>
   <li>Keras BEGAN:
@@ -304,10 +304,10 @@ with Denoising Feature Matching”</a> by Warde-Farley &amp; Bengio, 2017) as sc
 
 <h2 id="datasets">Datasets</h2>
 <ul>
-  <li>CelebA: <a href="http://mmlab.ie.cuhk.edu.hk/projects/CelebA.html">http://mmlab.ie.cuhk.edu.hk/projects/CelebA.html</a></li>
-  <li>MNIST: <a href="http://yann.lecun.com/exdb/mnist/">http://yann.lecun.com/exdb/mnist/</a></li>
-  <li>Speech enhancement: <a href="http://datashare.is.ed.ac.uk/handle/10283/1942">http://datashare.is.ed.ac.uk/handle/10283/1942</a></li>
-  <li>“Labelled Faces in the Wild” <a href="http://vis-www.cs.umass.edu/lfw/">http://vis-www.cs.umass.edu/lfw/</a></li>
+  <li>CelebA: <a href="https://mmlab.ie.cuhk.edu.hk/projects/CelebA.html">https://mmlab.ie.cuhk.edu.hk/projects/CelebA.html</a></li>
+  <li>MNIST: <a href="https://yann.lecun.com/exdb/mnist/">https://yann.lecun.com/exdb/mnist/</a></li>
+  <li>Speech enhancement: <a href="https://datashare.is.ed.ac.uk/handle/10283/1942">https://datashare.is.ed.ac.uk/handle/10283/1942</a></li>
+  <li>“Labelled Faces in the Wild” <a href="https://vis-www.cs.umass.edu/lfw/">https://vis-www.cs.umass.edu/lfw/</a></li>
 </ul>
 
 <h2 id="more-references-lists">More References (Lists)</h2>
