@@ -7,7 +7,7 @@
 # https://learnxinyminutes.com/docs/yaml/
 
 title: Scott H. Hawley
-description: Physics prof / tinkerer
+description: Physics prof / tinkerer: This is my blog involving coding projects (usually machine learning, audio, and/or mobile) and ideas (philosophy of science, technology & society, science & religion)
 github_username: drscotthawley
 # you can comment the below line out if your repo name is not different than your baseurl
 github_repo: "blog"
@@ -55,7 +55,7 @@ show_image: true
 show_tags: true
 
 # Add your Google Analytics ID here if you have one and want to use it
-google_analytics:
+google_analytics: UA-173006102-1
 
 exclude:
   - docker-compose.yml
