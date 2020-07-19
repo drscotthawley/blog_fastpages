@@ -187,11 +187,11 @@ ol li li li{
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Links to lessons:
-<a href="https://drscotthawley.github.io/Following-Gravity/">Part 0</a>,
-<a href="https://colab.research.google.com/drive/1CPueDKDYOC33U_0qHxBhsDPpzYMpD8c8">Part 1</a>, 
-<a href="https://colab.research.google.com/drive/1O9xcdAQUxo7KdVhbggqLCvabc77Rj-yH">Part 2</a>,
-<a href="https://colab.research.google.com/drive/1UZDEK-3v-SWxpDYBfamBoD4xhy7H2DEZ#scrollTo=14tOCcvT_a0I">Part 3</a></p>
-<p>Moving on from our <a href="https://colab.research.google.com/drive/1CPueDKDYOC33U_0qHxBhsDPpzYMpD8c8">our previous notebook</a>, we will investigate three things we could do to improve the models developed previously:</p>
+<a href="https://drscotthawley.github.io/blog/2017/02/23/Following-Gravity-Colab.html">Part 0</a>,
+<a href="https://drscotthawley.github.io/blog/2019/01/30/My-First-Neural-Network.html">Part 1</a>, 
+<a href="https://drscotthawley.github.io/blog/2019/02/04/My-First-NN-Part-2.html">Part 2</a>,
+<a href="https://drscotthawley.github.io/blog/2019/02/08/My-1st-NN-Part-3-Multi-Layer-and-Backprop.html">Part 3</a></p>
+<p>Moving on from our <a href="https://drscotthawley.github.io/blog/2019/01/30/My-First-Neural-Network.html">our previous notebook</a>, we will investigate three things we could do to improve the models developed previously:</p>
 <ol>
 <li>Add a bias term</li>
 <li>Use a different loss function</li>
@@ -584,7 +584,38 @@ With bias: Y_pred =
 <a class="anchor" href="#Video-Interlude:-Logistic-Regression" aria-hidden="true"><span class="octicon octicon-link"></span></a>Video Interlude: Logistic Regression<a class="anchor-link" href="#Video-Interlude:-Logistic-Regression"> </a>
 </h2>
 <p>What we've been doing up until now has been a "classification" problem, with "yes"/"no" answers represented by 1's and 0's.  This sort of operation is closely associated with the statistical method of Logistic Regression.  It is akin to linear regression but with a sigmoid activation function.  When doing Logistic Regression, one optimizes to fit by finding the maximum "likelihood" of a given model being correct.</p>
-<p>To gain some insight on Logistic Regression, watch <a href="https://www.youtube.com/watch?v=yIYKR4sgzI8">this SatsQuest video</a>.  (You can ignore his remarks about his preceding video, "R squared" and "p-value", etc.)</p>
+<p>To gain some insight on Logistic Regression, watch the following StatQuest video.  (You can ignore his remarks about his preceding video, "R squared" and "p-value", etc.)</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/yIYKR4sgzI8" frameborder="0" allowfullscreen=""></iframe>
+        
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <p>In what follows, we will be <em>minimizing</em> the <em>negative</em> of the <em>logarithm</em> of the likelihood, a quantity typically known as the Cross-Entropy loss. (This same quantity is also the non-constant part of the "Kullback-Leibler Divergence" or "K-L divergence," so you may hear it called that sometimes.)</p>
 
 </div>

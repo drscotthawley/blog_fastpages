@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://drscotthawley.github.io/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://drscotthawley.github.io/blog/" rel="alternate" type="text/html" /><updated>2020-07-18T22:17:07-05:00</updated><id>https://drscotthawley.github.io/blog/feed.xml</id><title type="html">Scott H. Hawley</title><subtitle>Physics prof / Tinkerer. My blog about code and ideas.</subtitle><entry><title type="html">Citations in Fastpages via BibTeX and jekyll-scholar</title><link href="https://drscotthawley.github.io/blog/2020/07/01/Citations-Via-Bibtex.html" rel="alternate" type="text/html" title="Citations in Fastpages via BibTeX and jekyll-scholar" /><published>2020-07-01T00:00:00-05:00</published><updated>2020-07-01T00:00:00-05:00</updated><id>https://drscotthawley.github.io/blog/2020/07/01/Citations-Via-Bibtex</id><content type="html" xml:base="https://drscotthawley.github.io/blog/2020/07/01/Citations-Via-Bibtex.html">&lt;p&gt;&lt;em&gt;(N.B.: The following was created as a Markdown file in &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts/&lt;/code&gt;. For Jupyter notebooks, the same things apply; one simply enters the Liquid codes into Markdown cells.  &lt;a href=&quot;https://drscotthawley.github.io/devblog4/jupyter/2020/07/01/BibTeX-Check-For-Jupyter.html&quot;&gt;Quick Jupyter example.&lt;/a&gt;&lt;/em&gt;)&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://drscotthawley.github.io/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://drscotthawley.github.io/blog/" rel="alternate" type="text/html" /><updated>2020-07-18T23:30:45-05:00</updated><id>https://drscotthawley.github.io/blog/feed.xml</id><title type="html">Scott H. Hawley</title><subtitle>Physics prof / Tinkerer. My blog about code and ideas.</subtitle><entry><title type="html">Citations in Fastpages via BibTeX and jekyll-scholar</title><link href="https://drscotthawley.github.io/blog/2020/07/01/Citations-Via-Bibtex.html" rel="alternate" type="text/html" title="Citations in Fastpages via BibTeX and jekyll-scholar" /><published>2020-07-01T00:00:00-05:00</published><updated>2020-07-01T00:00:00-05:00</updated><id>https://drscotthawley.github.io/blog/2020/07/01/Citations-Via-Bibtex</id><content type="html" xml:base="https://drscotthawley.github.io/blog/2020/07/01/Citations-Via-Bibtex.html">&lt;p&gt;&lt;em&gt;(N.B.: The following was created as a Markdown file in &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts/&lt;/code&gt;. For Jupyter notebooks, the same things apply; one simply enters the Liquid codes into Markdown cells.  &lt;a href=&quot;https://drscotthawley.github.io/devblog4/jupyter/2020/07/01/BibTeX-Check-For-Jupyter.html&quot;&gt;Quick Jupyter example.&lt;/a&gt;&lt;/em&gt;)&lt;/p&gt;
 
 &lt;h2 id=&quot;how-to-cite&quot;&gt;How to Cite&lt;/h2&gt;
 
@@ -6128,11 +6128,11 @@ SUVORK5CYII=
 &lt;div class=&quot;cell border-box-sizing text_cell rendered&quot;&gt;&lt;div class=&quot;inner_cell&quot;&gt;
 &lt;div class=&quot;text_cell_render border-box-sizing rendered_html&quot;&gt;
 &lt;p&gt;Links to lessons:
-&lt;a href=&quot;https://drscotthawley.github.io/Following-Gravity/&quot;&gt;Part 0&lt;/a&gt;,
-&lt;a href=&quot;https://colab.research.google.com/drive/1CPueDKDYOC33U_0qHxBhsDPpzYMpD8c8&quot;&gt;Part 1&lt;/a&gt;, 
-&lt;a href=&quot;https://colab.research.google.com/drive/1O9xcdAQUxo7KdVhbggqLCvabc77Rj-yH&quot;&gt;Part 2&lt;/a&gt;,
-&lt;a href=&quot;https://colab.research.google.com/drive/1UZDEK-3v-SWxpDYBfamBoD4xhy7H2DEZ#scrollTo=14tOCcvT_a0I&quot;&gt;Part 3&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Moving on from our &lt;a href=&quot;https://colab.research.google.com/drive/1CPueDKDYOC33U_0qHxBhsDPpzYMpD8c8&quot;&gt;our previous notebook&lt;/a&gt;, we will investigate three things we could do to improve the models developed previously:&lt;/p&gt;
+&lt;a href=&quot;https://drscotthawley.github.io/blog/2017/02/23/Following-Gravity-Colab.html&quot;&gt;Part 0&lt;/a&gt;,
+&lt;a href=&quot;https://drscotthawley.github.io/blog/2019/01/30/My-First-Neural-Network.html&quot;&gt;Part 1&lt;/a&gt;, 
+&lt;a href=&quot;https://drscotthawley.github.io/blog/2019/02/04/My-First-NN-Part-2.html&quot;&gt;Part 2&lt;/a&gt;,
+&lt;a href=&quot;https://drscotthawley.github.io/blog/2019/02/08/My-1st-NN-Part-3-Multi-Layer-and-Backprop.html&quot;&gt;Part 3&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Moving on from our &lt;a href=&quot;https://drscotthawley.github.io/blog/2019/01/30/My-First-Neural-Network.html&quot;&gt;our previous notebook&lt;/a&gt;, we will investigate three things we could do to improve the models developed previously:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;Add a bias term&lt;/li&gt;
 &lt;li&gt;Use a different loss function&lt;/li&gt;
@@ -7297,7 +7297,37 @@ With bias: Y_pred =
 &lt;div class=&quot;cell border-box-sizing text_cell rendered&quot;&gt;&lt;div class=&quot;inner_cell&quot;&gt;
 &lt;div class=&quot;text_cell_render border-box-sizing rendered_html&quot;&gt;
 &lt;h2 id=&quot;Video-Interlude:-Logistic-Regression&quot;&gt;Video Interlude: Logistic Regression&lt;a class=&quot;anchor-link&quot; href=&quot;#Video-Interlude:-Logistic-Regression&quot;&gt; &lt;/a&gt;&lt;/h2&gt;&lt;p&gt;What we've been doing up until now has been a &quot;classification&quot; problem, with &quot;yes&quot;/&quot;no&quot; answers represented by 1's and 0's.  This sort of operation is closely associated with the statistical method of Logistic Regression.  It is akin to linear regression but with a sigmoid activation function.  When doing Logistic Regression, one optimizes to fit by finding the maximum &quot;likelihood&quot; of a given model being correct.&lt;/p&gt;
-&lt;p&gt;To gain some insight on Logistic Regression, watch &lt;a href=&quot;https://www.youtube.com/watch?v=yIYKR4sgzI8&quot;&gt;this SatsQuest video&lt;/a&gt;.  (You can ignore his remarks about his preceding video, &quot;R squared&quot; and &quot;p-value&quot;, etc.)&lt;/p&gt;
+&lt;p&gt;To gain some insight on Logistic Regression, watch the following StatQuest video.  (You can ignore his remarks about his preceding video, &quot;R squared&quot; and &quot;p-value&quot;, etc.)&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+    
+    
+&lt;div class=&quot;cell border-box-sizing code_cell rendered&quot;&gt;
+
+&lt;div class=&quot;output_wrapper&quot;&gt;
+&lt;div class=&quot;output&quot;&gt;
+
+&lt;div class=&quot;output_area&quot;&gt;
+
+
+&lt;div class=&quot;output_html rendered_html output_subarea output_execute_result&quot;&gt;
+
+        &lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/yIYKR4sgzI8&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+        
+&lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+    
+
+&lt;div class=&quot;cell border-box-sizing text_cell rendered&quot;&gt;&lt;div class=&quot;inner_cell&quot;&gt;
+&lt;div class=&quot;text_cell_render border-box-sizing rendered_html&quot;&gt;
 &lt;p&gt;In what follows, we will be &lt;em&gt;minimizing&lt;/em&gt; the &lt;em&gt;negative&lt;/em&gt; of the &lt;em&gt;logarithm&lt;/em&gt; of the likelihood, a quantity typically known as the Cross-Entropy loss. (This same quantity is also the non-constant part of the &quot;Kullback-Leibler Divergence&quot; or &quot;K-L divergence,&quot; so you may hear it called that sometimes.)&lt;/p&gt;
 
 &lt;/div&gt;
