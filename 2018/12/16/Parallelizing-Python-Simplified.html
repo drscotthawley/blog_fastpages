@@ -1,4 +1,156 @@
-<h1 id="parallelizing-python-simplified">Parallelizing Python, Simplified</h1>
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Parallelizing Python Simplified | Scott H. Hawley</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="Parallelizing Python Simplified" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Basic use of multiprocessing." />
+<meta property="og:description" content="Basic use of multiprocessing." />
+<link rel="canonical" href="https://drscotthawley.github.io/blog/2018/12/16/Parallelizing-Python-Simplified.html" />
+<meta property="og:url" content="https://drscotthawley.github.io/blog/2018/12/16/Parallelizing-Python-Simplified.html" />
+<meta property="og:site_name" content="Scott H. Hawley" />
+<meta property="og:image" content="https://drscotthawley.github.io/blog/images/parallelpython.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-12-16T00:00:00-06:00" />
+<script type="application/ld+json">
+{"description":"Basic use of multiprocessing.","@type":"BlogPosting","url":"https://drscotthawley.github.io/blog/2018/12/16/Parallelizing-Python-Simplified.html","dateModified":"2018-12-16T00:00:00-06:00","datePublished":"2018-12-16T00:00:00-06:00","headline":"Parallelizing Python Simplified","image":"https://drscotthawley.github.io/blog/images/parallelpython.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://drscotthawley.github.io/blog/2018/12/16/Parallelizing-Python-Simplified.html"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/blog/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://drscotthawley.github.io/blog/feed.xml" title="Scott H. Hawley" /><!-- the google_analytics_id gets auto inserted from the config file -->
+
+
+
+<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-173006102-1','auto');ga('require','displayfeatures');ga('send','pageview');</script>
+
+<link rel="shortcut icon" type="image/x-icon" href="/blog/images/favicon.ico"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Parallelizing Python Simplified | Scott H. Hawley</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="Parallelizing Python Simplified" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Basic use of multiprocessing." />
+<meta property="og:description" content="Basic use of multiprocessing." />
+<link rel="canonical" href="https://drscotthawley.github.io/blog/2018/12/16/Parallelizing-Python-Simplified.html" />
+<meta property="og:url" content="https://drscotthawley.github.io/blog/2018/12/16/Parallelizing-Python-Simplified.html" />
+<meta property="og:site_name" content="Scott H. Hawley" />
+<meta property="og:image" content="https://drscotthawley.github.io/blog/images/parallelpython.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-12-16T00:00:00-06:00" />
+<script type="application/ld+json">
+{"description":"Basic use of multiprocessing.","@type":"BlogPosting","url":"https://drscotthawley.github.io/blog/2018/12/16/Parallelizing-Python-Simplified.html","dateModified":"2018-12-16T00:00:00-06:00","datePublished":"2018-12-16T00:00:00-06:00","headline":"Parallelizing Python Simplified","image":"https://drscotthawley.github.io/blog/images/parallelpython.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://drscotthawley.github.io/blog/2018/12/16/Parallelizing-Python-Simplified.html"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+<link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
+<link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css"><link type="application/atom+xml" rel="alternate" href="https://drscotthawley.github.io/blog/feed.xml" title="Scott H. Hawley" /><!-- the google_analytics_id gets auto inserted from the config file -->
+
+
+
+<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-173006102-1','auto');ga('require','displayfeatures');ga('send','pageview');</script>
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"> </script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement( document.body, {
+        delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "[%", right: "%]", display: true},
+            {left: "$", right: "$", display: false}
+        ]}
+        );
+    });
+    </script>
+
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head><body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/blog/">Scott H. Hawley</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/blog/about/">About Me</a><a class="page-link" href="/blog/search/">Search</a><a class="page-link" href="/blog/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+<style>
+ol.bibliography li { list-style: none }
+
+ol li li{
+    list-style-type: lower-alpha;
+}
+
+ol li li li{
+    list-style-type: lower-roman;
+}
+</style>
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Parallelizing Python Simplified</h1><p class="page-description">Basic use of multiprocessing.</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2018-12-16T00:00:00-06:00" itemprop="datePublished">
+        Dec 16, 2018
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      9 min read
+    
+</span></p>
+
+    
+
+    </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul class="section-nav">
+<li class="toc-entry toc-h1"><a href="#parallelizing-python-simplified">Parallelizing Python, Simplified</a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#example-1-generate-a-bunch-of-files">Example 1: Generate a bunch of files</a></li>
+<li class="toc-entry toc-h2"><a href="#example-2-read-a-bunch-of-files-into-a-list">Example 2: Read a bunch of files into a list</a></li>
+<li class="toc-entry toc-h2"><a href="#example-3-filling-a-numpy-array">Example 3: Filling a NumPy array</a></li>
+<li class="toc-entry toc-h2"><a href="#ps--final-remarks">P.S.- Final Remarks</a></li>
+</ul>
+</li>
+</ul><h1 id="parallelizing-python-simplified">
+<a class="anchor" href="#parallelizing-python-simplified" aria-hidden="true"><span class="octicon octicon-link"></span></a>Parallelizing Python, Simplified</h1>
 
 <p>![](/blog/images/parallelpython.png “”)</p>
 
@@ -25,7 +177,8 @@ put all that in a separate function.</li>
   <li>Filling a numpy array</li>
 </ol>
 
-<h2 id="example-1-generate-a-bunch-of-files">Example 1: Generate a bunch of files</h2>
+<h2 id="example-1-generate-a-bunch-of-files">
+<a class="anchor" href="#example-1-generate-a-bunch-of-files" aria-hidden="true"><span class="octicon octicon-link"></span></a>Example 1: Generate a bunch of files</h2>
 <p>Let’s say you have some important synthetic data that you want to generate lots of instances of.
 For now, for simplicity, we’re just going to generate images of, let’s say, random noise.  And to make it interesting
 we’ll generate 2000 of them.</p>
@@ -95,7 +248,8 @@ or specify how many to use, by giving an argument to <code class="highlighter-ro
 <em>range</em> of indices, but this basic setup will get the job done.  And if you turn off the printing to screen and time the execution,
 you’ll see the speedup.</p>
 
-<h2 id="example-2-read-a-bunch-of-files-into-a-list">Example 2: Read a bunch of files into a list</h2>
+<h2 id="example-2-read-a-bunch-of-files-into-a-list">
+<a class="anchor" href="#example-2-read-a-bunch-of-files-into-a-list" aria-hidden="true"><span class="octicon octicon-link"></span></a>Example 2: Read a bunch of files into a list</h2>
 <p>This example is actually of limited utility and you may want to just skip down to “Example 3: Filling a numpy array,” but
 it’s still an illustrative example that motivates Example 3, and offers a bit of variety in how one might do things.  In this case we’re <em>not</em> going to use Pool.map; instead we’re going to use a context manager for the particular datatype of <code class="highlighter-rouge">list</code>.</p>
 
@@ -172,7 +326,8 @@ and then sort on that index.</p>
 
 <p>But most of the time what I really want in the end is a numpy array.  So let’s just look at how to fill one of those, directly.</p>
 
-<h2 id="example-3-filling-a-numpy-array">Example 3: Filling a NumPy array</h2>
+<h2 id="example-3-filling-a-numpy-array">
+<a class="anchor" href="#example-3-filling-a-numpy-array" aria-hidden="true"><span class="octicon octicon-link"></span></a>Example 3: Filling a NumPy array</h2>
 <p>Data scientist Jonas Teuwen made <a href="https://jonasteuwen.github.io/numpy/python/multiprocessing/2017/01/07/multiprocessing-numpy-array.html">a great post</a> which got me started on how to do this, but then it seems I <a href="https://stackoverflow.com/questions/53757856/segmentation-fault-when-creating-multiprocessing-array">uncovered a bug in numpy’s garbage collection</a> for which there’s <a href="https://github.com/numpy/numpy/pull/12566">now a patch</a>.  Even without the patch, there are a couple workarounds one can use, and I’ll choose
 the simpler of the two workarounds.</p>
 
@@ -257,10 +412,56 @@ the simpler of the two workarounds.</p>
 
 <p>So that’s the basic implementation.  Let me know in the comments if you have suggestions for improvements, or other ideas!</p>
 
-<h2 id="ps--final-remarks">P.S.- Final Remarks</h2>
+<h2 id="ps--final-remarks">
+<a class="anchor" href="#ps--final-remarks" aria-hidden="true"><span class="octicon octicon-link"></span></a>P.S.- Final Remarks</h2>
 <p>Added in a couple thoughts, post-facto:</p>
 
 <p><strong>1. Performance.</strong> Notice that what gets passed to <code class="highlighter-rouge">p.map()</code> is an <em>iterator</em>, which typically you’ll use as either the indices of the members of an array (as we did just now), or it as a range over the number of processors (kinda like we did in Example 2).  In the former case, the system is likely to spawn lots and lots of processes (not all at the same time, but as one ‘job’ finishes the system will spawn a new one, and will keep the “pool” going), which will have a bit of overhead – i.e. latency – each time these start and stop. It’s not much though, and so you probably won’t notice if your goal is merely, “I’m doing this so that I only have to wait 5 minutes instead of an hour to get something done.”  If instead you make the indices in the map over the range of processors on your machine and manually break up
 the array indices into chunks (sort of like we did in Example 2), then you won’t be spawning as many processes and so your latency will be considerably lower.  But the gain may be small enough (depending on your system) that you may not notice the difference in performance.  Still, if you want to go all-out for performance, then make the pool.map go over the number of procs you want.  Otherwise, feel free to trust the system to do its thing for you and just use the array (or list) indices for the iterator.</p>
 
 <p><strong>2. When Processes Die.</strong>  Debugging <code class="highlighter-rouge">multiprocessing</code> runs is <em>a pain</em>.  If one process dies (crashes, seg faults, generates any kind of “Error”), it will hang the entire pool and you won’t know why because the error messages won’t come to <code class="highlighter-rouge">stdout</code> or <code class="highlighter-rouge">stderr</code>.  Look elsewhere for tutorials on tools for debugging multiprocessing runs.  Good news is that regular <code class="highlighter-rouge">print</code> statements still come to <code class="highlighter-rouge">stdout</code> for all processes, so one way of debugging is the age-old method of just loading your code with <code class="highlighter-rouge">print</code> statements.</p>
+
+    <p class="bibliography"></p>
+    <hr>
+    <p>(c) 2020 Scott H. Hawley</p>
+  </div><!-- from https://github.com/utterance/utterances -->
+<script src="https://utteranc.es/client.js"
+        repo="drscotthawley/blog"
+        issue-term="title"
+        label="blogpost-comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script><a class="u-url" href="/blog/2018/12/16/Parallelizing-Python-Simplified.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/blog/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/blog/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/blog/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>Physics prof / Tinkerer. My blog about code and ideas.</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/drscotthawley" title="drscotthawley"><svg class="svg-icon grey"><use xlink:href="/blog/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://www.linkedin.com/in/drscotthawley" title="drscotthawley"><svg class="svg-icon grey"><use xlink:href="/blog/assets/minima-social-icons.svg#linkedin"></use></svg></a></li><li><a rel="me" href="https://twitter.com/drscotthawley" title="drscotthawley"><svg class="svg-icon grey"><use xlink:href="/blog/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
