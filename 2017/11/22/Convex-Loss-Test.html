@@ -3,19 +3,20 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
-<title>Title | Scott H. Hawley</title>
+<title>NEW Notes on Convexity of Loss Functions for Classification | Scott H. Hawley</title>
 <meta name="generator" content="Jekyll v4.0.0" />
-<meta property="og:title" content="Title" />
+<meta property="og:title" content="NEW Notes on Convexity of Loss Functions for Classification" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Physics prof / Tinkerer. My blog about code and ideas." />
-<meta property="og:description" content="Physics prof / Tinkerer. My blog about code and ideas." />
+<meta name="description" content="Following up on a question that arose in Week 3 of Andrew Ng’s Machine Learning course." />
+<meta property="og:description" content="Following up on a question that arose in Week 3 of Andrew Ng’s Machine Learning course." />
 <link rel="canonical" href="https://drscotthawley.github.io/blog/2017/11/22/Convex-Loss-Test.html" />
 <meta property="og:url" content="https://drscotthawley.github.io/blog/2017/11/22/Convex-Loss-Test.html" />
 <meta property="og:site_name" content="Scott H. Hawley" />
+<meta property="og:image" content="https://drscotthawley.github.io/blog/images/convexity/convexity_header_new.jpg" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2017-11-22T00:00:00-06:00" />
 <script type="application/ld+json">
-{"description":"Physics prof / Tinkerer. My blog about code and ideas.","@type":"BlogPosting","url":"https://drscotthawley.github.io/blog/2017/11/22/Convex-Loss-Test.html","dateModified":"2017-11-22T00:00:00-06:00","datePublished":"2017-11-22T00:00:00-06:00","headline":"Title","mainEntityOfPage":{"@type":"WebPage","@id":"https://drscotthawley.github.io/blog/2017/11/22/Convex-Loss-Test.html"},"@context":"https://schema.org"}</script>
+{"description":"Following up on a question that arose in Week 3 of Andrew Ng’s Machine Learning course.","@type":"BlogPosting","url":"https://drscotthawley.github.io/blog/2017/11/22/Convex-Loss-Test.html","dateModified":"2017-11-22T00:00:00-06:00","datePublished":"2017-11-22T00:00:00-06:00","headline":"NEW Notes on Convexity of Loss Functions for Classification","image":"https://drscotthawley.github.io/blog/images/convexity/convexity_header_new.jpg","mainEntityOfPage":{"@type":"WebPage","@id":"https://drscotthawley.github.io/blog/2017/11/22/Convex-Loss-Test.html"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/blog/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://drscotthawley.github.io/blog/feed.xml" title="Scott H. Hawley" /><!-- the google_analytics_id gets auto inserted from the config file -->
 
@@ -24,19 +25,20 @@
 <script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-173006102-1','auto');ga('require','displayfeatures');ga('send','pageview');</script>
 
 <link rel="shortcut icon" type="image/x-icon" href="/blog/images/favicon.ico"><!-- Begin Jekyll SEO tag v2.6.1 -->
-<title>Title | Scott H. Hawley</title>
+<title>NEW Notes on Convexity of Loss Functions for Classification | Scott H. Hawley</title>
 <meta name="generator" content="Jekyll v4.0.0" />
-<meta property="og:title" content="Title" />
+<meta property="og:title" content="NEW Notes on Convexity of Loss Functions for Classification" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Physics prof / Tinkerer. My blog about code and ideas." />
-<meta property="og:description" content="Physics prof / Tinkerer. My blog about code and ideas." />
+<meta name="description" content="Following up on a question that arose in Week 3 of Andrew Ng’s Machine Learning course." />
+<meta property="og:description" content="Following up on a question that arose in Week 3 of Andrew Ng’s Machine Learning course." />
 <link rel="canonical" href="https://drscotthawley.github.io/blog/2017/11/22/Convex-Loss-Test.html" />
 <meta property="og:url" content="https://drscotthawley.github.io/blog/2017/11/22/Convex-Loss-Test.html" />
 <meta property="og:site_name" content="Scott H. Hawley" />
+<meta property="og:image" content="https://drscotthawley.github.io/blog/images/convexity/convexity_header_new.jpg" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2017-11-22T00:00:00-06:00" />
 <script type="application/ld+json">
-{"description":"Physics prof / Tinkerer. My blog about code and ideas.","@type":"BlogPosting","url":"https://drscotthawley.github.io/blog/2017/11/22/Convex-Loss-Test.html","dateModified":"2017-11-22T00:00:00-06:00","datePublished":"2017-11-22T00:00:00-06:00","headline":"Title","mainEntityOfPage":{"@type":"WebPage","@id":"https://drscotthawley.github.io/blog/2017/11/22/Convex-Loss-Test.html"},"@context":"https://schema.org"}</script>
+{"description":"Following up on a question that arose in Week 3 of Andrew Ng’s Machine Learning course.","@type":"BlogPosting","url":"https://drscotthawley.github.io/blog/2017/11/22/Convex-Loss-Test.html","dateModified":"2017-11-22T00:00:00-06:00","datePublished":"2017-11-22T00:00:00-06:00","headline":"NEW Notes on Convexity of Loss Functions for Classification","image":"https://drscotthawley.github.io/blog/images/convexity/convexity_header_new.jpg","mainEntityOfPage":{"@type":"WebPage","@id":"https://drscotthawley.github.io/blog/2017/11/22/Convex-Loss-Test.html"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 <link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
@@ -123,7 +125,7 @@ ol li li li{
 }
 </style>
   <header class="post-header">
-    <h1 class="post-title p-name" itemprop="name headline">Title</h1><p class="post-meta post-meta-title"><time class="dt-published" datetime="2017-11-22T00:00:00-06:00" itemprop="datePublished">
+    <h1 class="post-title p-name" itemprop="name headline">NEW Notes on Convexity of Loss Functions for Classification</h1><p class="page-description">Following up on a question that arose in Week 3 of Andrew Ng's Machine Learning course.</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2017-11-22T00:00:00-06:00" itemprop="datePublished">
         Nov 22, 2017
       </time>
        • <span class="read-time" title="Estimated read time">
@@ -160,7 +162,8 @@ ol li li li{
       </header>
 
   <div class="post-content e-content" itemprop="articleBody">
-    <!--
+    <ul class="section-nav">
+</ul><!--
 #################################################
 ### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
 #################################################
@@ -176,25 +179,8 @@ ol li li li{
 </div>
     
 
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>title: NEW Notes on Convexity of Loss Functions for Classification</li>
-<li>toc: true</li>
-<li>branch: master</li>
-<li>badges: true</li>
-<li>hide: false</li>
-<li>comments: true</li>
-<li>metadata_key1: metadata_value1</li>
-<li>metadata_key2: metadata_value2</li>
-<li>description:  Following up on a question that arose in Week 3 of Andrew Ng's Machine Learning course. </li>
-<li>image: images/convexity/convexity_header_new.jpg</li>
-</ul>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>This is a post where I'm investigating <a href="https://en.wikipedia.org/wiki/Convex_function">convexity</a> a bit, as it relates to neural networks.</p>
 <p>Andrew Ng, in Week 3 of his <a href="https://www.coursera.org/learn/machine-learning/home/welcome">Coursera course on Machine Learning</a>, shows the following image with respect to the "cost function" to be optimized...</p>
@@ -202,6 +188,53 @@ ol li li li{
 </div>
 </div>
 </div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># preliminary set up. ipympl allows for interactive plots; replace it with inline if not working</span>
+<span class="c1">#%matplotlib ipympl</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">from</span> <span class="nn">mpl_toolkits.mplot3d</span> <span class="kn">import</span> <span class="n">Axes3D</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">cm</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># basic functions for data operations</span>
+<span class="k">def</span> <span class="nf">h</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">):</span>                            <span class="c1"># h = logistic function.  a is 'weight' and b is 'bias'</span>
+    <span class="k">return</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="n">b</span><span class="p">)))</span>    <span class="c1"># For code below, a &amp; b should be scalars, x can be anything</span>
+
+<span class="k">def</span> <span class="nf">classify_x</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">threshold</span><span class="p">):</span>   
+    <span class="n">out</span> <span class="o">=</span> <span class="mi">0</span><span class="o">*</span><span class="n">x</span>
+    <span class="n">out</span><span class="p">[</span><span class="n">x</span> <span class="o">&gt;</span> <span class="n">threshold</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span>
+    <span class="k">return</span> <span class="n">out</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
 </div>
 
 
@@ -209,7 +242,15 @@ ol li li li{
     <p class="bibliography"></p>
     <hr>
     <p>(c) 2020 Scott H. Hawley</p>
-  </div><a class="u-url" href="/blog/2017/11/22/Convex-Loss-Test.html" hidden></a>
+  </div><!-- from https://github.com/utterance/utterances -->
+<script src="https://utteranc.es/client.js"
+        repo="drscotthawley/blog"
+        issue-term="title"
+        label="blogpost-comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script><a class="u-url" href="/blog/2017/11/22/Convex-Loss-Test.html" hidden></a>
 </article>
 
       </div>
