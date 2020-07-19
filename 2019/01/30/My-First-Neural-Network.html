@@ -203,11 +203,11 @@ ol li li li{
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Links to lessons:
-<a href="https://drscotthawley.github.io/Following-Gravity/">Part 0</a>,
-<a href="https://colab.research.google.com/drive/1CPueDKDYOC33U_0qHxBhsDPpzYMpD8c8">Part 1</a>, 
-<a href="https://colab.research.google.com/drive/1O9xcdAQUxo7KdVhbggqLCvabc77Rj-yH">Part 2</a>
-<a href="https://colab.research.google.com/drive/1UZDEK-3v-SWxpDYBfamBoD4xhy7H2DEZ#scrollTo=14tOCcvT_a0I">Part 3</a></p>
-<p>We will be reproducing work from Andrew Trask's excellent tutorial <a href="https://iamtrask.github.io/2015/07/12/basic-python-network/">"A Neural Network in 11 lines of Python"</a>, albeit with a different emphasis, and in a different way.  You may regard this treatment and his original treatment as complimentary, and feel free to refer to both.  This lesson is written with the intent of building on the lesson about linear regression -- which we might call "Part 0" -- at the link <a href="https://drscotthawley.github.io/Following-Gravity/">"Following Gravity - ML Foundations Part Ia."</a></p>
+<a href="https://drscotthawley.github.io/blog/2017/02/23/Following-Gravity-Colab.html">Part 0</a>,
+<a href="https://drscotthawley.github.io/blog/2019/01/30/My-First-Neural-Network.html">Part 1</a>, 
+<a href="https://drscotthawley.github.io/blog/2019/02/04/My-First-NN-Part-2.html">Part 2</a>,
+<a href="https://drscotthawley.github.io/blog/2019/02/08/My-1st-NN-Part-3-Multi-Layer-and-Backprop.html">Part 3</a></p>
+<p>We will be reproducing work from Andrew Trask's excellent tutorial <a href="https://iamtrask.github.io/2015/07/12/basic-python-network/">"A Neural Network in 11 lines of Python"</a>, albeit with a different emphasis, and in a different way.  You may regard this treatment and his original treatment as complimentary, and feel free to refer to both.  This lesson is written with the intent of building on the lesson about linear regression -- which we might call "Part 0" -- at the link <a href="https://drscotthawley.github.io/blog/Following-Gravity/">"Following Gravity - ML Foundations Part Ia."</a></p>
 <h2 id="The-Sample-Problem">
 <a class="anchor" href="#The-Sample-Problem" aria-hidden="true"><span class="octicon octicon-link"></span></a>The Sample Problem<a class="anchor-link" href="#The-Sample-Problem"> </a>
 </h2>
@@ -273,7 +273,7 @@ $$
  {df\over dx}= f(1-f).
 $$</p>
 <p>The overall problem then amounts to finding the values of the "weights" $w_0, w_1,$ and $w_2$ so that the $\tilde{Y}$ we calculate is as close to the target $Y$ as possible.</p>
-<p>To do this, we will seek to minimize a loss function defined as a sum across all data points we have, i.e. all 4 rows. The loss function $L$ we will choose is the mean square error loss, or MSE (note: later in <a href="https://colab.research.google.com/drive/1O9xcdAQUxo7KdVhbggqLCvabc77Rj-yH#scrollTo=AFGL_ThJKJfM">Part 2</a> we will use a 'better' loss function for this problem):</p>
+<p>To do this, we will seek to minimize a loss function defined as a sum across all data points we have, i.e. all 4 rows. The loss function $L$ we will choose is the mean square error loss, or MSE (note: later in <a href="https://drscotthawley.github.io/blog/2019/02/04/My-First-NN-Part-2.html">Part 2</a> we will use a 'better' loss function for this problem):</p>
 $$
 L = {1\over N}\sum_{i=0}^{N-1} \left[ \tilde{Y}_i - Y_i\right]^2,
 $$<p>or in terms of the activation function
@@ -863,7 +863,7 @@ Hint 2: This whole lesson could instead be entitled "My First Artificial Neuron.
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Next time, we will go on to <a href="https://colab.research.google.com/drive/1O9xcdAQUxo7KdVhbggqLCvabc77Rj-yH#scrollTo=UwVdMLHqk1g0">Part 2: Bias and CE Loss</a>.</p>
+<p>Next time, we will go on to <a href="https://drscotthawley.github.io/blog/2019/02/04/My-First-NN-Part-2.html">Part 2: Bias and CE Loss</a>.</p>
 
 </div>
 </div>

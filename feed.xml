@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://drscotthawley.github.io/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://drscotthawley.github.io/blog/" rel="alternate" type="text/html" /><updated>2020-07-18T23:34:21-05:00</updated><id>https://drscotthawley.github.io/blog/feed.xml</id><title type="html">Scott H. Hawley</title><subtitle>Physics prof / Tinkerer. My blog about code and ideas.</subtitle><entry><title type="html">Citations in Fastpages via BibTeX and jekyll-scholar</title><link href="https://drscotthawley.github.io/blog/2020/07/01/Citations-Via-Bibtex.html" rel="alternate" type="text/html" title="Citations in Fastpages via BibTeX and jekyll-scholar" /><published>2020-07-01T00:00:00-05:00</published><updated>2020-07-01T00:00:00-05:00</updated><id>https://drscotthawley.github.io/blog/2020/07/01/Citations-Via-Bibtex</id><content type="html" xml:base="https://drscotthawley.github.io/blog/2020/07/01/Citations-Via-Bibtex.html">&lt;p&gt;&lt;em&gt;(N.B.: The following was created as a Markdown file in &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts/&lt;/code&gt;. For Jupyter notebooks, the same things apply; one simply enters the Liquid codes into Markdown cells.  &lt;a href=&quot;https://drscotthawley.github.io/devblog4/jupyter/2020/07/01/BibTeX-Check-For-Jupyter.html&quot;&gt;Quick Jupyter example.&lt;/a&gt;&lt;/em&gt;)&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://drscotthawley.github.io/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://drscotthawley.github.io/blog/" rel="alternate" type="text/html" /><updated>2020-07-18T23:40:10-05:00</updated><id>https://drscotthawley.github.io/blog/feed.xml</id><title type="html">Scott H. Hawley</title><subtitle>Physics prof / Tinkerer. My blog about code and ideas.</subtitle><entry><title type="html">Citations in Fastpages via BibTeX and jekyll-scholar</title><link href="https://drscotthawley.github.io/blog/2020/07/01/Citations-Via-Bibtex.html" rel="alternate" type="text/html" title="Citations in Fastpages via BibTeX and jekyll-scholar" /><published>2020-07-01T00:00:00-05:00</published><updated>2020-07-01T00:00:00-05:00</updated><id>https://drscotthawley.github.io/blog/2020/07/01/Citations-Via-Bibtex</id><content type="html" xml:base="https://drscotthawley.github.io/blog/2020/07/01/Citations-Via-Bibtex.html">&lt;p&gt;&lt;em&gt;(N.B.: The following was created as a Markdown file in &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts/&lt;/code&gt;. For Jupyter notebooks, the same things apply; one simply enters the Liquid codes into Markdown cells.  &lt;a href=&quot;https://drscotthawley.github.io/devblog4/jupyter/2020/07/01/BibTeX-Check-For-Jupyter.html&quot;&gt;Quick Jupyter example.&lt;/a&gt;&lt;/em&gt;)&lt;/p&gt;
 
 &lt;h2 id=&quot;how-to-cite&quot;&gt;How to Cite&lt;/h2&gt;
 
@@ -3973,10 +3973,10 @@ $k=7$, I got 97.7% accuracy.   The highest I ever got it was 99%, but that was r
 &lt;div class=&quot;cell border-box-sizing text_cell rendered&quot;&gt;&lt;div class=&quot;inner_cell&quot;&gt;
 &lt;div class=&quot;text_cell_render border-box-sizing rendered_html&quot;&gt;
 &lt;p&gt;Links to lessons:
-&lt;a href=&quot;https://drscotthawley.github.io/Following-Gravity/&quot;&gt;Part 0&lt;/a&gt;,
-&lt;a href=&quot;https://colab.research.google.com/drive/1CPueDKDYOC33U_0qHxBhsDPpzYMpD8c8&quot;&gt;Part 1&lt;/a&gt;, 
-&lt;a href=&quot;https://colab.research.google.com/drive/1O9xcdAQUxo7KdVhbggqLCvabc77Rj-yH&quot;&gt;Part 2&lt;/a&gt;,
-&lt;a href=&quot;https://colab.research.google.com/drive/1UZDEK-3v-SWxpDYBfamBoD4xhy7H2DEZ#scrollTo=14tOCcvT_a0I&quot;&gt;Part 3&lt;/a&gt;&lt;/p&gt;
+&lt;a href=&quot;https://drscotthawley.github.io/blog/2017/02/23/Following-Gravity-Colab.html&quot;&gt;Part 0&lt;/a&gt;,
+&lt;a href=&quot;https://drscotthawley.github.io/blog/2019/01/30/My-First-Neural-Network.html&quot;&gt;Part 1&lt;/a&gt;, 
+&lt;a href=&quot;https://drscotthawley.github.io/blog/2019/02/04/My-First-NN-Part-2.html&quot;&gt;Part 2&lt;/a&gt;,
+&lt;a href=&quot;https://drscotthawley.github.io/blog/2019/02/08/My-1st-NN-Part-3-Multi-Layer-and-Backprop.html&quot;&gt;Part 3&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&quot;What-is-Backpropagation?&quot;&gt;What is Backpropagation?&lt;a class=&quot;anchor-link&quot; href=&quot;#What-is-Backpropagation?&quot;&gt; &lt;/a&gt;&lt;/h2&gt;&lt;p&gt;First watch this &lt;a href=&quot;https://www.youtube.com/watch?v=q555kfIFUCM&quot;&gt;5-minute video on backprop by Siraj Raval&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;EDIT 2/20/2020:&lt;/strong&gt; ^Ravel was later revealed to be plagiarizing content. I will look for an alternative link.  The format in &lt;a href=&quot;https://hedges.belmont.edu/~shawley/PHY2895/&quot;&gt;my (&quot;flipped&quot;) ML course last year&lt;/a&gt; involved reading things, watching &lt;em&gt;brief&lt;/em&gt; videos, and modifying code. Siraj's video fit the bill last year as being &lt;em&gt;brief&lt;/em&gt; &amp;amp; &lt;em&gt;good&lt;/em&gt;.&lt;/p&gt;
 
@@ -8140,11 +8140,11 @@ clBKKVWDJgellFI1aHJQSilVgyYHpZRSNWhyUEopVcP/A5bhUFHiq87MAAAAAElFTkSuQmCC
 &lt;div class=&quot;cell border-box-sizing text_cell rendered&quot;&gt;&lt;div class=&quot;inner_cell&quot;&gt;
 &lt;div class=&quot;text_cell_render border-box-sizing rendered_html&quot;&gt;
 &lt;p&gt;Links to lessons:
-&lt;a href=&quot;https://drscotthawley.github.io/Following-Gravity/&quot;&gt;Part 0&lt;/a&gt;,
-&lt;a href=&quot;https://colab.research.google.com/drive/1CPueDKDYOC33U_0qHxBhsDPpzYMpD8c8&quot;&gt;Part 1&lt;/a&gt;, 
-&lt;a href=&quot;https://colab.research.google.com/drive/1O9xcdAQUxo7KdVhbggqLCvabc77Rj-yH&quot;&gt;Part 2&lt;/a&gt;
-&lt;a href=&quot;https://colab.research.google.com/drive/1UZDEK-3v-SWxpDYBfamBoD4xhy7H2DEZ#scrollTo=14tOCcvT_a0I&quot;&gt;Part 3&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;We will be reproducing work from Andrew Trask's excellent tutorial &lt;a href=&quot;https://iamtrask.github.io/2015/07/12/basic-python-network/&quot;&gt;&quot;A Neural Network in 11 lines of Python&quot;&lt;/a&gt;, albeit with a different emphasis, and in a different way.  You may regard this treatment and his original treatment as complimentary, and feel free to refer to both.  This lesson is written with the intent of building on the lesson about linear regression -- which we might call &quot;Part 0&quot; -- at the link &lt;a href=&quot;https://drscotthawley.github.io/Following-Gravity/&quot;&gt;&quot;Following Gravity - ML Foundations Part Ia.&quot;&lt;/a&gt;&lt;/p&gt;
+&lt;a href=&quot;https://drscotthawley.github.io/blog/2017/02/23/Following-Gravity-Colab.html&quot;&gt;Part 0&lt;/a&gt;,
+&lt;a href=&quot;https://drscotthawley.github.io/blog/2019/01/30/My-First-Neural-Network.html&quot;&gt;Part 1&lt;/a&gt;, 
+&lt;a href=&quot;https://drscotthawley.github.io/blog/2019/02/04/My-First-NN-Part-2.html&quot;&gt;Part 2&lt;/a&gt;,
+&lt;a href=&quot;https://drscotthawley.github.io/blog/2019/02/08/My-1st-NN-Part-3-Multi-Layer-and-Backprop.html&quot;&gt;Part 3&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;We will be reproducing work from Andrew Trask's excellent tutorial &lt;a href=&quot;https://iamtrask.github.io/2015/07/12/basic-python-network/&quot;&gt;&quot;A Neural Network in 11 lines of Python&quot;&lt;/a&gt;, albeit with a different emphasis, and in a different way.  You may regard this treatment and his original treatment as complimentary, and feel free to refer to both.  This lesson is written with the intent of building on the lesson about linear regression -- which we might call &quot;Part 0&quot; -- at the link &lt;a href=&quot;https://drscotthawley.github.io/blog/Following-Gravity/&quot;&gt;&quot;Following Gravity - ML Foundations Part Ia.&quot;&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&quot;The-Sample-Problem&quot;&gt;The Sample Problem&lt;a class=&quot;anchor-link&quot; href=&quot;#The-Sample-Problem&quot;&gt; &lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Consider a system that tries to map groups of 3 inputs to some corresponding output which is a single number. In the following picture, we'll show each set of 3 inputs as a row of a matrix $X$, and each output as the corresponding row of $Y$:&lt;/p&gt;
 $$ \overbrace{
  \left[ {\begin{array}{ccc}
@@ -8207,7 +8207,7 @@ $$
  {df\over dx}= f(1-f).
 $$&lt;/p&gt;
 &lt;p&gt;The overall problem then amounts to finding the values of the &quot;weights&quot; $w_0, w_1,$ and $w_2$ so that the $\tilde{Y}$ we calculate is as close to the target $Y$ as possible.&lt;/p&gt;
-&lt;p&gt;To do this, we will seek to minimize a loss function defined as a sum across all data points we have, i.e. all 4 rows. The loss function $L$ we will choose is the mean square error loss, or MSE (note: later in &lt;a href=&quot;https://colab.research.google.com/drive/1O9xcdAQUxo7KdVhbggqLCvabc77Rj-yH#scrollTo=AFGL_ThJKJfM&quot;&gt;Part 2&lt;/a&gt; we will use a 'better' loss function for this problem):&lt;/p&gt;
+&lt;p&gt;To do this, we will seek to minimize a loss function defined as a sum across all data points we have, i.e. all 4 rows. The loss function $L$ we will choose is the mean square error loss, or MSE (note: later in &lt;a href=&quot;https://drscotthawley.github.io/blog/2019/02/04/My-First-NN-Part-2.html&quot;&gt;Part 2&lt;/a&gt; we will use a 'better' loss function for this problem):&lt;/p&gt;
 $$
 L = {1\over N}\sum_{i=0}^{N-1} \left[ \tilde{Y}_i - Y_i\right]^2,
 $$&lt;p&gt;or in terms of the activation function
@@ -9111,7 +9111,7 @@ Hint 2: This whole lesson could instead be entitled &quot;My First Artificial Ne
 &lt;/div&gt;
 &lt;div class=&quot;cell border-box-sizing text_cell rendered&quot;&gt;&lt;div class=&quot;inner_cell&quot;&gt;
 &lt;div class=&quot;text_cell_render border-box-sizing rendered_html&quot;&gt;
-&lt;p&gt;Next time, we will go on to &lt;a href=&quot;https://colab.research.google.com/drive/1O9xcdAQUxo7KdVhbggqLCvabc77Rj-yH#scrollTo=UwVdMLHqk1g0&quot;&gt;Part 2: Bias and CE Loss&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Next time, we will go on to &lt;a href=&quot;https://drscotthawley.github.io/blog/2019/02/04/My-First-NN-Part-2.html&quot;&gt;Part 2: Bias and CE Loss&lt;/a&gt;.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
