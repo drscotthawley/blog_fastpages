@@ -183,7 +183,21 @@ ol li li li{
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>This is a post where I'm investigating <a href="https://en.wikipedia.org/wiki/Convex_function">convexity</a> a bit, as it relates to neural networks.</p>
-<p>Andrew Ng, in Week 3 of his <a href="https://www.coursera.org/learn/machine-learning/home/welcome">Coursera course on Machine Learning</a>, shows the following image with respect to the "cost function" to be optimized...</p>
+<p>Andrew Ng, in Week 3 of his <a href="https://www.coursera.org/learn/machine-learning/home/welcome">Coursera course on Machine Learning</a>, shows the following image with respect to the "cost function" to be optimized:</p>
+<p>Andrew Ng, in Week 3 of his <a href="https://www.coursera.org/learn/machine-learning/home/welcome">Coursera course on Machine Learning</a>, shows the following image with respect to the "cost function" to be optimized (as slide 14 of Lecture 6):</p>
+<p>I wanted to investigate this: Could I reproduce the two graphs he sketched?   The two different loss functions are the mean squared error (MSE or sometimes just SE) and cross entropy (CE):</p>
+<p>where $y_i$ are the true values (0 or 1) and $h_i = h(x_i)$ are the predictions.</p>
+<p><strong>TL/DR: No I can't reproduce his sketches.  The graph I get for sum of the squared error (SE) doesn't have the wiggles that his drawing on the left does. <em>(Perhaps he was just doodling an example of an arbitrary non-convex function, rather than the squared loss in particular?)</em>   Takeways at the bottom of this, re. the difference between a convex <em>loss function (by itself)</em> vs. a convex loss for a <em>problem</em> -- i.e. the individual terms are convex for either function, but the <em>sum</em> of these terms is actually not strictly convex for either function (for this problem). </strong></p>
+<p>I read a few posts about this first...</p>
+<ul>
+<li>
+<a href="https://math.stackexchange.com/questions/1985008/show-that-logistic-regression-with-squared-loss-function-is-non-convex/2176466">Math StackExchange: Show that logistic regression with squared loss function is non-convex</a>, which includes a link to <a href="https://www.desmos.com/calculator/kxz6lzszf9">this nice demo on Desmos</a>
+</li>
+<li><a href="https://math.stackexchange.com/questions/2193478/loss-function-for-logistic-regression">https://math.stackexchange.com/questions/2193478/loss-function-for-logistic-regression</a></li>
+<li>
+<a href="https://en.wikipedia.org/wiki/Loss_functions_for_classification">https://en.wikipedia.org/wiki/Loss_functions_for_classification</a> seems to say that squared loss is convex. ?? </li>
+</ul>
+<p>...but then wanted to try for myself.  As follows:</p>
 
 </div>
 </div>
