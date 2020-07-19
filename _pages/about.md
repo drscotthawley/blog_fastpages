@@ -1,6 +1,6 @@
 ---
 layout: page
-title: About Me
+title: About 
 permalink: /about/
 ---
 
@@ -21,3 +21,6 @@ I dabble in a variety of technologies, usually with the goal of improving the ph
 
 ### Contact me
 How about a message on twitter?  [@drscotthawley](http://www.twitter.com/drscotthawley)
+
+---
+*This site was built using [Fastpages](https://github.com/fastai/fastpages) by [Hamel Husain](https://github.com/hamelsmu)*
