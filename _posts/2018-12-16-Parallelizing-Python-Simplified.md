@@ -7,7 +7,7 @@ comments: true
 ---
 # Parallelizing Python, Simplified
 
-![]({{ site.baseurl }}/images/parallelpython.png "")
+![banner image](images/parallelpython.png)
 
 
 So you have some serial task that takes forever, and you're thinking it should be parallelizable, but you find
