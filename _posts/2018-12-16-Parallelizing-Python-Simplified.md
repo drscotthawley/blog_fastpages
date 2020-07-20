@@ -7,7 +7,9 @@ layout: post
 comments: true
 ---
 
-![banner image](https://drscotthawley.github.io/blog/images/parallelpython.png)
+![]({{ site.baseurl }}/images/parallelpython.png "parallel python image")
+
+
 
 
 So you have some serial task that takes forever, and you're thinking it should be parallelizable, but you find
