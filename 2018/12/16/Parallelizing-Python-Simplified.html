@@ -4,9 +4,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="twitter:card" content="summary" /><!-- Begin Jekyll SEO tag v2.6.1 -->
-<title>Parallelizing Python Simplified | Scott H. Hawley</title>
+<title>Parallelizing Python, Simplified | Scott H. Hawley</title>
 <meta name="generator" content="Jekyll v4.0.0" />
-<meta property="og:title" content="Parallelizing Python Simplified" />
+<meta property="og:title" content="Parallelizing Python, Simplified" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Basic use of multiprocessing." />
 <meta property="og:description" content="Basic use of multiprocessing." />
@@ -17,7 +17,7 @@
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2018-12-16T00:00:00-06:00" />
 <script type="application/ld+json">
-{"description":"Basic use of multiprocessing.","@type":"BlogPosting","url":"https://drscotthawley.github.io/blog/2018/12/16/Parallelizing-Python-Simplified.html","dateModified":"2018-12-16T00:00:00-06:00","datePublished":"2018-12-16T00:00:00-06:00","headline":"Parallelizing Python Simplified","image":"https://drscotthawley.github.io/blog/images/parallelpython.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://drscotthawley.github.io/blog/2018/12/16/Parallelizing-Python-Simplified.html"},"@context":"https://schema.org"}</script>
+{"description":"Basic use of multiprocessing.","@type":"BlogPosting","url":"https://drscotthawley.github.io/blog/2018/12/16/Parallelizing-Python-Simplified.html","dateModified":"2018-12-16T00:00:00-06:00","datePublished":"2018-12-16T00:00:00-06:00","headline":"Parallelizing Python, Simplified","image":"https://drscotthawley.github.io/blog/images/parallelpython.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://drscotthawley.github.io/blog/2018/12/16/Parallelizing-Python-Simplified.html"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/blog/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://drscotthawley.github.io/blog/feed.xml" title="Scott H. Hawley" /><!-- the google_analytics_id gets auto inserted from the config file -->
 
@@ -26,9 +26,9 @@
 <script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-173006102-1','auto');ga('require','displayfeatures');ga('send','pageview');</script>
 
 <link rel="shortcut icon" type="image/x-icon" href="/blog/images/favicon.ico"><!-- Begin Jekyll SEO tag v2.6.1 -->
-<title>Parallelizing Python Simplified | Scott H. Hawley</title>
+<title>Parallelizing Python, Simplified | Scott H. Hawley</title>
 <meta name="generator" content="Jekyll v4.0.0" />
-<meta property="og:title" content="Parallelizing Python Simplified" />
+<meta property="og:title" content="Parallelizing Python, Simplified" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Basic use of multiprocessing." />
 <meta property="og:description" content="Basic use of multiprocessing." />
@@ -39,7 +39,7 @@
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2018-12-16T00:00:00-06:00" />
 <script type="application/ld+json">
-{"description":"Basic use of multiprocessing.","@type":"BlogPosting","url":"https://drscotthawley.github.io/blog/2018/12/16/Parallelizing-Python-Simplified.html","dateModified":"2018-12-16T00:00:00-06:00","datePublished":"2018-12-16T00:00:00-06:00","headline":"Parallelizing Python Simplified","image":"https://drscotthawley.github.io/blog/images/parallelpython.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://drscotthawley.github.io/blog/2018/12/16/Parallelizing-Python-Simplified.html"},"@context":"https://schema.org"}</script>
+{"description":"Basic use of multiprocessing.","@type":"BlogPosting","url":"https://drscotthawley.github.io/blog/2018/12/16/Parallelizing-Python-Simplified.html","dateModified":"2018-12-16T00:00:00-06:00","datePublished":"2018-12-16T00:00:00-06:00","headline":"Parallelizing Python, Simplified","image":"https://drscotthawley.github.io/blog/images/parallelpython.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://drscotthawley.github.io/blog/2018/12/16/Parallelizing-Python-Simplified.html"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 <link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
@@ -127,7 +127,7 @@ ol li li li{
 }
 </style>
   <header class="post-header">
-    <h1 class="post-title p-name" itemprop="name headline">Parallelizing Python Simplified</h1><p class="page-description">Basic use of multiprocessing.</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2018-12-16T00:00:00-06:00" itemprop="datePublished">
+    <h1 class="post-title p-name" itemprop="name headline">Parallelizing Python, Simplified</h1><p class="page-description">Basic use of multiprocessing.</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2018-12-16T00:00:00-06:00" itemprop="datePublished">
         Dec 16, 2018
       </time>
        • <span class="read-time" title="Estimated read time">
@@ -143,18 +143,11 @@ ol li li li{
 
   <div class="post-content e-content" itemprop="articleBody">
     <ul class="section-nav">
-<li class="toc-entry toc-h1"><a href="#parallelizing-python-simplified">Parallelizing Python, Simplified</a>
-<ul>
 <li class="toc-entry toc-h2"><a href="#example-1-generate-a-bunch-of-files">Example 1: Generate a bunch of files</a></li>
 <li class="toc-entry toc-h2"><a href="#example-2-read-a-bunch-of-files-into-a-list">Example 2: Read a bunch of files into a list</a></li>
 <li class="toc-entry toc-h2"><a href="#example-3-filling-a-numpy-array">Example 3: Filling a NumPy array</a></li>
 <li class="toc-entry toc-h2"><a href="#ps--final-remarks">P.S.- Final Remarks</a></li>
-</ul>
-</li>
-</ul><h1 id="parallelizing-python-simplified">
-<a class="anchor" href="#parallelizing-python-simplified" aria-hidden="true"><span class="octicon octicon-link"></span></a>Parallelizing Python, Simplified</h1>
-
-<p><img src="images/parallelpython.png" alt="banner image"></p>
+</ul><p><img src="images/parallelpython.png" alt="banner image"></p>
 
 <p>So you have some serial task that takes forever, and you’re thinking it should be parallelizable, but you find
 the documentation on this to be obtuse?  Yea.</p>
