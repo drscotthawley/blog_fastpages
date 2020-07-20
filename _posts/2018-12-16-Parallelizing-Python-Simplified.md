@@ -1,11 +1,11 @@
 ---
+title: Parallelizing Python, Simplified
 toc: true
 description: Basic use of multiprocessing.
 image:  images/parallelpython.png
 layout: post
 comments: true
 ---
-# Parallelizing Python, Simplified
 
 ![banner image](images/parallelpython.png)
 
