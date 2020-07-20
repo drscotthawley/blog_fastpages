@@ -1,11 +1,11 @@
 ---
+title: Learning Room Shapes (with Neural Networks)
 toc: true
 description: Deep neural network learns (boxy) room shape given mode frequencies, or vice versa.
 image: https://raw.githubusercontent.com/drscotthawley/room-shape/master/sample_mode_plot.png
 layout: post
 ---
 
-# Learning Room Shapes (with Neural Networks)
 
 *'Deep' neural network learns (boxy) room shape given mode frequencies, or vice versa.*
 
