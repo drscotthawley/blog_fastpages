@@ -7,7 +7,7 @@ layout: post
 comments: true
 ---
 
-![banner image](images/parallelpython.png)
+![banner image](https://drscotthawley.github.io/blog/images/parallelpython.png)
 
 
 So you have some serial task that takes forever, and you're thinking it should be parallelizable, but you find
