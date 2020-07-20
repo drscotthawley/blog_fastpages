@@ -15,7 +15,7 @@ search_exclude: false
 
 ## How to Cite 
 
-For demonstration purposes, I'll take the liberty of citing a couple of my recent papers, namely the first SignalTrain paper{% cite signaltrain %} and the new one by Billy Mitchell{% cite billy_signaltrain2 %}.  Instead of using the LaTeX code {% raw %}\cite{ \<whatever> }{% endraw %}, I use the Liquid code {% raw  %}{% cite \<whatever> %}{% endraw %}.  For example, the first citation above is written as "{% raw  %}{% cite signaltrain %}{% endraw %}" in the Markdown file that generates this HTML page. 
+For demonstration purposes, I'll take the liberty of citing a couple of my recent papers, namely the first SignalTrain paper {% cite signaltrain %} and the new one by Billy Mitchell {% cite billy_signaltrain2 %}.  Instead of using the LaTeX code {% raw %}\cite{ \<whatever> }{% endraw %}, I use the Liquid code {% raw  %}{% cite \<whatever> %}{% endraw %}.  For example, the first citation above is written as "{% raw  %}{% cite signaltrain %}{% endraw %}" in the Markdown file that generates this HTML page. 
 
 
 The two citation markings above point to the References section at the end of this post where the full references are printed out in the bibliography style of my choice.
