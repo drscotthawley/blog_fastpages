@@ -1,6 +1,6 @@
 ---
 title: "Getting Started in ML+Audio"
-description: For audio students interest in machine learning
+description: For audio students interested in machine learning
 image:  images/class_chairs.jpg
 layout: post
 toc: true
