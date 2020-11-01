@@ -20,7 +20,7 @@ Here's the code we're about to add, escaped so you can see it.
 ```
 If you put the above few lines into a raw HTML file and open it in a browser, you get a nice plot of a ReLU activation.
 
-And now we'll add below raw, and see if it the plot appears:
+Now we'll add that code as raw HTML and see if it the plot appears here:
 
 <script async="" src="https://unpkg.com/@iooxa/article"></script>
 <r-svg-chart width="400", height="250" xlim="[-3, 3]" ylim="[-0.01,3]" xlabel="x" ylabel="ReLU(x)">
