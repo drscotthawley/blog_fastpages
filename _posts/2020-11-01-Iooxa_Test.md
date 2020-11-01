@@ -18,9 +18,11 @@ Here's the code we're about to add, escaped so you can see it.
    <r-svg-eqn eqn="Math.max(0, x)" stroke="blue" stroke-width="3"></r-svg-eqn>
 </r-svg-chart>
 ```
-If you put the above few lines into a raw HTML file and open it in a browser, you get a nice plot of a ReLU activation.
+If you put the above few lines into a raw HTML file and open it in a browser, you get a nice plot
+of a ReLU activation
+([click for example](https://hedges.belmont.edu/~shawley/iooxa_try.html)).
 
-Now we'll add that code as raw HTML and see if it the plot appears here:
+Now we'll add that code as raw HTML and see if the plot appears here:
 
 <script async="" src="https://unpkg.com/@iooxa/article"></script>
 <r-svg-chart width="400", height="250" xlim="[-3, 3]" ylim="[-0.01,3]" xlabel="x" ylabel="ReLU(x)">
