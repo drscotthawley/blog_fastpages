@@ -21,11 +21,11 @@ url: "https://drscotthawley.github.io" # the base hostname & protocol for your s
 #
 #### Scenario One: If you do not have a Custom Domain #####
 #    -  if you are not using a custom domain, the baseurl *must* be set to your repo name
-#
+# 
 ####  Scenario Two: If you have a Custom Domain #####
 # 1. If your domain does NOT have a subpath, this leave this value as ""
-# 2. If your domain does have a subpath, you must preceed the value with a / and NOT have a / at the end.
-#      For example:
+# 2. If your domain does have a subpath, you must preceed the value with a / and NOT have a / at the end.  
+#      For example: 
 #           "" is valid
 #           "/blog"        is valid
 #            "/blog/site/" is invalid  ( / at the end)
@@ -52,7 +52,10 @@ use_math: true
 show_description: true
 
 # Set this to true to display image previews on home page, if they exist
-show_image: true
+show_image: false
+
+# Set this to true to turn on annotations with hypothes.is (https://web.hypothes.is/)
+annotations: false
 
 # Set this to true to display tags on each post
 show_tags: true
@@ -124,3 +127,8 @@ kramdown:
   auto_ids: true
   hard_wrap: false
   syntax_highlighter: rouge
+
+# to limit size of xml as it can grow quite large.
+feed:
+  posts_limit: 10 #default posts_limit: 10
+  excerpt_only: true
