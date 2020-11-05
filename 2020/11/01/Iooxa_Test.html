@@ -143,6 +143,20 @@ of a ReLU activation
 
 <p>No, for some reason Fastpages is escaping a few of the angle-brackets for line defining the <code class="language-plaintext highlighter-rouge">r-svg-eqn</code> object.  Don’t do that, Fastpages! Leave my HTML alone!</p>
 
+<h2 id="a-hack-that-works">A Hack That Works</h2>
+
+<p>Your <code class="language-plaintext highlighter-rouge">images/</code> folder is <em>theoretically</em> just for images.  But if you take the HTML code that you want to sneak past nbdev and put it in a file in the <code class="language-plaintext highlighter-rouge">images/</code> directory, then you can load it via an iframe. So let’s put the above three lines in a file called <code class="language-plaintext highlighter-rouge">iooxa_graph.html</code> and save it in the <code class="language-plaintext highlighter-rouge">images/</code> directory. Then we put the following
+in this post:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;iframe</span> <span class="na">src=</span><span class="s">"../../../images/iooxa_graph.html"</span> <span class="na">width=</span><span class="s">"700px"</span> <span class="na">height=</span><span class="s">"280px"</span> <span class="na">frameBorder=</span><span class="s">"0"</span><span class="nt">&gt;&lt;/iframe&gt;</span>
+</code></pre></div></div>
+
+<p>And here we go:</p>
+
+<iframe src="../../../images/iooxa_graph.html" width="700px" height="280px" frameborder="0"></iframe>
+
+<p>Yea? :-)</p>
+
     <p class="bibliography"></p>
     <hr>
     <p>(c) 2020 Scott H. Hawley</p>
