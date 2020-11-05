@@ -46,4 +46,9 @@ And here we go:
 
 <iframe src="../../../images/iooxa_graph.html" width="700px" height="280px" frameBorder="0"></iframe>
 
-Yea? :-)
+Yea? :-) Now, why do that?  
+
+Well, because now we can have some more interactivity, like this LeakyReLU graph and some half-wave rectifiers:
+<iframe src="../../../images/iooxa_rect.html" width="700px" height="280px" frameBorder="0"></iframe>
+
+Nice. :-)
