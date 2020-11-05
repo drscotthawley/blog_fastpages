@@ -3,9 +3,9 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="twitter:card" content="summary" /><!-- Begin Jekyll SEO tag v2.6.1 -->
+  <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.6.1 -->
 <title>Principal Component Analysis (PCA) from Scratch | Scott H. Hawley</title>
-<meta name="generator" content="Jekyll v4.0.0" />
+<meta name="generator" content="Jekyll v4.1.1" />
 <meta property="og:title" content="Principal Component Analysis (PCA) from Scratch" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="There are many tutorials on PCA, but this one has interactive 3D graphs!" />
@@ -17,7 +17,7 @@
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2019-12-21T00:00:00-06:00" />
 <script type="application/ld+json">
-{"description":"There are many tutorials on PCA, but this one has interactive 3D graphs!","headline":"Principal Component Analysis (PCA) from Scratch","dateModified":"2019-12-21T00:00:00-06:00","datePublished":"2019-12-21T00:00:00-06:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://drscotthawley.github.io/blog/2019/12/21/PCA-From-Scratch.html"},"url":"https://drscotthawley.github.io/blog/2019/12/21/PCA-From-Scratch.html","image":"https://i.imgur.com/vKiH8As.png","@context":"https://schema.org"}</script>
+{"description":"There are many tutorials on PCA, but this one has interactive 3D graphs!","url":"https://drscotthawley.github.io/blog/2019/12/21/PCA-From-Scratch.html","@type":"BlogPosting","headline":"Principal Component Analysis (PCA) from Scratch","dateModified":"2019-12-21T00:00:00-06:00","datePublished":"2019-12-21T00:00:00-06:00","image":"https://i.imgur.com/vKiH8As.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://drscotthawley.github.io/blog/2019/12/21/PCA-From-Scratch.html"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/blog/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://drscotthawley.github.io/blog/feed.xml" title="Scott H. Hawley" /><!-- the google_analytics_id gets auto inserted from the config file -->
 
@@ -25,35 +25,12 @@
 
 <script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-173006102-1','auto');ga('require','displayfeatures');ga('send','pageview');</script>
 
-<link rel="shortcut icon" type="image/x-icon" href="/blog/images/favicon.ico"><!-- Begin Jekyll SEO tag v2.6.1 -->
-<title>Principal Component Analysis (PCA) from Scratch | Scott H. Hawley</title>
-<meta name="generator" content="Jekyll v4.0.0" />
-<meta property="og:title" content="Principal Component Analysis (PCA) from Scratch" />
-<meta property="og:locale" content="en_US" />
-<meta name="description" content="There are many tutorials on PCA, but this one has interactive 3D graphs!" />
-<meta property="og:description" content="There are many tutorials on PCA, but this one has interactive 3D graphs!" />
-<link rel="canonical" href="https://drscotthawley.github.io/blog/2019/12/21/PCA-From-Scratch.html" />
-<meta property="og:url" content="https://drscotthawley.github.io/blog/2019/12/21/PCA-From-Scratch.html" />
-<meta property="og:site_name" content="Scott H. Hawley" />
-<meta property="og:image" content="https://i.imgur.com/vKiH8As.png" />
-<meta property="og:type" content="article" />
-<meta property="article:published_time" content="2019-12-21T00:00:00-06:00" />
-<script type="application/ld+json">
-{"description":"There are many tutorials on PCA, but this one has interactive 3D graphs!","headline":"Principal Component Analysis (PCA) from Scratch","dateModified":"2019-12-21T00:00:00-06:00","datePublished":"2019-12-21T00:00:00-06:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://drscotthawley.github.io/blog/2019/12/21/PCA-From-Scratch.html"},"url":"https://drscotthawley.github.io/blog/2019/12/21/PCA-From-Scratch.html","image":"https://i.imgur.com/vKiH8As.png","@context":"https://schema.org"}</script>
-<!-- End Jekyll SEO tag -->
-
-<link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
-<link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css"><link type="application/atom+xml" rel="alternate" href="https://drscotthawley.github.io/blog/feed.xml" title="Scott H. Hawley" /><!-- the google_analytics_id gets auto inserted from the config file -->
-
-
-
-<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-173006102-1','auto');ga('require','displayfeatures');ga('send','pageview');</script>
-
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"> </script>
-    <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"></script>
+<link rel="shortcut icon" type="image/x-icon" href="/blog/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/katex.min.css" integrity="sha512-h7nl+xz8wgDlNM4NqKEM4F1NkIRS17M9+uJwIGwuo8vGqIl4BhuCKdxjWEINm+xyrUjNCnK5dCrhM0sj+wTIXw==" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/katex.min.js" integrity="sha512-/CMIhXiDA3m2c9kzRyd97MTb3MC6OVnx4TElQ7fkkoRghwDf6gi41gaT1PwF270W6+J60uTmwgeRpNpJdRV6sg==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/contrib/auto-render.min.js" integrity="sha512-Do7uJAaHZm5OLrIv/yN4w0iG1dbu01kzdMNnFfu/mAqgUk6Nniv2JYHcwH+cNwjqgLcqcuBBk+JRvprLVI8azg==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha512-0doc9hKxR3PYwso42RD1p5ySZpzzuDiOwMrdCEh2WdJZCjcmFKc/wEnL+z8fBQrnHoiNWbo+3fiGkOYXBdQp4A==" crossorigin="anonymous"></script>
     <script>
     document.addEventListener("DOMContentLoaded", function() {
         renderMathInElement( document.body, {
@@ -126,6 +103,7 @@ ol li li li{
     list-style-type: lower-roman;
 }
 </style>
+
   <header class="post-header">
     <h1 class="post-title p-name" itemprop="name headline">Principal Component Analysis (PCA) from Scratch</h1><p class="page-description">There are many tutorials on PCA, but this one has interactive 3D graphs!</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2019-12-21T00:00:00-06:00" itemprop="datePublished">
         Dec 21, 2019
@@ -133,7 +111,7 @@ ol li li li{
        • <span class="read-time" title="Estimated read time">
     
     
-      32 min read
+      31 min read
     
 </span></p>
 
@@ -223,13 +201,6 @@ ol li li li{
 
 <div class="container" id="notebook-container">
         
-    
-    
-<div class="cell border-box-sizing code_cell rendered">
-
-</div>
-    
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -989,8 +960,7 @@ A*v_3 / 1 =  [1 1 1]
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Now that we know we can get the same answers as the numpy library, let's use it</span>
-<span class="n">lambdas</span><span class="p">,</span> <span class="n">vs</span> <span class="o">=</span> <span class="n">sorted_eig</span><span class="p">(</span><span class="n">cov</span><span class="p">)</span>  <span class="c1"># Compute e'vals and e'vectors of cov matrix </span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">lambdas</span><span class="p">,</span> <span class="n">vs</span> <span class="o">=</span> <span class="n">sorted_eig</span><span class="p">(</span><span class="n">cov</span><span class="p">)</span>  <span class="c1"># Compute e'vals and e'vectors of cov matrix </span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"lambdas, vs =</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span><span class="n">lambdas</span><span class="p">,</span><span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span><span class="n">vs</span><span class="p">)</span>
 
 <span class="c1"># Re-plot our data</span>
@@ -1976,8 +1946,7 @@ if (outputEl) {{
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#from sklearn.datasets import fetch_mldata</span>
-<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">fetch_openml</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">fetch_openml</span>
 <span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">sample</span> 
 
 <span class="c1">#mnist = fetch_mldata('MNIST original')</span>
@@ -2161,8 +2130,7 @@ if (outputEl) {{
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Like we did before... Almost the whole PCA method is the next 3 lines! </span>
-<span class="n">mnist_cov</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cov</span><span class="p">(</span><span class="n">X2</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">mnist_cov</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cov</span><span class="p">(</span><span class="n">X2</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
 <span class="n">lambdas</span><span class="p">,</span> <span class="n">vs</span> <span class="o">=</span> <span class="n">sorted_eig</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">mnist_cov</span><span class="p">))</span>
 <span class="n">W</span> <span class="o">=</span> <span class="n">vs</span><span class="p">[:,</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>       <span class="c1"># Grab the 3 most significant dimensions</span>
 
@@ -2291,8 +2259,7 @@ if (outputEl) {{
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># random shuffled ordering of the whole thing</span>
-<span class="n">indices</span> <span class="o">=</span> <span class="n">sample</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])),</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">indices</span> <span class="o">=</span> <span class="n">sample</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])),</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 <span class="n">X_shuf</span><span class="p">,</span> <span class="n">Y_shuf</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">indices</span><span class="p">,:],</span> <span class="n">Y</span><span class="p">[</span><span class="n">indices</span><span class="p">]</span>
 
 <span class="c1"># 80-20 train-test split</span>
