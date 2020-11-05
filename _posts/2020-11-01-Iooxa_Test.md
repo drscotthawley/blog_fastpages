@@ -44,11 +44,13 @@ in this post:
 
 And here we go:
 
-<iframe src="../../../images/iooxa_graph.html" width="700px" height="280px" frameBorder="0"></iframe>
+<iframe src="../../../images/iooxa_graph.html" width="800px" height="280px" frameBorder="0"></iframe>
 
 Yea? :-) Now, why do that?  
 
-Well, because now we can have some more interactivity, like this LeakyReLU graph and some half-wave rectifiers:
+Well, because now we can have some more interactivity, like this LeakyReLU graph and some half-wave rectifiers.
+Below the graph(s), you'll see numbers in blue that you can click and drag to change the value and hence the graph!
+
 <iframe src="../../../images/iooxa_rect.html" width="800px" height="1000px" frameBorder="0"></iframe>
 
 Nice. :-)
