@@ -49,6 +49,6 @@ And here we go:
 Yea? :-) Now, why do that?  
 
 Well, because now we can have some more interactivity, like this LeakyReLU graph and some half-wave rectifiers:
-<iframe src="../../../images/iooxa_rect.html" width="700px" height="280px" frameBorder="0"></iframe>
+<iframe src="../../../images/iooxa_rect.html" width="800px" height="1000px" frameBorder="0"></iframe>
 
 Nice. :-)
