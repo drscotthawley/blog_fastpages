@@ -30,7 +30,7 @@
 <div>
   <p style="text-align:center;">
   <r-var name="freq2" value="1" format=".4"></r-var>
-  <r-svg-chart width="300", height="150" xlim="[-5, 5]" ylim="[-1.01,1.01]" xlabel="x" ylabel="sin(x) & HWR(sin(x))">
+  <r-svg-chart width="300", height="150" xlim="[-5, 5]" ylim="[-1.01,1.01]" xlabel="x" ylabel="sin(x) & FWR(sin(x))">
     <r-svg-eqn eqn="Math.sin(freq2*x)" stroke="blue" stroke-width="3" :listen="freq2"></r-svg-eqn>
       <r-svg-eqn eqn="Math.abs(Math.sin(freq2*x))" stroke="orange" stroke-width="2" :listen="fre2q"></r-svg-eqn>
   </r-svg-chart>
