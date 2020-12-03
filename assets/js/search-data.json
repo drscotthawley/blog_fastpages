@@ -2,10 +2,10 @@
   
     
         "post0": {
-            "title": "Iooxa Test",
+            "title": "Interactivity Test",
             "content": "We’re going to try interactive function-plotting via a little javascript from iooxa.dev. Here’s the code we’re about to add, escaped so you can see it. . &lt;script async=&quot;&quot; src=&quot;https://unpkg.com/@iooxa/article&quot;&gt;&lt;/script&gt; &lt;r-svg-chart width=&quot;400&quot;, height=&quot;250&quot; xlim=&quot;[-3, 3]&quot; ylim=&quot;[-0.01,3]&quot; xlabel=&quot;x&quot; ylabel=&quot;ReLU(x)&quot;&gt; &lt;r-svg-eqn eqn=&quot;Math.max(0, x)&quot; stroke=&quot;blue&quot; stroke-width=&quot;3&quot;&gt;&lt;/r-svg-eqn&gt; &lt;/r-svg-chart&gt; . If you put the above few lines into a raw HTML file and open it in a browser, you get a nice plot of a ReLU activation (click for example). . Now we’ll add that code as raw HTML and see if the plot appears here: . &lt;r-svg-chart width=”400”, height=”250” xlim=”[-3, 3]” ylim=”[-0.01,3]” xlabel=”x” ylabel=”ReLU(x)”&gt; . &lt;/r-svg-chart&gt; . How did we do? Did we get a plot? . No, for some reason Fastpages is escaping a few of the angle-brackets for line defining the r-svg-eqn object. Don’t do that, Fastpages! Leave my HTML alone! . A Hack That Works . Your images/ folder is theoretically just for images. But if you take the HTML code that you want to sneak past nbdev and put it in a file in the images/ directory, then you can load it via an iframe. So let’s put the above three lines in a file called iooxa_graph.html and save it in the images/ directory. Then we put the following in this post: . &lt;iframe src=&quot;../../../images/iooxa_graph.html&quot; width=&quot;700px&quot; height=&quot;280px&quot; frameBorder=&quot;0&quot;&gt;&lt;/iframe&gt; . And here we go: . Yea? :-) Now, why do that? . Well, because now we can have some more interactivity, like this LeakyReLU graph and some half-wave rectifiers. Below the graph(s), you’ll see numbers in blue that you can click and drag to change the value and hence the graph! . Nice. :-) .",
-            "url": "https://drscotthawley.github.io/blog/2020/11/01/Iooxa_Test.html",
-            "relUrl": "/2020/11/01/Iooxa_Test.html",
+            "url": "https://drscotthawley.github.io/blog/2020/11/01/Interactivity_Test.html",
+            "relUrl": "/2020/11/01/Interactivity_Test.html",
             "date": " • Nov 1, 2020"
         }
         
