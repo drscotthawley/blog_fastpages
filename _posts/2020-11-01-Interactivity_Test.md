@@ -1,6 +1,6 @@
 ---
-title: "Iooxa Test"
-description: "Testing Iooxa Graphing Interaction in Fastpages"
+title: "Interactivity Test"
+description: "Testing Graphing Interaction in Fastpages"
 layout: post
 toc: false
 comments: true
