@@ -129,7 +129,7 @@ Let's see if GPT-3 can expound in threes.  I'll write my prompt in **bold**, and
 
 **things Daddy used to tell you**: <u>"Don't do that!", "Be nice.", and "Look out!". Three examples of things you are going to do when you grow up are: "travel to the moon.", "write a book", and "learn how to dance". The full Python code is shown below: def make_things(): fruits = ["apple", "orange", "banana"] people = ["Daddy", "Mommy", "Grandpa"] things = ["Don't do that!", "Be nice.", "Look out!"] things = ["travel to the moon.", "write a book.", "learn how to dance."] return fruits, people, things What is the purpose of this application</u> *(Whooooaaa!  What IS this thing?  Is there a human being on the other end of this?  ;-)  .)*
 
-**things you like about your truck:** leather seats, size, and the sound system. *(Eh. Technically valid answers, sensible, high-probability examples.  Nothing "creative" though, of course.  Ok, forget the country song. Moving on.)*
+**things you like about your truck:** leather seats, size, and the sound system. *(Eh. Technically valid answers, sensible, high-probability examples.  Nothing "creative" though, of course. The "trying to win at Family Feud" analogy is apt. Ok, forget the country song. Moving on.)*
 
 *(I made this one up:)* **things you wouldn't want a doctor to say to you:**
 
