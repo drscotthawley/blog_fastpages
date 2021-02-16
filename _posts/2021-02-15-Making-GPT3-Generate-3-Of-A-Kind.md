@@ -32,107 +32,109 @@ Now, with GPT-3 access, we can begin to see how this newer, bigger model perform
 
 Let's see if GPT-3 can expound in threes.  I'll write my prompt in **bold**, and then <u>underlined</u> text will show the model's completion/output. *Additional commentary from me will be in italics.*
 
-**This application generates example members of a category.  Examples of fruits are apples, oranges and bananas.  Examples of birds are** <u>quails, crows and sparrows</u>.  *(Whoa! Not bad! This is with the "davinci" model, with Response Length = 10 tokens, Temperature = 0.7, Top P = 1, etc..all defaults.)*
+**This application generates example members of a category. Examples of fruits are apples, oranges and bananas. Examples of birds are** <u>quails, crows and sparrows</u>.  *(Whoa! Not bad! This is with the "davinci" model, with Response Length = 10 tokens, Temperature = 0.7, Top P = 1, etc..all defaults.)*
 
-**This application generates three example members of a category.  Three examples of fruits are apples, oranges and bananas.  Three examples of dogs are** <u>Labrador, Rottweiler and Husky</u>. *(Had to increase response length to 15 and then truncate the extra text which read "The input is")*
+*(Ok, I wasn't always getting the examples when I'd re-try, so let's make the "three" explicit:)*
 
-*(For the following, just assume that I'm truncating unwanted extra text. Also, I'll only show the last line of each prompt: The "This application..." and the fruits example are in each prompt, I just won't print them, so as to save space:)*
+**This application generates three example members of a category. Three examples of  fruits are apples, oranges and bananas. Three examples of dogs are** <u>Labrador, Rottweiler and Husky</u>. *(Had to increase response length to 15 and then truncate the extra text which read "The input is")*
 
-**Three examples of fish are** <u>salmon, bass and tuna.</u>
+*(For the following, just assume that I'm truncating unwanted extra text. Also, to save space, I'll refrain from printing the entire prompt I use, and just list the categories...)*
 
-**Three examples of U.S. Presidents are** <u>George Washington, Franklin Delano Roosevelt and Ronald Reagan</u>  *(Whoah, this one triggered the "This completion may contain sensitive content" warning!)*
+**fish:** <u>salmon, bass and tuna.</u>
 
-**Three examples of philosophers are** <u>Plato, Descartes and Kant.</u>
+**U.S. Presidents:** <u>George Washington, Franklin Delano Roosevelt and Ronald Reagan</u>  *(Whoah, this one triggered the "This completion may contain sensitive content" warning!)*
 
-**Three examples of things you'd find in a refrigerator are** <u>milk, orange juice and apple juice.</u> (*Sure. But since it's a random sample, let's go again:*) **Three examples of things you find in a refrigerator are** <u>milk, cheese and vegetable salsa.</u> *(Not bad!)*
+**philosophers:** <u>Plato, Descartes and Kant.</u>
 
-**Three examples of things you'd find under a bed are** a <u>mouse, a handkerchief and a ball.</u> *(Ok, I guess...why not? Again:)*  **Three examples of things you'd find under a bed are** s<u>ocks, shoes and books.</u> *(ok...I can buy that.)*
+**things you'd find in a refrigerator:** <u>milk, orange juice and apple juice.</u> (*Sure. But since it's a random sample, let's go again:*)  <u>milk, cheese and vegetable salsa.</u> *(Not bad!)*
 
- **Three examples of 80's power ballads are**: <u>"Faith" by George Michael, "I Want to Know What Love Is" by Foreigner and "The Power of Love" by Huey Lewis and the News.</u> (uh...if you say so. At least these are all in the 80s!)*
+**things you'd find under a bed:** a <u>mouse, a handkerchief and a ball.</u> *(Ok, I guess...why not? Again:)*  <u>socks, shoes and books.</u> *(ok...I can buy that.)*
 
-**Three examples of household chores are** <u>cleaning, cooking and sweeping.</u> *(or again:)* **Three examples of household chores are** <u>washing, cleaning and ironing.  Three examples of sports are swimming, running and cycling.</u> *(The model added that second sentence all by itself!  Note all of these are gerunds, i.e. -ing words; it didn't say, for example, something odd/wrong like "clean, mop, broom")*
+ **80's power ballads:**: <u>"Faith" by George Michael, "I Want to Know What Love Is" by Foreigner and "The Power of Love" by Huey Lewis and the News.</u> (uh...if you say so. At least these are all in the 80s!)*
 
-**Three examples of things you don't want your mom to know about you are**: <u>a. how drunk you were at the last party b. that you smoke pot c. that you plagiarized on that paper for your English class.</u> *(Whoa, have we reached AGI? ;-) And extra points for the use of "a. b. c.")*
+**household chores:** <u>cleaning, cooking and sweeping.</u> *(or again:)* <u>washing, cleaning and ironing.  sports are swimming, running and cycling.</u> *(The model added that second sentence all by itself!  Note all of these are gerunds, i.e. -ing words; it didn't say, for example, something odd/wrong like "clean, mop, broom")*
 
-**Three examples of items you take on a trip are** <u>a car, a suitcase and a book.</u> *(You CAN "take" a car, can't you? hah! Nice linguistic anomaly.)*
+**things you don't want your mom to know about you:**: <u>a. how drunk you were at the last party b. that you smoke pot c. that you plagiarized on that paper for your English class.</u> *(Whoa, have we reached AGI? ;-) And extra points for the use of "a. b. c.")*
 
-**Three examples of fruits of the Holy Spirit are** <u>faith, hope and love.</u> *(I mean, I want share this on @FaithTechHub, so...right? LOL)*
+**items you take on a trip:** <u>a car, a suitcase and a book.</u> *(You CAN "take" a car, can't you? hah! Nice linguistic anomaly.)*
+
+**fruits of the Holy Spirit:** <u>faith, hope and love.</u> *(I mean, I want share this on @FaithTechHub, so...right? LOL)*
 
 *OK, I am sufficiently impressed and have now gone to get my official Hasbro(TM) Scattorgories game...The following prompts are from the game*
 
-**Three examples of things that are sticky are** <u>gum, tape and bubble gum.</u> *([Nooice!](https://www.youtube.com/watch?v=SAfq55aiqPc))*
+**things that are sticky:** <u>gum, tape and bubble gum.</u> *([Nooice!](https://www.youtube.com/watch?v=SAfq55aiqPc))*
 
-**Three examples of things you add water to are** <u>eggs, rice and pasta.</u> *(eggs?  Hmm...go again:)* **Three examples of things you add water to are** <u>tea, coffee and milk.</u> *(nice. ...wait, milk?)*  **Three examples of things you add water to are** <u>urns, cups, and buckets.</u> *(whoa!)*
+**things you add water to:** <u>eggs, rice and pasta.</u> *(eggs?  Hmm...go again:)* <u>tea, coffee and milk.</u> *(nice. ...wait, milk?. Again:)*  <u>urns, cups, and buckets.</u> *(whoa!)*
 
- **Three examples of terms of measurement are** <u>kilometers, centimeters and grams.  Three examples of colors are red, blue and green.  Three examples of adjectives are red, blue and green.  Three examples of verbs are run, jump</u> *(See? It will keep generating categories if you set Response Length longer. Let me make the Response Length even longer, to 200...)*
+ **terms of measurement:** <u>kilometers, centimeters and grams.  colors are red, blue and green.  adjectives are red, blue and green.  verbs are run, jump</u> *(See? It will keep generating categories if you set Response Length longer. Let me make the Response Length even longer, to 200...)*
 
-**Three examples of terms of measurement are** <u>3, 4 and 5 meters.  Three examples of angles are 20 degrees, 40 degrees and 60 degrees.  Three examples of countries are Japan, France and Germany.</u> *(Ok and beyond that it just repeats itself and/or repeats similar sentences, like: "The application generates the following sentences.  This application generates three examples of verbs.  The application generates the following sentences. This application generates three examples of pronouns." and so on)*
+**terms of measurement:** <u>3, 4 and 5 meters.  angles are 20 degrees, 40 degrees and 60 degrees.  countries are Japan, France and Germany.</u> *(Ok and beyond that it just repeats itself and/or repeats similar sentences, like: "The application generates the following sentences.  This application generates verbs.  The application generates the following sentences. This application generates pronouns." and so on)*
 
-**Three examples of things found in the ocean are** <u>fish, coral and whales.  Three examples of things found in the sky are clouds, stars and planets.</u> *(that second sentence was generated by the model)*
+**things found in the ocean:** <u>fish, coral and whales.  things found in the sky are clouds, stars and planets.</u> *(that second sentence was generated by the model)*
 
-**Three examples of things that are bright are** <u>the sun, the moon and the stars.  Three examples of things that are made of wood are tables, chairs and fences.</u> *(Again, the second sentence was generated.  Just in case it's got a heavenly-body fixation, let's go again:)*  **Three examples of things that are bright are** <u>the moon, the sun and an electric bulb.  Three examples of furniture that a household might have are a sofa, a chair and a table.</u> *(Good job!  "furniture" is a tricky category as described by George Lakoff {% cite Lakoff87 %})*
+**things that are bright:** <u>the sun, the moon and the stars.  things that are made of wood are tables, chairs and fences.</u> *(Again, the second sentence was generated.  Just in case it's got a heavenly-body fixation, let's go again:)*  **things that are bright:** <u>the moon, the sun and an electric bulb.  furniture that a household might have are a sofa, a chair and a table.</u> *(Good job!  "furniture" is a tricky category as described by George Lakoff {% cite Lakoff87 %})*
 
-**Three examples of leisure activities are** <u>simple relaxation, snowboarding and surfing.  Three examples of countries are USA, Canada and Mexico.</u> *(Not bad)*
+**leisure activities:** <u>simple relaxation, snowboarding and surfing.  countries are USA, Canada and Mexico.</u> *(Not bad)*
 
-**Three examples of reptiles/amphibians are** <u>lizards, frogs and crocodiles.</u> *(Ok, that "slashed" construction of "reptiles/amphibians" was literally what was printed on the card. I had not expected GPT-3 to pull that off, but mixing reptiles (lizards & crocodiles) with amphibians (frogs) is pretty cool.  Let's try just reptiles:)*  **Three examples of reptiles are** <u>lizards, snakes and turtles.  Three examples of mammals are cows, sheep and giraffes. In each example, the category is written in bold letters and</u> *(Ok, now that's just cheeky!)*
+**reptiles/amphibians:** <u>lizards, frogs and crocodiles.</u> *(Ok, that "slashed" construction of "reptiles/amphibians" was literally what was printed on the card. I had not expected GPT-3 to pull that off, but mixing reptiles (lizards & crocodiles) with amphibians (frogs) is pretty cool.  Let's try just reptiles:)*  **reptiles:** <u>lizards, snakes and turtles.  mammals are cows, sheep and giraffes. In each example, the category is written in bold letters and</u> *(Ok, now that's just cheeky!)*
 
-**Three examples of things you do online are** <u>search, chat and email.</u>  *(Note how it generates only things that are...arguably..verbs.  Again:)* **Three examples of things you do online are** <u>checking email, shopping and playing games.</u> *(My goodness, it's full of gerunds!)*
+**things you do online:** <u>search, chat and email.</u>  *(Note how it generates only things that are...arguably..verbs.  Again:)*  <u>checking email, shopping and playing games.</u> *(My goodness, it's full of gerunds!)*
 
 *(Yea, let's try gerunds, and let's bump the Response Length up to 145...)*
 
-**Three examples of gerunds are** <u>eating, running and swimming.  Three examples of adjectives are large, strong and important.  Three examples of verbs are write, jump and try.  Three examples of adverbs are quickly, happily and carefully.  Three examples of adjectives are big, wide and dangerous.  Three examples of prepositions are to, in and on. This application generates three examples of a category. All examples are of the same gender, number and case.  Three examples of nouns are dog, cat and bird.  Three examples of adjectives are tall, small and large.  Three examples of prepositions are by, for and under.  Three examples of adverbs are quickly, slowly and</u> *(SHOW OFF!)*
+**gerunds:** <u>eating, running and swimming.  adjectives are large, strong and important.  verbs are write, jump and try.  adverbs are quickly, happily and carefully.  adjectives are big, wide and dangerous.  prepositions are to, in and on. This application generates a category. All examples are of the same gender, number and case.  nouns are dog, cat and bird.  adjectives are tall, small and large.  prepositions are by, for and under.  adverbs are quickly, slowly and</u> *(SHOW OFF!)*
 
-**Three examples of terms of endearment are** <u>honey, sweetheart and dear.</u> *(awww)*
+**terms of endearment:** <u>honey, sweetheart and dear.</u> *(awww)*
 
 *Ok, I've now gone and grabbed my boxed copy of [The Game of Things](https://www.thegameofthings.com/).  Now, keep in mind, some of these things can be of a "suggestive" nature...*
 
-**Three examples of things you would like to do with chocolate are** <u>eat it, cook with</u>
+**things you would like to do with chocolate:** <u>eat it, cook with</u>
 <u>it and share it with your friend.</u>  *(Uh...ok, that was not at all suggestive, haha!)*
 
-**Three examples of things you shouldn't do on your honeymoon are** <u>drink, drive and shop.  Three examples of good economic policies are low interest rates, an independent central bank and low taxes. (COMPLETION MAY CONTAIN SENSITIVE CONTENT)</u>
+**things you shouldn't do on your honeymoon:** <u>drink, drive and shop.  good economic policies are low interest rates, an independent central bank and low taxes. (COMPLETION MAY CONTAIN SENSITIVE CONTENT)</u>
 *(All very sensible, though not likely to be what you'll hear if you play in a group of humans.  Note that the "goal" of the humans would be to make each other laugh, whereas GPT-3 is just trying to generate high-probability matches. It's basically playing [Family Feud](https://www.familyfeud.com/).)*
 
-**Three examples of things that warrant an apology are** <u>spilling a drink on someone, saying something rude to someone, and being late for an appointment.</u> *(Yeah, good job GPT-3!)*
+**things that warrant an apology:** <u>spilling a drink on someone, saying something rude to someone, and being late for an appointment.</u> *(Yeah, good job GPT-3!)*
 
-**Three examples of things that would get you fired are** <u>stealing, sleeping on the job and talking back to your boss.</u> *(Sure!)*
+**things that would get you fired:** <u>stealing, sleeping on the job and talking back to your boss.</u> *(Sure!)*
 
-**Three examples of things you would do if you had super-human powers are** <u>play baseball, run in the Olympics and fly to the moon.</u> *(again:)* **Three examples of things you would do if you had super-human powers are:** <u>catch a falling satellite, fly from New York to Tokyo, and make a million dollars.</u> *(Ok.  Sensible answers, and note that all the verb-usage matches.)*
+**things you would do if you had super-human powers:** <u>play baseball, run in the Olympics and fly to the moon.</u> *(again:)* <u>catch a falling satellite, fly from New York to Tokyo, and make a million dollars.</u> *(Ok.  Sensible answers, and note that all the verb-usage matches.)*
 
-**Three examples of things you shouldn't try to hold on to are** <u>a pen, a balloon and a cork.  The idea is that you decide whether the example is an example of the category, or not. You click</u>  *(Ok, wait a sec. Not sure about the pen, balloon and cork??, but it seems like it's scraped some aspect of category-naming-games and included it in here! Let's re-do a bunch)*
+**things you shouldn't try to hold on to:** <u>a pen, a balloon and a cork.  The idea is that you decide whether the example is an example of the category, or not. You click</u>  *(Ok, wait a sec. Not sure about the pen, balloon and cork??, but it seems like it's scraped some aspect of category-naming-games and included it in here! Let's re-do a bunch)*
 
-**Three examples of things you shouldn't try to hold on to are**
+**things you shouldn't try to hold on to:**
 * <u>a taxi, a dead rat and a Volkswagen.</u>
 * <u>a hot potato, a hot date and a hot temper.</u>
 * <u>a rock, a bird and a balloon.</u>
-* <u>a ball, a cat and a balloon.  Three examples of things you should be careful with are an axe, a knife and a gun.</u> *(2nd sentence is part of the output)*
+* <u>a ball, a cat and a balloon.  things you should be careful with are an axe, a knife and a gun.</u> *(2nd sentence is part of the output)*
 *  <u>a balloon, a basketball and a cactus. In the example, the Generate action is used to randomly generate a member of the category.</u> This *(Ok, kudos on the cactus. Not sure where it's getting its category-gaming info from)*
 
 *(Speaking of [Something To Hold On To](https://www.youtube.com/watch?v=5OAaa7B_GmE), let's give it an obscure music task just to see how it does:)*
 
-**Three examples of songs by Trevor Rabin are** <u>"Racing in the Street", "Big Generator" and "Can I Play With Madness".</u> *(hahaaaha. The first is a Springsteen tune, the 2nd the [title track off Yes' Big Generator album](https://www.youtube.com/watch?v=8W_VC_BgMjo) when Rabin was in the band and supposedly they all shared writing credits, and I would PAY MONEY to see Trevor Rabin cover Iron Maiden's "[Can I Play With Madness](https://www.youtube.com/watch?v=Kvqr366Op3k)"!)*
+**songs by Trevor Rabin:** <u>"Racing in the Street", "Big Generator" and "Can I Play With Madness".</u> *(hahaaaha. The first is a Springsteen tune, the 2nd the [title track off Yes' Big Generator album](https://www.youtube.com/watch?v=8W_VC_BgMjo) when Rabin was in the band and supposedly they all shared writing credits, and I would PAY MONEY to see Trevor Rabin cover Iron Maiden's "[Can I Play With Madness](https://www.youtube.com/watch?v=Kvqr366Op3k)"!)*
 
 *(BTW, if you want to hear an incredible cover of "Something To Hold On To," please give [my good friend Rex Schnelle's version a listen](https://soundcloud.com/rextunes/something-to-hold-on-to-master).  Moving on...)*
 
-**Three examples of things you shouldn't share are** <u>toothbrushes, clothes and pencils.</u> *(I did this over & over and "toothbrushes" was in every output, no matter how high I made the Temperature)*
+**things you shouldn't share:** <u>toothbrushes, clothes and pencils.</u> *(I did this over & over and "toothbrushes" was in every output, no matter how high I made the Temperature)*
 
-**Three examples of things you shouldn't try to do in the dark are** <u>play tennis, play football and drive a car.</u> *(All my retries on this were similarly boring; GPT-3 rarely surprises one with its off-the-wall hilarity)*
+**things you shouldn't try to do in the dark:** <u>play tennis, play football and drive a car.</u> *(All my retries on this were similarly boring; GPT-3 rarely surprises one with its off-the-wall hilarity)*
 
 *(Speaking of lack of originality, it's amazing how many cards in The Game of Things start with "Things you shouldn't...")*
 
-**Three examples of things you wouldn't want to find in your sandwich are** <u>a brick, a piece of glass and a dead rat.</u> *(Spot on)*
+**things you wouldn't want to find in your sandwich:** <u>a brick, a piece of glass and a dead rat.</u> *(Spot on)*
 
-*(I made this one up:)* **Three examples of things you wouldn't want a doctor to say to you are**
+*(I made this one up:)* **things you wouldn't want a doctor to say to you:**
 * <u>"you don't have anything to worry about", "one more time" and "we'll see how it goes".</u> *(The model knew to use quotation marks!  First example seems wrong.)*
 * <u>I have good news and bad news, surgery is now a day care procedure and it's not cancer, it's a tumor.</u> *(Uh.. huh?)*
-* <u>, "You're dead", "You're pregnant", "You're infected".  Three examples of things you wouldn't want a doctor to say to your wife are</u> *(Nice comma usage, and Whoa! Let's do that last one...)*
+* <u>, "You're dead", "You're pregnant", "You're infected".  things you wouldn't want a doctor to say to your wife are</u> *(Nice comma usage, and Whoa! Let's do that last one...)*
 
-**Three examples of things you wouldn't want a doctor to say to your wife are**
+**things you wouldn't want a doctor to say to your wife:**
 * <u>"I'm sorry" "I love you" and "I'm sorry I love you."</u> *(hahaha!)*
-* <u>, "I'm afraid you have cancer", "I'm afraid you have AIDS" and "I'm afraid you have syphilis."  Three examples of names of big cities are London, Paris and Los Angeles.  Three examples of books to read are "War and Peace", "Mein Kampf" and "The Catcher in the Rye".</u> *(Ok, I think it's got the hang of this 3's-generating now! LOL)*
+* <u>, "I'm afraid you have cancer", "I'm afraid you have AIDS" and "I'm afraid you have syphilis."  names of big cities are London, Paris and Los Angeles.  books to read are "War and Peace", "Mein Kampf" and "The Catcher in the Rye".</u> *(Ok, I think it's got the hang of this 3's-generating now! LOL)*
 
 *Last up: I mentioned this to my friend Heather and she asked me how long I get to 'keep playing with it'.  I said "My free trial tokens expire May 15, 2021, and I've already used 6000 out of 300k tokens. So it's basically like joining the Chuck E. Cheese club."  She said, "Nice! I wonder if you can teach it to win at skee ball 😅" Which means now I have to do...*
 
-**Three examples of things you'd find at Chuck E. Cheese are** video games, a ball pit and tokens.  Three examples of dinosaurs are Tyrannosaurus Rex, Triceratops and Velociraptor. *(NOT BAD! I'm going to go again, and if it mentions skee ball, WE'RE DONE.)*
+**things you'd find at Chuck E. Cheese:** video games, a ball pit and tokens.  dinosaurs are Tyrannosaurus Rex, Triceratops and Velociraptor. *(NOT BAD! I'm going to go again, and if it mentions skee ball, WE'RE DONE.)*
 * <u>tokens, pizza and soda.</u> *(good)*
 * <u>Chuck E. Cheese himself, his brother, and a clown.</u>  *(Ohhh-kay that's enough for now! haha)*
 
@@ -145,18 +147,18 @@ That's not exactly what's happened here.  Yes, GPT-3 was trained on tons of web 
 
 It is a "few shot learner" so it essentially *instantly* starts giving me outputs like what I want, without having been pre-trained on the task I want it to do.  The fact that it gets singular vs. plural right, and verbs vs. nouns, and *gerunds* correct in its answers is noteworthy.
 
-So far, this is just my first night of access to the API, and it blows away what I could get GPT-2 to do. One can try out various GPT-2 model sizes using the friendly interfaces at [HuggingFace.com](https://transformer.huggingface.co/). For the smallest GPT-2 model, I got 
+So far, this is just my first night of access to the API, and it blows away what I could get GPT-2 to do. One can try out various GPT-2 model sizes using the friendly interfaces at [HuggingFace.com](https://transformer.huggingface.co/). For the smallest GPT-2 model, I got
 
-**Three examples of dogs are** <u>cats.</u>"  *([Womp womp!](https://media.giphy.com/media/1AHESbqpjV1AFSNJdA/giphy.gif))* 
+**dogs:** <u>cats.</u>"  *([Womp womp!](https://media.giphy.com/media/1AHESbqpjV1AFSNJdA/giphy.gif))*
 
 The largest GPT-2 model size, however, with suitably adjusted parameters, <u>could generate 3 dog breeds  or 3 U.S. Presidents correctly</u>.  But any of the more "challenging," "speculative" categories (e.g. "things you might...") give even the largest GPT-2 at HuggingFace a hard time:
 
-**Three examples of things that would get you fired are** <u>the fire alarm, the bathroom sink and the bathroom mirror.</u> *(?? The other various completions generated by GPT-2 when I re-ran it were similarly irrelevant.)*
+**things that would get you fired:** <u>the fire alarm, the bathroom sink and the bathroom mirror.</u> *(?? The other various completions generated by GPT-2 when I re-ran it were similarly irrelevant.)*
 
 One further possible remark to my post here: "You realize you aren't really playing Scattergories(tm), right?" Yes of course.  Scattergories involves rolling the dice and getting a letter and having to name a bunch of things that start with that letter. *Pace.* I was never actually wanting to replicate the Scattergories(tm) game engine itself, rather the name of the game was a placeholder for the idea of "categorical reasoning."  Now...could we get GPT-3 to *actually* *play* Scattergories? ...I'm not sure I even ...care?   I'm not sure how you'd write the prompt for that, but I'm open to trying it.  For now, at just my first night of trying things out, this seems remarkably encouraging.
 
 Which means....based on my experience with AI models: If the initial trial is encouraging, that means there's a TON of failure modes you just haven't discovered yet! ;-)  We can probe for those too, another time -- so far I've only used up 1.6% of my free tokens.   There's a lot more that one can do to use the API, and so far I haven't used any of the advanced prompt-making utilities. **Still, for the first foray into the OpenAI API, this was a GREAT experience!**
 
-**P.S.-** OH GEEZ I JUST NOTICED THAT I TAUGHT GPT-3 TO *NOT* USE THE OXFORD COMMA! May a large millstone be tied around my neck...     **Wait wait!** : All that was needed to get it to start generating Oxford-comma-style examples was to add the comma to my one example: "apples, oranges, and bananas." Wow. 
+**P.S.-** OH GEEZ I JUST NOTICED THAT I TAUGHT GPT-3 TO *NOT* USE THE OXFORD COMMA! May a large millstone be tied around my neck...     **Wait wait!** : All that was needed to get it to start generating Oxford-comma-style examples was to add the comma to my one example: "apples, oranges, and bananas." Wow.
 
 ## References
