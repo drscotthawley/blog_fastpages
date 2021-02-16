@@ -5,7 +5,7 @@ layout: post
 toc: true
 comments: true
 categories: [classification, scottergories, gpt-3]
-image:
+image: images/gpt3-3s.png
 date: 2021-02-15 19:33:31
 hide: false
 search_exclude: false
