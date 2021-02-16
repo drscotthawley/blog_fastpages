@@ -123,9 +123,14 @@ Let's see if GPT-3 can expound in threes.  I'll write my prompt in **bold**, and
 
 **things you wouldn't want to find in your sandwich:** <u>a brick, a piece of glass and a dead rat.</u> *(Spot on)*
 
-**things you remember about growing up on the farm:** mud, worms, and tractors. *(ok, sure)*
+*(As a resident of Nashville, I'm curious to see if we can make it write a country song, which are mostly just lists of nostalgia for bygone rural America...)*
+
+**things you remember about growin' up on the farm:** <u>mud, worms, and tractors.</u> *(ok, sure)*
+
+**things Daddy used to tell you**: <u>"Don't do that!", "Be nice.", and "Look out!". Three examples of things you are going to do when you grow up are: "travel to the moon.", "write a book", and "learn how to dance". The full Python code is shown below: def make_things(): fruits = ["apple", "orange", "banana"] people = ["Daddy", "Mommy", "Grandpa"] things = ["Don't do that!", "Be nice.", "Look out!"] things = ["travel to the moon.", "write a book.", "learn how to dance."] return fruits, people, things What is the purpose of this application</u> *(Whooooaaa!  What IS this thing?  Is there a human being on the other end of this?  ;-)  Ok, forget the country song. Moving on.)*
 
 *(I made this one up:)* **things you wouldn't want a doctor to say to you:**
+
 * <u>"you don't have anything to worry about", "one more time" and "we'll see how it goes".</u> *(The model knew to use quotation marks!  First example seems wrong.)*
 * <u>I have good news and bad news, surgery is now a day care procedure and it's not cancer, it's a tumor.</u> *(Uh.. huh?)*
 * <u>, "You're dead", "You're pregnant", "You're infected". Three examples of things you wouldn't want a doctor to say to your wife are</u> *(Nice comma usage, and Whoa! Let's do that last one...)*
