@@ -157,4 +157,6 @@ One further possible remark to my post here: "You realize you aren't really play
 
 Which means....based on my experience with AI models: If the initial trial is encouraging, that means there's a TON of failure modes you just haven't discovered yet! ;-)  We can probe for those too, another time -- so far I've only used up 1.6% of my free tokens.   There's a lot more that one can do to use the API, and so far I haven't used any of the advanced prompt-making utilities. **Still, for the first foray into the OpenAI API, this was a GREAT experience!**
 
+**P.S.-** OH GEEZ I JUST NOTICED THAT I TAUGHT GPT-3 TO *NOT* USE THE OXFORD COMMA! May a large millstone be tied around my neck...
+
 ## References
