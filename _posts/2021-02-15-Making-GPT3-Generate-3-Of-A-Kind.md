@@ -123,7 +123,7 @@ Let's see if GPT-3 can expound in threes.  I'll write my prompt in **bold**, and
 
 **things you wouldn't want to find in your sandwich:** <u>a brick, a piece of glass and a dead rat.</u> *(Spot on)*
 
-*(As a resident of Nashville, I'm curious to see if we can make it write a country song; most country songs are just lists of nostalgia for bygone rural America...)*
+*(As a resident of Nashville, I'm curious to see if we can make it write a country song; many country songs are just lists of nostalgia for bygone rural America...)*
 
 **things you remember about growin' up on the farm:** <u>mud, worms, and tractors.</u> *(ok, sure)*
 
