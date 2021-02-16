@@ -131,7 +131,7 @@ Let's see if GPT-3 can expound in threes.  I'll write my prompt in **bold**, and
 
 **things you like about your truck:** <u>leather seats, size, and the sound system.</u> *(Eh. Technically valid answers, sensible, high-probability examples.  Nothing "creative" though, of course. Again:)* <u>safety rating, engine, and CD player.</u> *(The "trying to win at Family Feud" analogy is apt. Ok, forget the country song. Moving on.)*
 
-*(I made this one up:)* **things you wouldn't want a doctor to say to you:**
+**things you wouldn't want a doctor to say to you:**
 
 * <u>"you don't have anything to worry about", "one more time" and "we'll see how it goes".</u> *(The model knew to use quotation marks!  First example seems wrong.)*
 * <u>I have good news and bad news, surgery is now a day care procedure and it's not cancer, it's a tumor.</u> *(Uh.. huh?)*
