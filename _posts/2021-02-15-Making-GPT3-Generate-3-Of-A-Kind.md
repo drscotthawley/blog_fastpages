@@ -34,7 +34,7 @@ Let's see if GPT-3 can expound in threes.  I'll write my prompt in **bold**, and
 
 **This application generates example members of a category. Examples of fruits are apples, oranges and bananas. Examples of birds are** <u>quails, crows and sparrows</u>.  *(Whoa! Not bad! This is with the "davinci" model, with Response Length = 10 tokens, Temperature = 0.7, Top P = 1, etc..all defaults.)*
 
-*(Ok, I wasn't always getting the examples when I'd re-try, so let's make the "three" explicit:)*
+*(Ok, I wasn't always getting three examples when I'd re-try, so let's make the "three" explicit:)*
 
 **This application generates three example members of a category. Three examples of  fruits are apples, oranges and bananas. Three examples of dogs are** <u>Labrador, Rottweiler and Husky</u>. *(Had to increase response length to 15 and then truncate the extra text which read "The input is")*
 
