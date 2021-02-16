@@ -107,7 +107,7 @@ Let's see if GPT-3 can expound in threes.  I'll write my prompt in **bold**, and
 * <u>a hot potato, a hot date and a hot temper.</u>
 * <u>a rock, a bird and a balloon.</u>
 * <u>a ball, a cat and a balloon. Three examples of things you should be careful with are an axe, a knife and a gun.</u> *(2nd sentence is part of the output)*
-*  <u>a balloon, a basketball and a cactus. In the example, the Generate action is used to randomly generate a member of the category.</u> This *(Ok, kudos on the cactus. Not sure where it's getting its category-gaming info from)*
+*  <u>a balloon, a basketball and a cactus. In the example, the Generate action is used to randomly generate a member of the category. This</u> *(Ok, kudos on the cactus. Not sure where it's getting its category-gaming info from)*
 
 *(Speaking of [Something To Hold On To](https://www.youtube.com/watch?v=5OAaa7B_GmE), let's give it an obscure music task just to see how it does:)*
 
@@ -122,6 +122,8 @@ Let's see if GPT-3 can expound in threes.  I'll write my prompt in **bold**, and
 *(Speaking of lack of originality, it's amazing how many cards in The Game of Things start with "Things you shouldn't...")*
 
 **things you wouldn't want to find in your sandwich:** <u>a brick, a piece of glass and a dead rat.</u> *(Spot on)*
+
+**things you remember about growing up on the farm:** mud, worms, and tractors. *(ok, sure)*
 
 *(I made this one up:)* **things you wouldn't want a doctor to say to you:**
 * <u>"you don't have anything to worry about", "one more time" and "we'll see how it goes".</u> *(The model knew to use quotation marks!  First example seems wrong.)*
