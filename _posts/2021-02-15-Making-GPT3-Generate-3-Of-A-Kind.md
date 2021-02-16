@@ -139,7 +139,7 @@ Let's see if GPT-3 can expound in threes.  I'll write my prompt in **bold**, and
 * <u>Chuck E. Cheese himself, his brother, and a clown.</u>  *(Ohhh-kay that's enough for now! haha)*
 
 ## Discussion (Preliminary Thoughts)
-"Surely this is not a very 'intelligent' of a task," you say.  "All it does is generate words that have some suitably high probability of being associated with the word in the prompt."  "Since it was trained on the internet, such lists-of-things-in-a-category probably already exist as web pages somewhere anyway"
+"Surely this is not a very 'intelligent' task," you say.  "All it does is generate words that have some suitably high probability of being associated with the word in the prompt."  "Since it was trained on the internet, such lists-of-things-in-a-category probably already exist as web pages somewhere anyway"
 
 Right, one could imagine scraping a ton of web pages for text and then training some kind of non-Transformer-based method, maybe even a Bayesian bag-of-words model (like in a simple spam detector) to rank "related words" and pick the top choices.
 
