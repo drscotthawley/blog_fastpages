@@ -22,7 +22,7 @@ In June of 2020, I applied for OpenAI API "GPT-3" {% cite gpt3 %} access immedia
 >
 > One concrete problem related to this effort is the fairly well-posed question of to what extent sophisticated language models contain sufficient categorical ‘knowledge’ and ‘reasoning’ capacity to play (or officiate) a game such as “Scattergories” — in which unusual, **never-before-seen** categories are introduced during play (e.g., “things you’d find under a bed”). Humans do this fairly well. My experiments so far with Word2Vec embeddings and with GPT-2 (via the [HuggingFace API](https://transformer.huggingface.co/)) have indicated that both are poorly-suited to this task. I am applying for access to the OpenAI API because I’m curious to see how GPT-3 fares. Categorical reasoning is foundational to intelligence, so such a task is relevant for both for understanding human intelligence, as well as for advancing the development of general artificial intelligence" [the mission of OpenAI].
 
-(For examples of just how poorly GPT-2—the older, smaller model—performs at this task, see the "Discussion" below.  Believe me when I say the results were disappointing.)
+For examples of just how poorly GPT-2—the older, smaller model—performs at this task, see the "Discussion" below.  Believe me when I say the results were disappointing.
 
 Now, with GPT-3 access, we can begin to see how this newer, bigger model performs.  The essence of using the API is the "Prompt".  So, my job is to craft prompts, and then see how well the model responds.  My first experiment with the API involves getting the model to generate "three of a kind":
 
@@ -30,13 +30,13 @@ Now, with GPT-3 access, we can begin to see how this newer, bigger model perform
 
 ## Three of a Kind
 
-Let's see if GPT-3 can expound in threes.  I'll write my prompt in **bold**, and then <u>underlined</u> text will show the model's completion/output. *Additional commentary from me will be in italics.*
+Let's see if GPT-3 can expound in threes.  **I'll write my prompt in bold**, and then <u>underlinedtext will show the model's completion/output</u>. *(Additional commentary from me will be in italics.)*
 
 **This application generates example members of a category. Examples of fruits are apples, oranges and bananas. Examples of birds are** <u>quails, crows and sparrows</u>.  *(Whoa! Not bad! This is with the "davinci" model, with Response Length = 10 tokens, Temperature = 0.7, Top P = 1, etc..all defaults.)*
 
 *(Ok, I wasn't always getting three examples when I'd re-try, so let's make the "three" explicit:)*
 
-**This application generates three example members of a category. Three examples of  fruits are apples, oranges and bananas. Three examples of dogs are** <u>Labrador, Rottweiler and Husky</u>. *(Had to increase response length to 15 and then truncate the extra text which read "The input is")*
+**This application generates three example members of a category. Three examples of fruits are apples, oranges and bananas. Three examples of dogs are** <u>Labrador, Rottweiler and Husky</u>. *(Had to increase response length to 15 and then truncate the extra text which read "The input is")*
 
 *(For the following, just assume that I'm truncating unwanted extra text. Also, to save space, I'll refrain from printing the entire prompt I use, and just list the categories...)*
 
@@ -66,13 +66,13 @@ Let's see if GPT-3 can expound in threes.  I'll write my prompt in **bold**, and
 
 **things you add water to:** <u>eggs, rice and pasta.</u> *(eggs?  Hmm...go again:)* <u>tea, coffee and milk.</u> *(nice. ...wait, milk?. Again:)*  <u>urns, cups, and buckets.</u> *(whoa!)*
 
- **terms of measurement:** <u>kilometers, centimeters and grams. Three examples of  colors are red, blue and green. Three examples of  adjectives are red, blue and green. Three examples of  verbs are run, jump</u> *(See? It will keep generating categories if you set Response Length longer. Let me make the Response Length even longer, to 200...)*
+ **terms of measurement:** <u>kilometers, centimeters and grams. Three examples of colors are red, blue and green. Three examples of adjectives are red, blue and green. Three examples of verbs are run, jump</u> *(See? It will keep generating categories if you set Response Length longer. Let me make the Response Length even longer, to 200...)*
 
-**terms of measurement:** <u>3, 4 and 5 meters.  angles are 20 degrees, 40 degrees and 60 degrees. Three examples of  countries are Japan, France and Germany.</u> *(Ok and beyond that it just repeats itself and/or repeats similar sentences, like: "The application generates the following sentences.  This application generates verbs.  The application generates the following sentences. This application generates pronouns." and so on)*
+**terms of measurement:** <u>3, 4 and 5 meters. Three examples of angles are 20 degrees, 40 degrees and 60 degrees. Three examples of countries are Japan, France and Germany.</u> *(Ok and beyond that it just repeats itself and/or repeats similar sentences, like: "The application generates the following sentences.  This application generates verbs.  The application generates the following sentences. This application generates pronouns." and so on)*
 
 **things found in the ocean:** <u>fish, coral and whales. Three examples of things found in the sky are clouds, stars and planets.</u> *(that second sentence was generated by the model)*
 
-**things that are bright:** <u>the sun, the moon and the stars. Three examples of  things that are made of wood are tables, chairs and fences.</u> *(Again, the second sentence was generated.  Just in case it's got a heavenly-body fixation, let's go again:)*  **things that are bright:** <u>the moon, the sun and an electric bulb. Three examples of  furniture that a household might have are a sofa, a chair and a table.</u> *(Good job!  "furniture" is a tricky category as described by George Lakoff {% cite Lakoff87 %})*
+**things that are bright:** <u>the sun, the moon and the stars. Three examples of things that are made of wood are tables, chairs and fences.</u> *(Again, the second sentence was generated.  Just in case it's got a heavenly-body fixation, let's go again:)*  **things that are bright:** <u>the moon, the sun and an electric bulb. Three examples of furniture that a household might have are a sofa, a chair and a table.</u> *(Good job!  "furniture" is a tricky category as described by George Lakoff {% cite Lakoff87 %})*
 
 **leisure activities:** <u>simple relaxation, snowboarding and surfing.  countries are USA, Canada and Mexico.</u> *(Not bad)*
 
