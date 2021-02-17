@@ -137,7 +137,7 @@ ol li li li{
 <li class="toc-entry toc-h2"><a href="#three-of-a-kind">Three of a Kind</a></li>
 <li class="toc-entry toc-h2"><a href="#discussion-preliminary-thoughts">Discussion (Preliminary Thoughts)</a></li>
 <li class="toc-entry toc-h2"><a href="#references">References</a></li>
-</ul><p>3127 words,  17 minute read, 11 paperback pages</p>
+</ul><p>3129 words,  17 minute read, 11 paperback pages</p>
 
 <p><em>I’m a computational physicist who spent most of his life only interested in curve-fitting, i.e. “regression.” But  recently I’ve become fascinated in “classification” to the point where I’m in the process of writing a popular-level book on classification and categories.  (For a couple recent works of mine that include some of this, see <a class="citation" href="#hawleywhoserules">[1]</a> and <a class="citation" href="#hawleykruger">[2]</a>.)</em></p>
 
@@ -149,20 +149,20 @@ ol li li li{
   <p>One concrete problem related to this effort is the fairly well-posed question of to what extent sophisticated language models contain sufficient categorical ‘knowledge’ and ‘reasoning’ capacity to play (or officiate) a game such as “Scattergories” — in which unusual, <strong>never-before-seen</strong> categories are introduced during play (e.g., “things you’d find under a bed”). Humans do this fairly well. My experiments so far with Word2Vec embeddings and with GPT-2 (via the <a href="https://transformer.huggingface.co/">HuggingFace API</a>) have indicated that both are poorly-suited to this task. I am applying for access to the OpenAI API because I’m curious to see how GPT-3 fares. Categorical reasoning is foundational to intelligence, so such a task is relevant for both for understanding human intelligence, as well as for advancing the development of general artificial intelligence” [the mission of OpenAI].</p>
 </blockquote>
 
-<p>(For examples of just how poorly GPT-2—the older, smaller model—performs at this task, see the “Discussion” below.  Believe me when I say the results were disappointing.)</p>
+<p>For examples of just how poorly GPT-2—the older, smaller model—performs at this task, see the “Discussion” below.  Believe me when I say the results were disappointing.</p>
 
 <p>Now, with GPT-3 access, we can begin to see how this newer, bigger model performs.  The essence of using the API is the “Prompt”.  So, my job is to craft prompts, and then see how well the model responds.  My first experiment with the API involves getting the model to generate “three of a kind”:</p>
 
 <h2 id="three-of-a-kind">
 <a class="anchor" href="#three-of-a-kind" aria-hidden="true"><span class="octicon octicon-link"></span></a>Three of a Kind</h2>
 
-<p>Let’s see if GPT-3 can expound in threes.  I’ll write my prompt in <strong>bold</strong>, and then <u>underlined</u> text will show the model’s completion/output. <em>Additional commentary from me will be in italics.</em></p>
+<p>Let’s see if GPT-3 can expound in threes.  <strong>I’ll write my prompt in bold</strong>, and then <u>underlinedtext will show the model's completion/output</u>. <em>(Additional commentary from me will be in italics.)</em></p>
 
 <p><strong>This application generates example members of a category. Examples of fruits are apples, oranges and bananas. Examples of birds are</strong> <u>quails, crows and sparrows</u>.  <em>(Whoa! Not bad! This is with the “davinci” model, with Response Length = 10 tokens, Temperature = 0.7, Top P = 1, etc..all defaults.)</em></p>
 
 <p><em>(Ok, I wasn’t always getting three examples when I’d re-try, so let’s make the “three” explicit:)</em></p>
 
-<p><strong>This application generates three example members of a category. Three examples of  fruits are apples, oranges and bananas. Three examples of dogs are</strong> <u>Labrador, Rottweiler and Husky</u>. <em>(Had to increase response length to 15 and then truncate the extra text which read “The input is”)</em></p>
+<p><strong>This application generates three example members of a category. Three examples of fruits are apples, oranges and bananas. Three examples of dogs are</strong> <u>Labrador, Rottweiler and Husky</u>. <em>(Had to increase response length to 15 and then truncate the extra text which read “The input is”)</em></p>
 
 <p><em>(For the following, just assume that I’m truncating unwanted extra text. Also, to save space, I’ll refrain from printing the entire prompt I use, and just list the categories…)</em></p>
 
@@ -192,13 +192,13 @@ ol li li li{
 
 <p><strong>things you add water to:</strong> <u>eggs, rice and pasta.</u> <em>(eggs?  Hmm…go again:)</em> <u>tea, coffee and milk.</u> <em>(nice. …wait, milk?. Again:)</em>  <u>urns, cups, and buckets.</u> <em>(whoa!)</em></p>
 
-<p><strong>terms of measurement:</strong> <u>kilometers, centimeters and grams. Three examples of  colors are red, blue and green. Three examples of  adjectives are red, blue and green. Three examples of  verbs are run, jump</u> <em>(See? It will keep generating categories if you set Response Length longer. Let me make the Response Length even longer, to 200…)</em></p>
+<p><strong>terms of measurement:</strong> <u>kilometers, centimeters and grams. Three examples of colors are red, blue and green. Three examples of adjectives are red, blue and green. Three examples of verbs are run, jump</u> <em>(See? It will keep generating categories if you set Response Length longer. Let me make the Response Length even longer, to 200…)</em></p>
 
-<p><strong>terms of measurement:</strong> <u>3, 4 and 5 meters.  angles are 20 degrees, 40 degrees and 60 degrees. Three examples of  countries are Japan, France and Germany.</u> <em>(Ok and beyond that it just repeats itself and/or repeats similar sentences, like: “The application generates the following sentences.  This application generates verbs.  The application generates the following sentences. This application generates pronouns.” and so on)</em></p>
+<p><strong>terms of measurement:</strong> <u>3, 4 and 5 meters. Three examples of angles are 20 degrees, 40 degrees and 60 degrees. Three examples of countries are Japan, France and Germany.</u> <em>(Ok and beyond that it just repeats itself and/or repeats similar sentences, like: “The application generates the following sentences.  This application generates verbs.  The application generates the following sentences. This application generates pronouns.” and so on)</em></p>
 
 <p><strong>things found in the ocean:</strong> <u>fish, coral and whales. Three examples of things found in the sky are clouds, stars and planets.</u> <em>(that second sentence was generated by the model)</em></p>
 
-<p><strong>things that are bright:</strong> <u>the sun, the moon and the stars. Three examples of  things that are made of wood are tables, chairs and fences.</u> <em>(Again, the second sentence was generated.  Just in case it’s got a heavenly-body fixation, let’s go again:)</em>  <strong>things that are bright:</strong> <u>the moon, the sun and an electric bulb. Three examples of  furniture that a household might have are a sofa, a chair and a table.</u> <em>(Good job!  “furniture” is a tricky category as described by George Lakoff <a class="citation" href="#Lakoff87">[4]</a>)</em></p>
+<p><strong>things that are bright:</strong> <u>the sun, the moon and the stars. Three examples of things that are made of wood are tables, chairs and fences.</u> <em>(Again, the second sentence was generated.  Just in case it’s got a heavenly-body fixation, let’s go again:)</em>  <strong>things that are bright:</strong> <u>the moon, the sun and an electric bulb. Three examples of furniture that a household might have are a sofa, a chair and a table.</u> <em>(Good job!  “furniture” is a tricky category as described by George Lakoff <a class="citation" href="#Lakoff87">[4]</a>)</em></p>
 
 <p><strong>leisure activities:</strong> <u>simple relaxation, snowboarding and surfing.  countries are USA, Canada and Mexico.</u> <em>(Not bad)</em></p>
 
