@@ -1,6 +1,6 @@
 ---
 title: "Scottergories: Making GPT-3 Generate 3 of a Kind"
-description: In which we test GPT-3's ability generate members of a category
+description: In which we test GPT-3's ability to generate members of a category
 layout: post
 toc: true
 comments: true
