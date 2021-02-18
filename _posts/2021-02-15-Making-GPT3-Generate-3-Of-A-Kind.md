@@ -50,9 +50,9 @@ Let's see if GPT-3 can expound in threes.  **I'll write my prompt in bold**, and
 
 **things you'd find in a refrigerator:** <u>milk, orange juice and apple juice.</u> (*Sure. But since it's a random sample, let's go again:*)  <u>milk, cheese and vegetable salsa.</u> *(Not bad!)*
 
-**things you'd find under a bed:** a <u>mouse, a handkerchief and a ball.</u> *(Ok, I guess...why not? Again:)*  <u>socks, shoes and books.</u> *(ok...I can buy that.)*
+**things you'd find under a bed:** <u>a mouse, a handkerchief and a ball.</u> *(Ok, I guess...why not? Again:)*  <u>socks, shoes and books.</u> *(ok...I can buy that.)*
 
- **80's power ballads:**: <u>"Faith" by George Michael, "I Want to Know What Love Is" by Foreigner and "The Power of Love" by Huey Lewis and the News.</u> *(uh...if you say so. At least these are all in the 80s!)*
+ **80's power ballads:** <u>"Faith" by George Michael, "I Want to Know What Love Is" by Foreigner and "The Power of Love" by Huey Lewis and the News.</u> *(uh...if you say so. At least these are all in the 80s!)*
 
 **household chores:** <u>cleaning, cooking and sweeping.</u> *(or again:)* <u>washing, cleaning and ironing. Three examples of sports are swimming, running and cycling.</u> *(The model added that second sentence all by itself!  Note all of these are gerunds, i.e. -ing words; it didn't say, for example, something odd/wrong like "clean, mop, broom")*
 
