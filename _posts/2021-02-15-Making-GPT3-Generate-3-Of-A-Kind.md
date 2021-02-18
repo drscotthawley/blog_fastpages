@@ -24,6 +24,8 @@ In June of 2020, I applied for OpenAI API "GPT-3" {% cite gpt3 %} access immedia
 
 For examples of just how poorly GPT-2—the older, smaller model—performs at this task, see the "Discussion" below.  Believe me when I say the results were disappointing.
 
+*"GPT-2 had 1.5 billion parameters. GPT-3 has 175 billion."*
+
 Now, with GPT-3 access, we can begin to see how this newer, bigger model performs.  The essence of using the API is the "Prompt".  So, my job is to craft prompts, and then see how well the model responds.  My first experiment with the API involves getting the model to generate "three of a kind":
 
 
