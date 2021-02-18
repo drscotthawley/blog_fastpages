@@ -32,7 +32,7 @@ Now, with GPT-3 access, we can begin to see how this newer, bigger model perform
 
 ## Three of a Kind
 
-Let's see if GPT-3 can expound in threes.  **I'll write my prompt in bold**, and then <u>underlinedtext will show the model's completion/output</u>. *(Additional commentary from me will be in italics.)*
+Let's see if GPT-3 can expound in threes.  **I'll write my prompt in bold**, and then <u>underlined text will show the model's completion/output</u>. *(Additional commentary from me will be in italics.)*
 
 **This application generates example members of a category. Examples of fruits are apples, oranges and bananas. Examples of birds are** <u>quails, crows and sparrows</u>.  *(Whoa! Not bad! This is with the "davinci" model, with Response Length = 10 tokens, Temperature = 0.7, Top P = 1, etc..all defaults.)*
 
