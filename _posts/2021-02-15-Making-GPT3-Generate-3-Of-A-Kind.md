@@ -84,7 +84,7 @@ Let's see if GPT-3 can expound in threes.  **I'll write my prompt in bold**, and
 
 *(Yea, let's try gerunds, and let's bump the Response Length up to 145...)*
 
-**gerunds:** <u>eating, running and swimming. Three examples of adjectives are large, strong and important. Three examples of verbs are write, jump and try. Three examples of adverbs are quickly, happily and carefully. Three examples of adjectives are big, wide and dangerous. Three examples of prepositions are to, in and on. This application generates a category. All examples are of the same gender, number and case.  nouns are dog, cat and bird. Three examples of adjectives are tall, small and large. Three examples of prepositions are by, for and under. Three examples of adverbs are quickly, slowly and</u> *(SHOW OFF!)*
+**gerunds:** <u>eating, running and swimming. Three examples of adjectives are large, strong and important. Three examples of verbs are write, jump and try. Three examples of adverbs are quickly, happily and carefully. Three examples of adjectives are big, wide and dangerous. Three examples of prepositions are to, in and on. This application generates a category. All examples are of the same gender, number and case. Three examples of nouns are dog, cat and bird. Three examples of adjectives are tall, small and large. Three examples of prepositions are by, for and under. Three examples of adverbs are quickly, slowly and</u> *(SHOW OFF!)*
 
 **terms of endearment:** <u>honey, sweetheart and dear.</u> *(awww)*
 
