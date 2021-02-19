@@ -145,7 +145,7 @@ Let's see if GPT-3 can expound in threes.  **I'll write my prompt in bold**, and
 
 *Last up: I mentioned this to my friend Heather and she asked me how long I get to 'keep playing with it'.  I said "My free trial tokens expire May 15, 2021, and I've already used 6000 out of 300k tokens. So it's basically like joining the Chuck E. Cheese club."  She said, "Nice! I wonder if you can teach it to win at skee ball 😅" Which means now I have to do...*
 
-**things you'd find at Chuck E. Cheese:** video games, a ball pit and tokens. Three examples of dinosaurs are Tyrannosaurus Rex, Triceratops and Velociraptor. *(NOT BAD! I'm going to go again, and if it mentions skee ball, WE'RE DONE.)*
+**things you'd find at Chuck E. Cheese:** <u>video games, a ball pit and tokens. Three examples of dinosaurs are Tyrannosaurus Rex, Triceratops and Velociraptor.</u> *(NOT BAD! I'm going to go again, and if it mentions skee ball, WE'RE DONE.)*
 * <u>tokens, pizza and soda.</u> *(good)*
 * <u>Chuck E. Cheese himself, his brother, and a clown.</u>  *(Ohhh-kay that's enough for now! haha)*
 
