@@ -76,7 +76,7 @@ Let's see if GPT-3 can expound in threes.  **I'll write my prompt in bold**, and
 
 **things that are bright:** <u>the sun, the moon and the stars. Three examples of things that are made of wood are tables, chairs and fences.</u> *(Again, the second sentence was generated.  Just in case it's got a heavenly-body fixation, let's go again:)*  **things that are bright:** <u>the moon, the sun and an electric bulb. Three examples of furniture that a household might have are a sofa, a chair and a table.</u> *(Good job!  "furniture" is a tricky category as described by George Lakoff {% cite Lakoff87 %})*
 
-**leisure activities:** <u>simple relaxation, snowboarding and surfing.  countries are USA, Canada and Mexico.</u> *(Not bad)*
+**leisure activities:** <u>simple relaxation, snowboarding and surfing. Three examples of countries are USA, Canada and Mexico.</u> *(Not bad)*
 
 **reptiles/amphibians:** <u>lizards, frogs and crocodiles.</u> *(Ok, that "slashed" construction of "reptiles/amphibians" was literally what was printed on the card. I had not expected GPT-3 to pull that off, but mixing reptiles (lizards & crocodiles) with amphibians (frogs) is pretty cool.  Let's try just reptiles:)*  **reptiles:** <u>lizards, snakes and turtles. Three examples of mammals are cows, sheep and giraffes. In each example, the category is written in bold letters and</u> *(Ok, now that's just cheeky!)*
 
