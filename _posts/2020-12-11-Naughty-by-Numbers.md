@@ -1,6 +1,6 @@
 ---
 title: "Naughty by Numbers: Classifications at Christmas"
-description: A snarky interactive lesson classification and surveillance
+description: A snarky interactive lesson on classification and surveillance
 layout: post
 toc: false
 comments: true
