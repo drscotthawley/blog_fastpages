@@ -28,6 +28,8 @@ For examples of just how poorly GPT-2—the older, smaller model—performs at t
 
 Now, with GPT-3 access, we can begin to see how this newer, bigger model performs.  The essence of using the API is the "Prompt".  So, my job is to craft prompts, and then see how well the model responds.  My first experiment with the API involves getting the model to generate "three of a kind":
 
+***Update*:** *Oh, hey, there's a {new paper on GPT-3 prompt-writing}[https://arxiv.org/abs/2102.07350] that came out the same day I wrote this post! Guess I'll read that soon.*
+
 
 
 ## Three of a Kind
