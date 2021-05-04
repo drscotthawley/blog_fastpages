@@ -185,7 +185,7 @@ ol li li li{
 <h2 id="Intro">
 <a class="anchor" href="#Intro" aria-hidden="true"><span class="octicon octicon-link"></span></a>Intro<a class="anchor-link" href="#Intro"> </a>
 </h2>
-<p>We're going to explore the difference between what I term "traditional" machine learning (ML) classification and so-called "zero-shot" classifiers that rely on <a href="https://arxiv.org/abs/1604.06737">embedding</a> semantically meaningful features as clusters in space by means of contrastive losses.  These "zero-shot" on "contrastive loss" methods are increasingly prevalent in the ML literature, and have the nice property that, unlike traditional ML classifiers, they don't need to be re-trained whenever new classes are introduced.  If we want to understand these embedding-based zero-shot methods, it will be helpful to consider traditional classification <em>as an embedding method</em> of it own.</p>
+<p>We're going to explore the difference between what I term "traditional" neural network (NN)-based classification and so-called "zero-shot" classifiers that rely on <a href="https://arxiv.org/abs/1604.06737">embedding</a> semantically meaningful features as clusters in space by means of contrastive losses.  These "zero-shot" (or "few shot")  or "contrastive loss" methods are <a href="https://scholar.google.com/scholar?hl=en&amp;as_sdt=0,43&amp;q=%22contrastive+loss%22&amp;scisbd=1">increasingly prevalent in the literature</a>, and have the nice property that, unlike traditional ML classifiers, they don't need to be re-trained whenever new classes are introduced.  If we want to understand these embedding-based zero-shot methods, it will be helpful to consider traditional classification <em>as an embedding method</em> of it own.</p>
 <p>There is also a strong pedagogical point that I wish to make in this post. Often in teaching ML, many authors will spend some time on binary classification via logistic regression (see my post <a href="https://hedges.belmont.edu/naughty">"Naughty by Numbers: Classifications at Christmas"</a>) and then jump <em>immediately</em> into multi-class classification where the number of classes is 10, or 1000, or 1000 and up. There is an opportunity that is being passed over. The opportunity is <em>visualization</em>, and what is being passed over is the special case of <em>three</em> classes.  (Or, as we'll see, we can squeeze an extra 4th class.)</p>
 
 </div>
@@ -210,7 +210,7 @@ ol li li li{
 <h2 id="Dimensions-and-Embeddings">
 <a class="anchor" href="#Dimensions-and-Embeddings" aria-hidden="true"><span class="octicon octicon-link"></span></a>Dimensions and Embeddings<a class="anchor-link" href="#Dimensions-and-Embeddings"> </a>
 </h2>
-<p>People who are not mathematicians, physicists, data scientists, etc. may be unaccustomed to this talk of "dimensions" when dealing with data. Let's dive in to the specific case of <em>three-class classification</em>.  Say we're developing a computer program to guess ("predict") whether  given image contains a cat, a dog, or a horse.  Traditionally the "ground truth" or "target" values are expressed as "one hot encoded vectors, such as...</p>
+<p>People who are not mathematicians, physicists, data scientists, etc. may be unaccustomed to this talk of "dimensions" when dealing with data. Let's dive in to the specific case of <em>three-class classification</em>.  Say we're developing a computer program to guess ("predict") whether a given image contains a cat, a dog, or a horse.  Traditionally the "ground truth" or "target" values are expressed as "one hot encoded vectors, such as...</p>
 <pre>   cat: (1,0,0)           dog: (0,1,0)         horse: (0,0,1)</pre>
 <p>Then given an image of an animal, our neural network model will  produce a set of 3 probabilities for each class, say...</p>
 
@@ -451,7 +451,12 @@ if (outputEl) {{
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>...the goal (of training the neural network model) is to get the predicted values to match up with the target values.</p>
+<p>...the goal (of training the neural network model) is to get the predicted values to match up with the target values. 
+</p>
+<div class="flash">
+    <svg class="octicon octicon-info" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM0 8a8 8 0 1116 0A8 8 0 010 8zm6.5-.25A.75.75 0 017.25 7h1a.75.75 0 01.75.75v2.75h.25a.75.75 0 010 1.5h-2a.75.75 0 010-1.5h.25v-2h-.25a.75.75 0 01-.75-.75zM8 6a1 1 0 100-2 1 1 0 000 2z"></path></svg>
+    <strong>Note: </strong>we’ll be using image-based examples, but for everything you’ll see in these posts, similar methods have been applied to audio, text, and tabular data.
+</div>
 
 </div>
 </div>
@@ -734,7 +739,7 @@ if (outputEl) {{
 <blockquote>
 <p><strong><em>(Optional) Math Trivia:</em></strong> <em>Typically this would involve calculating a coordinate transformation either by hand or using something like PCA to do it for us, but in this case there's a simple "hack" transformation that will get us from $x$, $y$, and $z$ in 3D to our 2D coordinates $x'$ and $y'$</em>:&gt; $$ x' = y - x,\ \ \ \ \ \ \ y' = z $$</p>
 </blockquote>
-<p>In a 2D version of our triangle plot, we can even enable "image tooltips" so that when mouse hovers over a datapoint, you can see the image it represents:</p>
+<p>In a 2D version of our triangle plot, we can even enable "image tooltips" so that when the mouse hovers over a datapoint, you can see the image it represents:</p>
 
 </div>
 </div>
@@ -775,10 +780,10 @@ if (outputEl) {{
 
 
 
-<div id="d2ed94b9-f300-439e-8866-a95bae2e483f"></div>
+<div id="b0e9d451-9e8b-4db6-85e0-4db55ac7891d"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#d2ed94b9-f300-439e-8866-a95bae2e483f');
+var element = $('#b0e9d451-9e8b-4db6-85e0-4db55ac7891d');
 
 (function(root) {
   function now() {
@@ -1099,10 +1104,10 @@ var element = $('#d2ed94b9-f300-439e-8866-a95bae2e483f');
 
 
 
-<div id="9aba250d-7445-47ea-b626-c589e38c67c2"></div>
+<div id="92a95c69-66bb-4cb3-976a-c31dce5c1a36"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#9aba250d-7445-47ea-b626-c589e38c67c2');
+var element = $('#92a95c69-66bb-4cb3-976a-c31dce5c1a36');
 (function(root) {
   function embed_document(root) {
     
@@ -1320,7 +1325,7 @@ This is a continuous variable, which makes it suitable for training models via g
 <p>In contrast to loss, <em>accuracy</em> is how many classifications the model gets correct, expressed as a percentage of the total number of data points.  This is determined by what side of the decision boundary each prediction is on.</p>
 <blockquote>
 <p><em>Accuracy</em>:% of points on the correct side of decision boundary (discontinuous)<br>
-It is instructive to view two configations of data points with <em>nearly identical loss values</em> but wildly different accuracies:</p>
+It is instructive to view two configurations of data points with <em>nearly identical loss values</em> but wildly different accuracies:</p>
 </blockquote>
 <p><strong>Nearly identical losses:</strong><br></p>
 
@@ -1420,7 +1425,7 @@ It is instructive to view two configations of data points with <em>nearly identi
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Thus vizualization can serve as valuable teaching tool.</p>
+<p>Thus visualization can serve as a valuable teaching tool.</p>
 <p>Furthermore, by letting us track which points are "not where they should be" on a plot, we can "see" the "confusion matrix" typically provided as a classification metric.  More on that in Part 2.</p>
 
 </div>
@@ -1640,7 +1645,7 @@ if (outputEl) {{
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Deep Learning experts <a href="http://yann.lecun.com/exdb/publis/pdf/hadsell-chopra-lecun-06.pdf">Raia Hadsell</a> et al. described it this way (I'm paraphrasing): Imagine all the data points are connected to each other via special kinds of springs.  Similar kinds of points are connected by attractive springs that pull them together.  Dissimilar kinds of points are connected by repulsive springs that push them further away from each other --- except these repulsive springs are special in that they only apply a force when they're close together; beyond a certain distance no repulsion occurs.  (Why this special property is stipulated is a fine point we can get to later).</p>
+<p>Deep Learning experts <a href="http://yann.lecun.com/exdb/publis/pdf/hadsell-chopra-lecun-06.pdf">Raia Hadsell</a> et al. described it this way (I'm paraphrasing): Imagine all the data points are connected to each other via special kinds of springs.  Similar kinds of points are connected by attractive springs that pull them together.  Dissimilar kinds of points are connected by repulsive springs that push them further away from each other --- except these repulsive springs are special in that they only apply a force when they're close together; beyond a certain distance (called the "margin"), no repulsion occurs.  (Why this special property is stipulated is a fine point we can get to later).</p>
 <center><img src="https://raw.githubusercontent.com/drscotthawley/talks/main/SoTL_3DClass_April_2021/images/CL_springs_transp.png" width="60%"></center>
 </div>
 </div>
@@ -1648,7 +1653,7 @@ if (outputEl) {{
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>This picture of springs is the essence of a "<a href="https://arxiv.org/abs/2004.11362">contrastive loss</a>" function. Unlike traditional NN classification where the loss is based on the "distance" to a "target" (or "ground truth") value, with these metric based methods we send in two (or even 3) data points together, and then either let them attract or repel each other, and we do this over and over and over until we reach some stopping criterion.  Eventually, what we'll have is a space that contains clusters of similar points, separated by a "margin" distance that we specify.</p>
+<p>This picture of springs is the essence of a "<a href="https://arxiv.org/abs/2004.11362">contrastive loss</a>" function. Unlike traditional NN classification where the loss is based on the "distance" to a "target" (or "ground truth") value, with these metric-based methods we send in two (or even 3) data points together, and then either let them attract or repel each other, and we do this over and over and over until we reach some stopping criterion.  Eventually, what we'll have is a space that contains clusters of similar points, separated by a "margin" distance that we specify.</p>
 
 </div>
 </div>
@@ -1703,7 +1708,7 @@ if (outputEl) {{
 </figure>
 </center>
 <p>...the model achieved an accuracy of 88 to 90% in identifying pet breeds -- here's the kicker -- that it had <strong>never seen before</strong>.  The model was trained on a completely different set of breeds, which would have stumped a traditional NN classifier, but the similarity-based embedding method was able to apply the "semantically meaningful" representations learned during training to group new pet breeds by similarity!</p>
-<p>There's an <strong>important point / "confession"</strong> that needs to be made here: These "pet breeds" results  were obtained using way more than 3 dimesions -- 128 dimenstions to be exact.  In the real world, such high dimensions are typically necessary. In part 2, we'll explore more carefully how the dimensionality of the embedding can affect our accuracy.</p>
+<p>There's an <strong>important point / "confession"</strong> that needs to be made here: These "pet breeds" results  were obtained using way more than 3 dimensions -- 128 dimensions to be exact.  In the real world, such high dimensions are typically necessary. In part 2, we'll explore more carefully how the dimensionality of the embedding can affect our accuracy.</p>
 <h2 id="Summary">
 <a class="anchor" href="#Summary" aria-hidden="true"><span class="octicon octicon-link"></span></a>Summary<a class="anchor-link" href="#Summary"> </a>
 </h2>
