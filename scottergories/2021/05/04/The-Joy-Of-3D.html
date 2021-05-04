@@ -114,7 +114,7 @@ ol li li li{
        • <span class="read-time" title="Estimated read time">
     
     
-      17 min read
+      18 min read
     
 </span></p>
 
@@ -165,6 +165,7 @@ ol li li li{
 </li>
 <li class="toc-entry toc-h2"><a href="#Metric-Based-Embedding-Methods">Metric-Based Embedding Methods </a></li>
 <li class="toc-entry toc-h2"><a href="#How-well-do-they-work?">How well do they work? </a></li>
+<li class="toc-entry toc-h2"><a href="#Summary">Summary </a></li>
 <li class="toc-entry toc-h2"><a href="#Acknowledgements:">Acknowledgements: </a></li>
 <li class="toc-entry toc-h2"><a href="#References:">References: </a></li>
 </ul><body>
@@ -209,7 +210,9 @@ ol li li li{
 <h2 id="Dimensions-and-Embeddings">
 <a class="anchor" href="#Dimensions-and-Embeddings" aria-hidden="true"><span class="octicon octicon-link"></span></a>Dimensions and Embeddings<a class="anchor-link" href="#Dimensions-and-Embeddings"> </a>
 </h2>
-<p>People who are not mathematicians, physicists, data scientists, etc. may be unaccustomed to this talk of "dimensions" when dealing with data. Let's dive in to the specific case of <em>three-class classification</em>.  Say we're developing a computer program to guess ("predict") whether  given image contains a cat, a dog, or a horse.  Traditionally we produce a set of 3 probabilities for each class, say...</p>
+<p>People who are not mathematicians, physicists, data scientists, etc. may be unaccustomed to this talk of "dimensions" when dealing with data. Let's dive in to the specific case of <em>three-class classification</em>.  Say we're developing a computer program to guess ("predict") whether  given image contains a cat, a dog, or a horse.  Traditionally the "ground truth" or "target" values are expressed as "one hot encoded vectors, such as...</p>
+<pre>   cat: (1,0,0)           dog: (0,1,0)         horse: (0,0,1)</pre>
+<p>Then given an image of an animal, our neural network model will  produce a set of 3 probabilities for each class, say...</p>
 
 </div>
 </div>
@@ -448,7 +451,7 @@ if (outputEl) {{
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>TODO:</strong> describe one-hot encoding of target values</p>
+<p>...the goal (of training the neural network model) is to get the predicted values to match up with the target values.</p>
 
 </div>
 </div>
@@ -772,10 +775,10 @@ if (outputEl) {{
 
 
 
-<div id="c3519232-d245-4b99-bfd5-80ebc444aebb"></div>
+<div id="e087afa1-576e-4332-8ab6-a1720391f33c"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#c3519232-d245-4b99-bfd5-80ebc444aebb');
+var element = $('#e087afa1-576e-4332-8ab6-a1720391f33c');
 
 (function(root) {
   function now() {
@@ -1096,10 +1099,10 @@ var element = $('#c3519232-d245-4b99-bfd5-80ebc444aebb');
 
 
 
-<div id="f00dc8c0-aa81-4782-87c7-b4569d8e65e1"></div>
+<div id="107cb098-4604-4af4-a007-1e0449d25990"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#f00dc8c0-aa81-4782-87c7-b4569d8e65e1');
+var element = $('#107cb098-4604-4af4-a007-1e0449d25990');
 (function(root) {
   function embed_document(root) {
     
@@ -1700,6 +1703,24 @@ if (outputEl) {{
 </figure>
 </center>
 <p>...the model achieved an accuracy of 88 to 90% in identifying pet breeds -- here's the kicker -- that it had <strong>never seen before</strong>.  The model was trained on a completely different set of breeds, which would have stumped a traditional NN classifier, but the similarity-based embedding method was able to apply the "semantically meaningful" representations learned during training to group new pet breeds by similarity!</p>
+<p>There's an <strong>important point / "confession"</strong> that needs to be made here: These "pet breeds" results  were obtained using way more than 3 dimesions -- 128 dimenstions to be exact.  In the real world, such high dimensions are typically necessary. In part 2, we'll explore more carefully how the dimensionality of the embedding can affect our accuracy.</p>
+<h2 id="Summary">
+<a class="anchor" href="#Summary" aria-hidden="true"><span class="octicon octicon-link"></span></a>Summary<a class="anchor-link" href="#Summary"> </a>
+</h2>
+<p>The "Joy of 3D" referred to in this blog post is about 3D as a <em>teaching tool</em> to motivate our understanding of both traditional NN classification and contrastive-loss based metric learning as <strong>both being types of embeddings.</strong></p>
+<p>The types of "triangle plots" introduced here give students a visual interpretation of "where the data points are" in terms of...</p>
+<ol>
+<li>prediction/probability values (via locations of dots)</li>
+<li>losses (~ distance from target) </li>
+<li>accuracies (which side of "the line" they're on).  <ul>
+<li>Thus it also gives you a visual representation of the "confusion matrix".</li>
+</ul>
+</li>
+<li>You can inspect the data points by mousing over the dots to see the images. <ul>
+<li>Thus it allows you to track "top losses" visually, i.e. points that are "not where they're supposed to be".</li>
+</ul>
+</li>
+</ol>
 <p>Next time, I'll walk you through the specifics and show you some actual training examples (that you can run on your own).</p>
 
 </div>
