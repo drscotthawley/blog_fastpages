@@ -114,7 +114,7 @@ ol li li li{
        • <span class="read-time" title="Estimated read time">
     
     
-      28 min read
+      27 min read
     
 </span></p>
 
@@ -172,7 +172,6 @@ ol li li li{
 </li>
 <li class="toc-entry toc-h2"><a href="#4.-FastAI-Details:-How-I-Wrote-My-First-Callback">4. FastAI Details: How I Wrote My First Callback </a></li>
 <li class="toc-entry toc-h2"><a href="#Acknowledgements:">Acknowledgements: </a></li>
-<li class="toc-entry toc-h2"><a href="#Appendix:-FastAI-Siamese-Network-Lesson-Model's-Performance-on-Them-Bears">Appendix: FastAI Siamese Network Lesson Model&#39;s Performance on Them Bears </a></li>
 </ul><body>
 <!--
 #################################################
@@ -228,69 +227,6 @@ ol li li li{
 </div>
 </div>
 </div>
-    
-    
-<div class="cell border-box-sizing code_cell rendered">
-<details class="description">
-      <summary class="btn btn-sm" data-open="Hide Code" data-close="Show Code"></summary>
-        <p></p>
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>pip install mrspuff --upgrade <span class="p">|</span> grep -v <span class="s1">'already'</span>
-
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span> 
-<span class="kn">from</span> <span class="nn">fastcore.basics</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">fastai.vision.all</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">fastai.vision.widgets</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">mrspuff.viz</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">mrspuff.utils</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">mrspuff.scrape</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-    </details>
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Collecting mrspuff
-  Downloading https://files.pythonhosted.org/packages/45/5f/4ac60074854b98f34450d0e6ca12b68ed4e4220d400a277106f8091eb724/mrspuff-0.0.23-py3-none-any.whl
-Collecting xattr
-  Downloading https://files.pythonhosted.org/packages/c1/74/1ff659d6deb1d2d6babb9483171edfa330264ae2cbf005035bb7a77b07d2/xattr-0.9.7.tar.gz
-Collecting fastai&gt;=2.3.0
-  Downloading https://files.pythonhosted.org/packages/bd/ca/bc9f4e04adcdfda1357f5c63bc67a7bf4f315883ca544726f3376b1ed068/fastai-2.4-py3-none-any.whl (187kB)
-Collecting fastcore&lt;1.4,&gt;=1.3.8
-  Downloading https://files.pythonhosted.org/packages/d8/b0/f1fbf554e0bf3c76e1bdc3b82eedfe41fcf656479586be38c64421082b1b/fastcore-1.3.20-py3-none-any.whl (53kB)
-Building wheels for collected packages: xattr
-  Building wheel for xattr (setup.py): started
-  Building wheel for xattr (setup.py): finished with status 'done'
-  Created wheel for xattr: filename=xattr-0.9.7-cp37-cp37m-linux_x86_64.whl size=30942 sha256=6f13b84472e39e7dc5e77b230b9698cbc1e3f62c669c489dd74eadb9b24a316a
-  Stored in directory: /root/.cache/pip/wheels/24/f3/87/50d449d5256131df85679d15a9c64dfc929d1f125ed1559ea8
-Successfully built xattr
-Installing collected packages: xattr, fastcore, fastai, mrspuff
-  Found existing installation: fastai 1.0.61
-    Uninstalling fastai-1.0.61:
-      Successfully uninstalled fastai-1.0.61
-Successfully installed fastai-2.4 fastcore-1.3.20 mrspuff-0.0.23 xattr-0.9.7
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-    
-
     
     
 <div class="cell border-box-sizing code_cell rendered">
@@ -559,10 +495,10 @@ Waiting on Google Drive until URLs are ready.
 
 
 
-<div id="b2c2f05f-8ee5-41ee-a3fc-2feb344d5456"></div>
+<div id="a536bb4a-7694-4525-b094-8729372e6fbc"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#b2c2f05f-8ee5-41ee-a3fc-2feb344d5456');
+var element = $('#a536bb4a-7694-4525-b094-8729372e6fbc');
 
 (function(root) {
   function now() {
@@ -883,10 +819,10 @@ var element = $('#b2c2f05f-8ee5-41ee-a3fc-2feb344d5456');
 
 
 
-<div id="2afa7617-8ea0-4a09-b2ff-8f7243e05777"></div>
+<div id="13dca93e-a20c-483f-887e-401d4048e45f"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#2afa7617-8ea0-4a09-b2ff-8f7243e05777');
+var element = $('#13dca93e-a20c-483f-887e-401d4048e45f');
 (function(root) {
   function embed_document(root) {
     
@@ -996,10 +932,10 @@ var element = $('#2afa7617-8ea0-4a09-b2ff-8f7243e05777');
 
 
 
-<div id="19fa33b3-0180-4b25-995f-5959554272ef"></div>
+<div id="42fed0c4-c41d-450f-8114-61f4417cd784"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#19fa33b3-0180-4b25-995f-5959554272ef');
+var element = $('#42fed0c4-c41d-450f-8114-61f4417cd784');
 (function(root) {
   function embed_document(root) {
     
@@ -1060,10 +996,10 @@ var element = $('#19fa33b3-0180-4b25-995f-5959554272ef');
 
 
 
-<div id="d4c26387-69e9-446e-ad1a-a068658f408f"></div>
+<div id="9d9a843c-83f2-403b-bc26-b2f37c5bdad3"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#d4c26387-69e9-446e-ad1a-a068658f408f');
+var element = $('#9d9a843c-83f2-403b-bc26-b2f37c5bdad3');
 (function(root) {
   function embed_document(root) {
     
@@ -1124,10 +1060,10 @@ var element = $('#d4c26387-69e9-446e-ad1a-a068658f408f');
 
 
 
-<div id="e2b20991-c341-4439-a1a8-1b92b7200627"></div>
+<div id="931739ac-f044-4a7e-83dd-3b46b920132e"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#e2b20991-c341-4439-a1a8-1b92b7200627');
+var element = $('#931739ac-f044-4a7e-83dd-3b46b920132e');
 (function(root) {
   function embed_document(root) {
     
@@ -1188,10 +1124,10 @@ var element = $('#e2b20991-c341-4439-a1a8-1b92b7200627');
 
 
 
-<div id="cd74448c-7352-4e44-b92f-a8dd4b8be36a"></div>
+<div id="20e726de-2f92-40b6-ad39-e127001f8292"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#cd74448c-7352-4e44-b92f-a8dd4b8be36a');
+var element = $('#20e726de-2f92-40b6-ad39-e127001f8292');
 (function(root) {
   function embed_document(root) {
     
@@ -13720,17 +13656,6 @@ if (outputEl) {{
 <a class="anchor" href="#Acknowledgements:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Acknowledgements:<a class="anchor-link" href="#Acknowledgements:"> </a>
 </h2>
 <p>Special thanks to <a href="https://twitter.com/TheZachMueller">Zach Mueller</a> for assistance in interfacing with fastai!</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Appendix:-FastAI-Siamese-Network-Lesson-Model's-Performance-on-Them-Bears">
-<a class="anchor" href="#Appendix:-FastAI-Siamese-Network-Lesson-Model's-Performance-on-Them-Bears" aria-hidden="true"><span class="octicon octicon-link"></span></a>Appendix: FastAI Siamese Network Lesson Model's Performance on Them Bears<a class="anchor-link" href="#Appendix:-FastAI-Siamese-Network-Lesson-Model's-Performance-on-Them-Bears"> </a>
-</h2>
-<p>Clunky title, sorry it's a blog post.</p>
 
 </div>
 </div>
