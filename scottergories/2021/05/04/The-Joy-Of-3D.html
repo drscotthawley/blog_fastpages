@@ -787,10 +787,10 @@ if (outputEl) {{
 
 
 
-<div id="bf06451a-3f64-4070-80ac-82ce9c01807a"></div>
+<div id="ca81c2cb-1e47-421b-aa50-395e80f82f51"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#bf06451a-3f64-4070-80ac-82ce9c01807a');
+var element = $('#ca81c2cb-1e47-421b-aa50-395e80f82f51');
 
 (function(root) {
   function now() {
@@ -1111,10 +1111,10 @@ var element = $('#bf06451a-3f64-4070-80ac-82ce9c01807a');
 
 
 
-<div id="032c38eb-ae6d-4437-89e0-356759649c3a"></div>
+<div id="382d84af-8a12-4332-ab99-af1e72cadee1"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#032c38eb-ae6d-4437-89e0-356759649c3a');
+var element = $('#382d84af-8a12-4332-ab99-af1e72cadee1');
 (function(root) {
   function embed_document(root) {
     
@@ -1158,7 +1158,7 @@ var element = $('#032c38eb-ae6d-4437-89e0-356759649c3a');
 <h2 id="How-Traditional-NN-Classification-Training-Proceeds">
 <a class="anchor" href="#How-Traditional-NN-Classification-Training-Proceeds" aria-hidden="true"><span class="octicon octicon-link"></span></a>How Traditional NN Classification Training Proceeds<a class="anchor-link" href="#How-Traditional-NN-Classification-Training-Proceeds"> </a>
 </h2>
-<p>When we start training our classifier, the data (points) get mapped all over the place; it's a big jumble.  The classifier will ultimately be scored by how many points lie on the "correct side of the line" for the class boundaries, but that's a discontinuous (either-or) criterion that's no good for training neural networks.  So instead we use a loss function and a gradient descent on this loss function to try to <em>minimize the distance</em> from the mapped point to the "pole" of the target class point.  In other words, training proceeds by trying to <em>collapse all the data points</em> onto the 3 (or 4) points corresponding to 100% certainty about each class prediction:  The following a cartoon example time-lapse of ten training steps (we'll show <em>real</em> NN training in Part 2):</p>
+<p>When we start training our classifier, the data (points) get mapped all over the place; it's a big jumble.  The classifier will ultimately be scored by how many points lie on the "correct side of the line" for the class boundaries, but that's a discontinuous (either-or) criterion that's no good for training neural networks.  So instead we use a loss function and a gradient descent on this loss function to try to <em>minimize the distance</em> from the mapped point to the "pole" of the target class point.  In other words, training proceeds by trying to <em>collapse all the data points</em> onto the 3 (or 4) points corresponding to 100% certainty about each class prediction:  The following a cartoon example time-lapse of ten training steps (we'll show <em>real</em> NN training in <a href="https://drscotthawley.github.io/blog/scottergories/2021/06/17/Contrasting-Contrastive-Loss.html">Part 2</a> of this blog series):</p>
 
 </div>
 </div>
@@ -1433,7 +1433,7 @@ It is instructive to view two configurations of data points with <em>nearly iden
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Thus visualization can serve as a valuable teaching tool.</p>
-<p>Furthermore, by letting us track which points are "not where they should be" on a plot, we can "see" the "confusion matrix" typically provided as a classification metric.  More on that in Part 2.</p>
+<p>Furthermore, by letting us track which points are "not where they should be" on a plot, we can "see" the "confusion matrix" typically provided as a classification metric.  More on that in <a href="https://drscotthawley.github.io/blog/scottergories/2021/06/17/Contrasting-Contrastive-Loss.html">Part 2</a>.</p>
 
 </div>
 </div>
@@ -1636,7 +1636,7 @@ if (outputEl) {{
 <blockquote>
 <p>"Entity embedding not only reduces memory usage and speeds up neural networks compared with one-hot encoding, but more importantly by mapping similar values close to each other in the embedding space it reveals the intrinsic properties of the categorical variables. We applied it successfully in a recent Kaggle competition and were able to reach the third position with relative simple features."</p>
 </blockquote>
-<p>As far as our own demonstrations, we'll explore that in Part 2. As a teaser, here's an image from my own <a href="https://colab.research.google.com/drive/1rSTOsj4coDu9mZCw57S7R6jBipm462R2?usp=sharing">Contrastive Loss Modification</a> of the <a href="https://docs.fast.ai/tutorial.siamese.html">FastAI tutorial on Siamese Networks</a>:</p>
+<p>As far as our own demonstrations, we'll explore that in <a href="https://drscotthawley.github.io/blog/scottergories/2021/06/17/Contrasting-Contrastive-Loss.html">Part 2</a>. As a teaser, here's an image from my own <a href="https://colab.research.google.com/drive/1rSTOsj4coDu9mZCw57S7R6jBipm462R2?usp=sharing">Contrastive Loss Modification</a> of the <a href="https://docs.fast.ai/tutorial.siamese.html">FastAI tutorial on Siamese Networks</a>:</p>
 <center>
 <figure>
   
@@ -1646,7 +1646,7 @@ if (outputEl) {{
 </figure>
 </center>
 <p>...the model achieved an accuracy of 88 to 90% in identifying pet breeds -- here's the kicker -- that it had <strong>never seen before</strong>.  The model was trained on a completely different set of breeds, which would have stumped a traditional NN classifier, but the similarity-based embedding method was able to apply the "semantically meaningful" representations learned during training to group new pet breeds by similarity!</p>
-<p>There's an <strong>important point / "confession"</strong> that needs to be made here: These "pet breeds" results  were obtained using way more than 3 dimensions -- 128 dimensions to be exact.  In the real world, such high dimensions are typically necessary. In part 2, we'll explore more carefully how the dimensionality of the embedding can affect our accuracy.</p>
+<p>There's an <strong>important point / "confession"</strong> that needs to be made here: These "pet breeds" results  were obtained using way more than 3 dimensions -- 128 dimensions to be exact.  In the real world, such high dimensions are typically necessary. In <a href="https://drscotthawley.github.io/blog/scottergories/2021/06/17/Contrasting-Contrastive-Loss.html">Part 2</a>, we'll explore more carefully how the dimensionality of the embedding can affect our accuracy.</p>
 <h2 id="Summary">
 <a class="anchor" href="#Summary" aria-hidden="true"><span class="octicon octicon-link"></span></a>Summary<a class="anchor-link" href="#Summary"> </a>
 </h2>
