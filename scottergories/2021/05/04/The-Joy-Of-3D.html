@@ -787,10 +787,10 @@ if (outputEl) {{
 
 
 
-<div id="0665b226-05c2-4730-ac60-362e08b47cf7"></div>
+<div id="41cd124f-754b-4e8b-8363-e586d9dff754"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#0665b226-05c2-4730-ac60-362e08b47cf7');
+var element = $('#41cd124f-754b-4e8b-8363-e586d9dff754');
 
 (function(root) {
   function now() {
@@ -1111,10 +1111,10 @@ var element = $('#0665b226-05c2-4730-ac60-362e08b47cf7');
 
 
 
-<div id="6359f83b-3948-470c-9859-d16f02137bcf"></div>
+<div id="9b3cd968-07c7-4395-aaaa-6852a779ecdf"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#6359f83b-3948-470c-9859-d16f02137bcf');
+var element = $('#9b3cd968-07c7-4395-aaaa-6852a779ecdf');
 (function(root) {
   function embed_document(root) {
     
@@ -1584,7 +1584,7 @@ if (outputEl) {{
 
 <div class="output_html rendered_html output_subarea output_execute_result">
 
-        <iframe width="750" height="570" src="https://hedges.belmont.edu/~shawley/classy/classification_exercises/cldemo_raw.html" frameborder="0" allowfullscreen=""></iframe>
+        <iframe width="750" height="590" src="https://hedges.belmont.edu/~shawley/classy/classification_exercises/cldemo_raw.html" frameborder="0" allowfullscreen=""></iframe>
         
 </div>
 
@@ -1599,10 +1599,7 @@ if (outputEl) {{
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<blockquote>
-<p><em>Practical tip:You can think of the margin as the amount of "push."</em>
-<strong>The cool thing</strong> about these methods is that the embedding that gets learned tends to work for classes the method has never seen before.  So, for example, the embedding learned for grouping images of cats, dogs, and horses together would map images of birds to nearby points in the space.  Then "all we have to do" if we want to predict a class is see whether a new instance is "nearby" (according to some distance measure we decide) to other similar points.  We could even look at the "center points" of various clusters and regard these as the "class prototype" and use that in the future.</p>
-</blockquote>
+<p><strong>The cool thing</strong> about these methods is that the embedding that gets learned tends to work for classes the method has never seen before.  So, for example, the embedding learned for grouping images of cats, dogs, and horses together would map images of birds to nearby points in the space.  Then "all we have to do" if we want to predict a class is see whether a new instance is "nearby" (according to some distance measure we decide) to other similar points.  We could even look at the "center points" of various clusters and regard these as the "class prototype" and use that in the future.</p>
 <p>This fits (somewhat) with the notions of "prototypes" in human classification advanced by Eleanor Rosch in her revolutionary psychology work in the early 1970s.  We can say more about this later. ;-)</p>
 <p>This same method of contrastive losses and metrics is used not for classification <em>per se</em> but for things like photographic identity verification (an example that is given in Andrew Ng's Machine Learning course on Coursera): Say you want to have a facial recognition system (highly problematic for ethical reasons but it's a good  example of the method so bear with me) for a company where there can be turnover in employees: You probably don't want to train a traditional classifier with separate a class for each employee because then you'd have to re-train it every time someone joins or leaves the company.  Instead, you can store an image of each employee, and then when they appear in front of a camera for identity verification, you could compare the "distance" between the embedded data point for the new photo from the data point for the stored photo(s).  If the distance is small enough, then you can have confidence it's the same person.</p>
 <p>This is the idea behind a "<a href="https://docs.fast.ai/tutorial.siamese.html">Siamese Network</a>", so called because like Siamese twins, it uses two <em>identical</em> branches consisting of the same network (or just the same network run twice):</p>
