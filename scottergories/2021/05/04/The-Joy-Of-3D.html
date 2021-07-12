@@ -787,10 +787,10 @@ if (outputEl) {{
 
 
 
-<div id="7266a29a-15dd-4467-be81-be63a3be2bc9"></div>
+<div id="c5a3349a-ed69-4d80-b604-afa753591f0e"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#7266a29a-15dd-4467-be81-be63a3be2bc9');
+var element = $('#c5a3349a-ed69-4d80-b604-afa753591f0e');
 
 (function(root) {
   function now() {
@@ -1111,10 +1111,10 @@ var element = $('#7266a29a-15dd-4467-be81-be63a3be2bc9');
 
 
 
-<div id="b59e5502-d390-4168-b1ef-78e7ef1fdd94"></div>
+<div id="0af6e91d-f53b-49ba-a4f5-0d28d162d18a"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#b59e5502-d390-4168-b1ef-78e7ef1fdd94');
+var element = $('#0af6e91d-f53b-49ba-a4f5-0d28d162d18a');
 (function(root) {
   function embed_document(root) {
     
@@ -1326,12 +1326,12 @@ var element = $('#b59e5502-d390-4168-b1ef-78e7ef1fdd94');
 </h2>
 <p>This method of visualization also allows us to visually "see" the concepts of loss and accuracy.  For 3-classes with a softmax activation and categorical cross-entropy, the loss is nearly linear in the difference between the prediction and the target, i.e.:</p>
 <blockquote>
-<p><em>Loss</em>:~distance from target 
+<p>Loss:~distance from target 
 This is a continuous variable, which makes it suitable for training models via gradient descent.</p>
 </blockquote>
 <p>In contrast to loss, <em>accuracy</em> is how many classifications the model gets correct, expressed as a percentage of the total number of data points.  This is determined by what side of the decision boundary each prediction is on.</p>
 <blockquote>
-<p><em>Accuracy</em>:% of points on the correct side of decision boundary (discontinuous)<br>
+<p>Accuracy:% of points on the correct side of decision boundary (discontinuous)<br>
 It is instructive to view two configurations of data points with <em>nearly identical loss values</em> but wildly different accuracies:</p>
 </blockquote>
 <p><strong>Nearly identical losses:</strong><br></p>
@@ -1600,7 +1600,7 @@ if (outputEl) {{
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <blockquote>
-<p><strong>Aside:</strong> Note that in this scenario, we don't try to connect every point to every other point at the same time, as in some kind of N-body simulation. That could be computationally expensive and require something like a <a href="https://en.wikipedia.org/wiki/Barnes%E2%80%93Hut_simulation">Barnes-Hut</a>/octtree algorithm to make it efficient. Rather, we're just randomly pairing two points at a time. Also, other metric learning schemes using "triplet loss" will group three points, setting one to be the "anchor" and then grabbing a positive and a negative example. For more on that, see a <a href="https://arxiv.org/abs/2010.04592">recent paper</a> or some <a href="https://github.com/adambielski/siamese-triplet">code from a couple years ago</a>.</p>
+<p>Computational aside:In this scenario, we don't try to connect every point to every other point at the same time, as in some kind of N-body simulation. That could be computationally expensive and require something like a <a href="https://en.wikipedia.org/wiki/Barnes%E2%80%93Hut_simulation">Barnes-Hut</a>/octtree algorithm to make it efficient. Rather, we're just randomly pairing two points at a time. Also, other metric learning schemes using "triplet loss" will group three points, setting one to be the "anchor" and then grabbing a positive and a negative example. For more on that, see a <a href="https://arxiv.org/abs/2010.04592">recent paper</a> or some <a href="https://github.com/adambielski/siamese-triplet">code from a couple years ago</a>.</p>
 </blockquote>
 
 </div>
@@ -1609,7 +1609,7 @@ if (outputEl) {{
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>The cool thing</strong> about these methods is that the embedding that gets learned tends to work for classes the method has never seen before.  So, for example, the embedding learned for grouping images of cats, dogs, and horses together would map images of birds to nearby points in the space.  Then "all we have to do" if we want to predict a class is see whether a new instance is "nearby" (according to some distance measure we decide) to other similar points.  We could even look at the "center points" of various clusters and regard these as the "class prototype" and use that in the future.</p>
+<p><strong>The cool thing</strong> about these methods is that the embedding that gets learned tends to work for classes the method has <strong>never seen before</strong>.  So, for example, the embedding learned for grouping images of cats, dogs, and horses together would map images of birds to nearby points in the space.  Then "all we have to do" if we want to predict a class is see whether a new instance is "nearby" (according to some distance measure we decide) to other similar points.  We could even look at the "center points" of various clusters and regard these as the "class prototype" and use that in the future.</p>
 <p>This fits (somewhat) with the notions of "prototypes" in human classification advanced by Eleanor Rosch in her revolutionary psychology work in the early 1970s.  We can say more about this later. ;-)</p>
 <p>This same method of contrastive losses and metrics is used not for classification <em>per se</em> but for things like photographic identity verification (an example that is given in Andrew Ng's Machine Learning course on Coursera): Say you want to have a facial recognition system (highly problematic for ethical reasons but it's a good  example of the method so bear with me) for a company where there can be turnover in employees: You probably don't want to train a traditional classifier with separate a class for each employee because then you'd have to re-train it every time someone joins or leaves the company.  Instead, you can store an image of each employee, and then when they appear in front of a camera for identity verification, you could compare the "distance" between the embedded data point for the new photo from the data point for the stored photo(s).  If the distance is small enough, then you can have confidence it's the same person.</p>
 <p>This is the idea behind a "<a href="https://docs.fast.ai/tutorial.siamese.html">Siamese Network</a>", so called because like Siamese twins, it uses two <em>identical</em> branches consisting of the same network (or just the same network run twice):</p>
