@@ -646,8 +646,12 @@ if (outputEl) {{
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Note that even though these are points in 3D space, they make up a <em>triangle</em> which lies along a <em>plane</em> -- a 2D :subspace" of 3D.  This is a consequence of having the "constraint" that all class probabilities add up to 1.</p>
-<p>We can color the points by their expected class values by choosing the triangle point (or "pole") that they're nearest to -- i.e. by which "bar" is largest among the class probabilities.  And we can include the boundaries between classes:</p>
+<p></p>
+<div class="flash">
+    <svg class="octicon octicon-info octicon octicon-info" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM0 8a8 8 0 1116 0A8 8 0 010 8zm6.5-.25A.75.75 0 017.25 7h1a.75.75 0 01.75.75v2.75h.25a.75.75 0 010 1.5h-2a.75.75 0 010-1.5h.25v-2h-.25a.75.75 0 01-.75-.75zM8 6a1 1 0 100-2 1 1 0 000 2z"></path></svg>
+    <strong>Note: </strong>Even though these are points in 3D space, they make up a <em>triangle</em> which lies along a <em>plane</em> -- a 2D :subspace" of 3D.  This is a consequence of having the "constraint" that all class probabilities add up to 1. 
+</div>
+We can color the points by their expected class values by choosing the triangle point (or "pole") that they're nearest to -- i.e. by which "bar" is largest among the class probabilities.  And we can include the boundaries between classes:
 
 </div>
 </div>
@@ -787,10 +791,10 @@ if (outputEl) {{
 
 
 
-<div id="c5a3349a-ed69-4d80-b604-afa753591f0e"></div>
+<div id="115a5d99-63f4-441e-8910-a7872c8211c4"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#c5a3349a-ed69-4d80-b604-afa753591f0e');
+var element = $('#115a5d99-63f4-441e-8910-a7872c8211c4');
 
 (function(root) {
   function now() {
@@ -1111,10 +1115,10 @@ var element = $('#c5a3349a-ed69-4d80-b604-afa753591f0e');
 
 
 
-<div id="0af6e91d-f53b-49ba-a4f5-0d28d162d18a"></div>
+<div id="73e14ba8-d338-4adf-8d03-b2d0e6d4ef4d"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#0af6e91d-f53b-49ba-a4f5-0d28d162d18a');
+var element = $('#73e14ba8-d338-4adf-8d03-b2d0e6d4ef4d');
 (function(root) {
   function embed_document(root) {
     
@@ -1599,9 +1603,11 @@ if (outputEl) {{
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<blockquote>
-<p>Computational aside:In this scenario, we don't try to connect every point to every other point at the same time, as in some kind of N-body simulation. That could be computationally expensive and require something like a <a href="https://en.wikipedia.org/wiki/Barnes%E2%80%93Hut_simulation">Barnes-Hut</a>/octtree algorithm to make it efficient. Rather, we're just randomly pairing two points at a time. Also, other metric learning schemes using "triplet loss" will group three points, setting one to be the "anchor" and then grabbing a positive and a negative example. For more on that, see a <a href="https://arxiv.org/abs/2010.04592">recent paper</a> or some <a href="https://github.com/adambielski/siamese-triplet">code from a couple years ago</a>.</p>
-</blockquote>
+<p></p>
+<div class="flash">
+    <svg class="octicon octicon-info octicon octicon-info octicon octicon-info" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM0 8a8 8 0 1116 0A8 8 0 010 8zm6.5-.25A.75.75 0 017.25 7h1a.75.75 0 01.75.75v2.75h.25a.75.75 0 010 1.5h-2a.75.75 0 010-1.5h.25v-2h-.25a.75.75 0 01-.75-.75zM8 6a1 1 0 100-2 1 1 0 000 2z"></path></svg>
+    <strong>Note: </strong>(A computational aside) In this scenario, we don’t try to connect every point to every other point at the same time, as in some kind of N-body simulation. That could be computationally expensive and require something like a <a href="https://en.wikipedia.org/wiki/Barnes%E2%80%93Hut_simulation">Barnes-Hut</a>/octtree algorithm to make it efficient. Rather, we’re just randomly pairing two points at a time. Also, other metric learning schemes using "triplet loss" will group three points, setting one to be the "anchor" and then grabbing a positive and a negative example. For more on that, see a <a href="https://arxiv.org/abs/2010.04592">recent paper</a> or some <a href="https://github.com/adambielski/siamese-triplet">code from a couple years ago</a>. 
+</div>
 
 </div>
 </div>

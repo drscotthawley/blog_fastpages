@@ -499,10 +499,10 @@ Waiting on Google Drive until URLs are ready.
 
 
 
-<div id="08656751-d282-409b-99f7-0331c66d66e0"></div>
+<div id="12e38b82-1327-434c-a61d-04f71a02dce0"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#08656751-d282-409b-99f7-0331c66d66e0');
+var element = $('#12e38b82-1327-434c-a61d-04f71a02dce0');
 
 (function(root) {
   function now() {
@@ -823,10 +823,10 @@ var element = $('#08656751-d282-409b-99f7-0331c66d66e0');
 
 
 
-<div id="bd5bb960-c90f-4ff6-8482-220422f399ce"></div>
+<div id="ec5461b9-7723-4be2-a936-71a54181f5af"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#bd5bb960-c90f-4ff6-8482-220422f399ce');
+var element = $('#ec5461b9-7723-4be2-a936-71a54181f5af');
 (function(root) {
   function embed_document(root) {
     
@@ -936,10 +936,10 @@ var element = $('#bd5bb960-c90f-4ff6-8482-220422f399ce');
 
 
 
-<div id="e9f8a576-c0d3-4b6e-a84b-7c2ced0804ce"></div>
+<div id="24434786-4579-4831-9909-7a81fe999110"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#e9f8a576-c0d3-4b6e-a84b-7c2ced0804ce');
+var element = $('#24434786-4579-4831-9909-7a81fe999110');
 (function(root) {
   function embed_document(root) {
     
@@ -1000,10 +1000,10 @@ var element = $('#e9f8a576-c0d3-4b6e-a84b-7c2ced0804ce');
 
 
 
-<div id="6cb94731-806d-41cb-a230-a99ab98b374f"></div>
+<div id="9029dcb0-603a-445b-a5bb-737e09173a38"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#6cb94731-806d-41cb-a230-a99ab98b374f');
+var element = $('#9029dcb0-603a-445b-a5bb-737e09173a38');
 (function(root) {
   function embed_document(root) {
     
@@ -1064,10 +1064,10 @@ var element = $('#6cb94731-806d-41cb-a230-a99ab98b374f');
 
 
 
-<div id="da59af19-52ef-4adc-b908-f0de4d52a713"></div>
+<div id="7017abc7-d583-4399-a20c-791c87dbcd24"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#da59af19-52ef-4adc-b908-f0de4d52a713');
+var element = $('#7017abc7-d583-4399-a20c-791c87dbcd24');
 (function(root) {
   function embed_document(root) {
     
@@ -1128,10 +1128,10 @@ var element = $('#da59af19-52ef-4adc-b908-f0de4d52a713');
 
 
 
-<div id="3d69871a-c890-4fe4-a2b8-bcb661b58331"></div>
+<div id="a711a056-4c58-4257-984e-8f50f4a66001"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#3d69871a-c890-4fe4-a2b8-bcb661b58331');
+var element = $('#a711a056-4c58-4257-984e-8f50f4a66001');
 (function(root) {
   function embed_document(root) {
     
@@ -17830,7 +17830,7 @@ if (outputEl) {{
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>TODO: Woops!  Forgot to score how the model did on the spectacled bears!  Will add that tomorrow. ;-)  Watch this space.</strong></p>
+<p><strong>TODO: Woops!  Forgot to score how the model did on the spectacled bears!  Will add that soon. ;-)  Watch this space.</strong></p>
 
 </div>
 </div>
@@ -17841,7 +17841,7 @@ if (outputEl) {{
 <h2 id="3.-Discussion">
 <a class="anchor" href="#3.-Discussion" aria-hidden="true"><span class="octicon octicon-link"></span></a>3. Discussion<a class="anchor-link" href="#3.-Discussion"> </a>
 </h2>
-<p>From this example, it looks like the contrastive loss method is worse than traditional classification in a couple ways: it requires more data (or else the model tends to overfit), it runs slower, and it's less accurate.  (And we completely left out the challenge of training CL models which typically need to have their positive and negative examples "mined" to find "hard" cases so that the model "learns" more per iteration.)  Why would anyone ever want to use it?</p>
+<p>From this example, it looks like the contrastive loss method is worse than traditional classification in a couple ways: it requires more data (or else the model tends to overfit), it runs slower, and it's less accurate.  (And we completely left out the challenge of training CL models which typically need to have their positive and negative examples <a href="https://arxiv.org/abs/2010.04592">"mined" to find "hard" cases</a> so that the model "learns" more per iteration.)  Why would anyone ever want to use it?</p>
 <p>Well, we already mentioned the use case of "produces semantically meaningful embeddings" that can then be used for other downstream tasks.  For example, word embeddings like Word2Vec or GloVe can be used for lots of NLP tasks. Jeremy Howard in the FastAI course shows how to embeddings of tabular data and how that can work better and be more meaningful than one-hot encoded tabular data.</p>
 <p>Furthermore, regarding accuracy: <strong><a href="https://openai.com/blog/clip/">OpenAI's CLIP</a> became <a href="https://www.urbandictionary.com/define.php?term=SOTA">SOTA</a> on ImageNet</strong> in early 2020!  They used a TON of pre-training data, and ended up classifying images via contrastive losses better than any other method!</p>
 <p>Are contrastive loss methods right for you and your use case, and your dataset?  I don't know. Hopefully after this, you at least have some clue of how to implement such a thing, and how it compares and constrasts with the sort of vanilla classification most people who work with neural networks are used to.</p>
