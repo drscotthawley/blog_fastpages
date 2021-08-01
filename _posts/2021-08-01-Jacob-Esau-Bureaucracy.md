@@ -11,7 +11,7 @@ search_exclude: false
 typora-root-url: /Users/shawley
 ---
 
-![](../../../images/jacesau_robot1.png "'Esau sells his birthright' by Michel Corneille, modded by me via VQGAN+CLIP")
+![](../../../images/jacesau_robot1.png "'Esau sells his birthright' by Renaissance painter Michel Corneille, modded by me via VQGAN+CLIP")
 
 *(For this entry following the main topic of classifications by machines vs. humans, we consider classifications and their union with judgments for their prospect of life-altering decisions. It is inspired by a sermon given today by pastor [Jim Thomas](https://twitter.com/pastorjimtvc) of The Village Chapel, Nashville TN)*
 
