@@ -17,8 +17,11 @@ typora-root-url: /Users/shawley
 
 
 In the [Genesis 25:29–34](https://bible.oremus.org/?passage=Genesis%2025:29%E2%80%9334&version=nrsv) we see Esau, firstborn son of Abraham, coming in from the fields *famished*,  and finding his younger brother Jacob in possession of hearty stew, Esau pleads for some. My paraphrase follows...
-  Jacob replies, "First you have to give my your birthright."
-  "Whatever," says Esau, "You can have it, just gimme some STEWWW!"
+ 
+ Jacob replies, "First you have to give my your birthright."
+ 
+ "Whatever," says Esau, "You can have it, just gimme some STEWWW!"
+
 ..."And thus [Esau sold his birthright](https://images.fineartamerica.com/images-medium-large-5/esau-selling-his-birthright-to-jacob-1630-oil-on-canvas-michel-corneille.jpg) for a mess of pottage."
 
 People are typically advised *against* making major, life-altering decisions while in a stressed state, examples of which are often drawn from the acronym HALT:
