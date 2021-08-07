@@ -32,7 +32,7 @@ I added some more optional controls to the "[contrastive loss toy model](https:/
 
 (I'm new to this video-making thing and TBH not sure I ever want to get good at it. I realize I'm over-animated.)  
 
-- I didn't mean to imply that CLIP used the "attract-only" scheme I attribute to SimCLR.  CLIP has a "contrastive loss" which means negative examples.  I was just talking about how the CLIP result on ImageNet demonstrated  the utility of metric-based, semi-supervised learning was demonstrated via 
+- I didn't mean to imply that CLIP used the "attract-only" scheme I attribute to SimCLR.  CLIP has a "contrastive loss" which means negative examples.  I was just talking about how the CLIP result on ImageNet demonstrated  the utility of metric-based, semi-supervised learning.
 
 
 
