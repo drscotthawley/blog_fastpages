@@ -27,10 +27,11 @@ What I forgot to talk about in the video were various ways of getting a handle o
 
 ## References
 
-1. Wu, C.-Y.; Manmatha, R.; Smola, A.J.; Krähenbühl, P. Sampling Matters in Deep Embedding Learning. In Proceedings of the arXiv:1706.07567 [cs]; January 16 2018.
-2. "CLIP": Radford, A.; Kim, J.W.; Hallacy, C.; Ramesh, A.; Goh, G.; Agarwal, S.; Sastry, G.; Askell, A.; Mishkin, P.; Clark, J.; et al. Learning Transferable Visual Models From Natural Language Supervision. ArXiv210300020 Cs 2021.  
-3. Fonseca, E.; Ortego, D.; McGuinness, K.; O’Connor, N.E.; Serra, X. Unsupervised Contrastive Learning of Sound Event Representations. In Proceedings of the 2021 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP); IEEE, 2021.
-4. Hadsell, R.; Chopra, S.; LeCun, Y. Dimensionality Reduction by Learning an Invariant Mapping. In Proceedings of the 2006 IEEE Computer Society Conference on Computer Vision and Pattern Recognition (CVPR’06); 2006; Vol. 2, pp. 1735–1742.
-5. "SimCLR": Chen, T.; Kornblith, S.; Norouzi, M.; Hinton, G. A Simple Framework for Contrastive Learning of Visual Representations. ArXiv200205709 Cs Stat 2020.
-6. Alamar, J. "Illustrated Word2Vec", https://jalammar.github.io/illustrated-word2vec/
-7. AK, "Gradio Demo for VQGAN+CLIP", *HuggingFace Spaces*, https://huggingface.co/spaces/akhaliq/VQGAN_CLIP
+1. Jeremy Jordan's Twitter Page: https://twitter.com/jeremyjordan. Thanks Jeremy! 
+2. **Wu, C.-Y.; Manmatha, R.; Smola, A.J.; Krähenbühl, P. [Sampling Matters in Deep Embedding Learning](https://openaccess.thecvf.com/content_ICCV_2017/papers/Wu_Sampling_Matters_in_ICCV_2017_paper.pdf). In Proceedings of the arXiv:1706.07567 [cs]; January 16 2018.**
+3. "[CLIP](https://openai.com/blog/clip/)": Radford, A.; Kim, J.W.; Hallacy, C.; Ramesh, A.; Goh, G.; Agarwal, S.; Sastry, G.; Askell, A.; Mishkin, P.; Clark, J.; et al. [Learning Transferable Visual Models From Natural Language Supervision](https://arxiv.org/abs/2103.00020). ArXiv210300020 Cs 2021.  
+4. Fonseca, E.; Ortego, D.; McGuinness, K.; O’Connor, N.E.; Serra, X. [Unsupervised Contrastive Learning of Sound Event Representations](https://arxiv.org/pdf/2011.07616.pdf). In Proceedings of the 2021 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP); IEEE, 2021.
+5. Hadsell, R.; Chopra, S.; LeCun, Y. [Dimensionality Reduction by Learning an Invariant Mapping](http://yann.lecun.com/exdb/publis/pdf/hadsell-chopra-lecun-06.pdf). In Proceedings of the 2006 IEEE Computer Society Conference on Computer Vision and Pattern Recognition (CVPR’06); 2006; Vol. 2, pp. 1735–1742.
+6. "SimCLR": Chen, T.; Kornblith, S.; Norouzi, M.; Hinton, G. [A Simple Framework for Contrastive Learning of Visual Representations](https://arxiv.org/pdf/2002.05709.pdf). ArXiv200205709 Cs Stat 2020.
+7. Alamar, J. "Illustrated Word2Vec", https://jalammar.github.io/illustrated-word2vec/
+8. AK, "Gradio Demo for VQGAN+CLIP", *HuggingFace Spaces*, https://huggingface.co/spaces/akhaliq/VQGAN_CLIP
