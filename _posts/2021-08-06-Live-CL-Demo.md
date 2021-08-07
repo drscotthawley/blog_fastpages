@@ -24,7 +24,7 @@ I added some more optional controls to the "[contrastive loss toy model](https:/
 ### What I left out:
 
 * Various ways of getting a handle on choosing negative examples and doing so in a computationally efficient way (e.g. via [Locality Sensitive Hashing](https://en.wikipedia.org/wiki/Locality-sensitive_hashing)).  But the paper by Wu et al has a good survey of these issues -- at least ca. 2017.  And since then you can find newer treatments of such things as well, and I encourage you to do so -- I'll be joining you.  Furthermore, if you follow the "Attract Only" methodology of SimCLR, then you wouldn't have any negative examples anyway. ;-) 
-* Messing around with the toy model -- giving it "crazy" inputs like huge margins, whatever -- is not only fun (to me) but can also be quite informative as a process of "discovery": I'm sure I learned things in the contest of *experience* that I might otherwise have read (and maybe missed) in a paper. 
+* Messing around with the toy model -- giving it "crazy" inputs like huge margins, whatever -- is not only fun (to me) but can also be quite informative as a process of "discovery": I'm sure I learned things in the context of *experience* that I might otherwise have read (and maybe missed) in a paper. 
 
 
 
