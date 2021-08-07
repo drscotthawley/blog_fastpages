@@ -11,7 +11,7 @@ search_exclude: false
 typora-root-url: /Users/shawley
 ---
 
-I added some more optional controls to the "contrastive loss toy model" from [Part I](https://drscotthawley.github.io/blog/scottergories/2021/05/04/The-Joy-Of-3D.html) that I want to demonstrate interactively, so this Part 3 post is in the form of a video:
+I added some more optional controls to the "[contrastive loss toy model](https://drscotthawley.github.io/blog/scottergories/2021/05/04/The-Joy-Of-3D.html#Contrastive-Loss-Cartoon-Demo)" from [Part I](https://drscotthawley.github.io/blog/scottergories/2021/05/04/The-Joy-Of-3D.html) that I want to demonstrate interactively, so this Part 3 post is in the form of a video:
 
 
 
