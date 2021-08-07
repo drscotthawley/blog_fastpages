@@ -1,5 +1,5 @@
 ---
-title: "Typical (Neural-Network-Based) Classification vs. Zero-Shot, Part 3 - Live Demo on CL Toy"
+title: "Typical (Neural-Network-Based) Classification vs. Zero-Shot, Part 3 - Live Demo of CL Toy"
 description: See how "Triplet Loss" totally "crushes" the pairwise loss described in Part 1. 
 layout: post
 toc: false
