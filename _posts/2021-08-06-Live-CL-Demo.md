@@ -44,5 +44,5 @@ I added some more optional controls to the "[contrastive loss toy model](https:/
 4. Fonseca, E.; Ortego, D.; McGuinness, K.; O’Connor, N.E.; Serra, X. [Unsupervised Contrastive Learning of Sound Event Representations](https://arxiv.org/pdf/2011.07616.pdf). In Proceedings of the 2021 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP); IEEE, 2021.
 5. Hadsell, R.; Chopra, S.; LeCun, Y. [Dimensionality Reduction by Learning an Invariant Mapping](http://yann.lecun.com/exdb/publis/pdf/hadsell-chopra-lecun-06.pdf). In Proceedings of the 2006 IEEE Computer Society Conference on Computer Vision and Pattern Recognition (CVPR’06); 2006; Vol. 2, pp. 1735–1742.
 6. "SimCLR": Chen, T.; Kornblith, S.; Norouzi, M.; Hinton, G. [A Simple Framework for Contrastive Learning of Visual Representations](https://arxiv.org/pdf/2002.05709.pdf). ArXiv200205709 Cs Stat 2020.
-7. Alamar, J. "Illustrated Word2Vec", https://jalammar.github.io/illustrated-word2vec/
+7. Alamar, J. "[Illustrated Word2Vec](https://jalammar.github.io/illustrated-word2vec/)", https://jalammar.github.io/illustrated-word2vec/
 8. AK / akhaliq / ak92501 + Gradio, "[Demo for VQGAN+CLIP](https://huggingface.co/spaces/akhaliq/VQGAN_CLIP)", *HuggingFace Spaces*, https://huggingface.co/spaces/akhaliq/VQGAN_CLIP
