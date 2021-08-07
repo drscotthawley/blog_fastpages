@@ -1,6 +1,6 @@
 ---
 title: "Typical (Neural-Network-Based) Classification vs. Zero-Shot, Part 3 - Live Demo on CL Toy"
-description: See how Triple Loss totally "crushes" the pairwise loss described in Part 1. 
+description: See how "Triplet Loss" totally "crushes" the pairwise loss described in Part 1. 
 layout: post
 toc: false
 comments: true
