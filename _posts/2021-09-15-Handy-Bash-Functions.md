@@ -15,19 +15,23 @@ Once I figure out a complicated command, I make a `bash` function or alias for i
 Here are some that I find useful:
 
 ```bash
-# set up python environment. usage: $ makeenv <env_name>
+# set up python environment.
+# usage: $ makeenv <env_name>
 makeenv() { python3 -m venv ~/envs/"$1"; source ~/envs/"$1"/bin/activate; python3 -m pip install pip -Uqq; }
 
-# loads python environment usage: $ loadenv <env_name>
+# loads python environment.  
+# usage: $ loadenv <env_name>
 loadenv() { source ~/envs/"$1"/bin/activate; }
-#same thing different name
+# same thing different name
 gimme() { source ~/envs/"$1"/bin/activate; }
 
-# downloads colab notebook.  usage: $ grabcolab <sharing_URL>    [Writes to colab.ipynb]
+# downloads colab notebook.  [Writes to colab.ipynb]
+# usage: $ grabcolab <sharing_URL>    
 grabcolab() { fileid=$( echo "$1" | sed -E 's/.*drive\/(.*)\?.*/\1/' ); wget -O colab.ipynb 'https://docs.google.com/uc?export=download&id='$fileid; }
 
 # runs a notebook on command line, as if it were a python script.  
-# usage: $ nbrun colab.ipynb.  [Note for student nbs, run this from an access-reduced account!]
+# usage: $ nbrun colab.ipynb.  
+# [Note for student nbs, run this from an access-reduced account!]
 nbrun() { pip install -Uqq jupytext; jupytext --to py "$1";  mv  "${1%.*}".py run_this.ipy; ipython run_this.ipy;}
 
 # creates .tgz file from directory, runs in parallel;
