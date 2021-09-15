@@ -125,6 +125,7 @@ Here are some that I find useful:</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># set up python environment.</span>
 <span class="c"># usage: $ makeenv &lt;env_name&gt;</span>
+<span class="c"># Note: the pip update is b/c sometimes I've gotten stuck with an ancient pip where nothing works!</span>
 makeenv<span class="o">()</span> <span class="o">{</span> python3 <span class="nt">-m</span> venv ~/envs/<span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span><span class="p">;</span> <span class="nb">source</span> ~/envs/<span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span>/bin/activate<span class="p">;</span> python3 <span class="nt">-m</span> pip <span class="nb">install </span>pip <span class="nt">-Uqq</span><span class="p">;</span> <span class="o">}</span>
 
 <span class="c"># loads python environment.  </span>
@@ -140,6 +141,7 @@ grabcolab<span class="o">()</span> <span class="o">{</span> <span class="nv">fil
 <span class="c"># runs a notebook on command line, as if it were a python script.  </span>
 <span class="c"># usage: $ nbrun colab.ipynb  </span>
 <span class="c"># [Note for student nbs, run this from an access-reduced account!]</span>
+<span class="c"># On my personal page I remove the pip install but put it in to make it handy for students</span>
 nbrun<span class="o">()</span> <span class="o">{</span> pip <span class="nb">install</span> <span class="nt">-Uqq</span> jupytext<span class="p">;</span> jupytext <span class="nt">--to</span> py <span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span><span class="p">;</span>  <span class="nb">mv</span>  <span class="s2">"</span><span class="k">${</span><span class="nv">1</span><span class="p">%.*</span><span class="k">}</span><span class="s2">"</span>.py run_this.ipy<span class="p">;</span> ipython run_this.ipy<span class="p">;</span><span class="o">}</span>
 
 <span class="c"># creates .tgz file from directory, runs in parallel</span>
