@@ -45,7 +45,7 @@ partar() { tar -I pigz -cf "$1.tgz" "$1";  }
 paruntar() { tar -I pigz -xf "$1";  }  
 
 # which alias is this?  includes functions too.  
-# usage: $ wa partar
+# example: $ wa partar
 wa() { type "$1";}
 ```
 
