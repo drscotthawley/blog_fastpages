@@ -111,7 +111,7 @@ ol li li li{
        • <span class="read-time" title="Estimated read time">
     
     
-      1 min read
+      2 min read
     
 </span></p>
 
@@ -151,6 +151,10 @@ partar<span class="o">()</span> <span class="o">{</span> <span class="nb">tar</s
 <span class="c"># uncompresses .tgz file into directory, runs in parallel.</span>
 <span class="c"># usage $ paruntar &lt;.tgz file&gt;</span>
 paruntar<span class="o">()</span> <span class="o">{</span> <span class="nb">tar</span> <span class="nt">-I</span> pigz <span class="nt">-xf</span> <span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span><span class="p">;</span>  <span class="o">}</span>  
+
+<span class="c"># long-list sorted by timestamp, with more-style pagination.  $@ is all arguments.</span>
+<span class="c"># usage: ltt *.ipynb</span>
+llt<span class="o">()</span> <span class="o">{</span> <span class="nb">ls</span> <span class="nt">--color</span><span class="o">=</span>auto <span class="nt">-p</span> <span class="nt">-lth</span> <span class="nt">--color</span><span class="o">=</span>always <span class="s2">"</span><span class="nv">$@</span><span class="s2">"</span> | less <span class="nt">-R</span> <span class="nt">-X</span> <span class="nt">--quit-if-one-screen</span><span class="p">;</span> <span class="o">}</span>
 
 <span class="c"># which alias is this?  includes functions too.  </span>
 <span class="c"># example: $ wa partar</span>
