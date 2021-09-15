@@ -53,3 +53,6 @@ Note that `"$1"` just refers to the first argument of the command.
 
 
 > I used to use Anaconda & `conda` but found it "bulky" and "invasive", so now I just use python `venv`.
+
+
+<small>Image via [VQGAN+CLIP](https://colab.research.google.com/drive/10a9adSTzNtZvp7_2OkYFVFICND2m2iEk?usp=sharing), prompt='computer code | bash shell  scripting | data science  | by james gurney | trending on artstation'</small>
