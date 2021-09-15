@@ -17,6 +17,7 @@ Here are some that I find useful:
 ```bash
 # set up python environment.
 # usage: $ makeenv <env_name>
+# Note: the pip update is b/c sometimes I've gotten stuck with an ancient pip where nothing works!
 makeenv() { python3 -m venv ~/envs/"$1"; source ~/envs/"$1"/bin/activate; python3 -m pip install pip -Uqq; }
 
 # loads python environment.  
@@ -32,6 +33,7 @@ grabcolab() { fileid=$( echo "$1" | sed -E 's/.*drive\/(.*)\?.*/\1/' ); wget -O 
 # runs a notebook on command line, as if it were a python script.  
 # usage: $ nbrun colab.ipynb  
 # [Note for student nbs, run this from an access-reduced account!]
+# On my personal page I remove the pip install but put it in to make it handy for students
 nbrun() { pip install -Uqq jupytext; jupytext --to py "$1";  mv  "${1%.*}".py run_this.ipy; ipython run_this.ipy;}
 
 # creates .tgz file from directory, runs in parallel
