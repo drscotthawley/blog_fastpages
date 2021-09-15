@@ -138,11 +138,11 @@ gimme<span class="o">()</span> <span class="o">{</span> <span class="nb">source<
 grabcolab<span class="o">()</span> <span class="o">{</span> <span class="nv">fileid</span><span class="o">=</span><span class="si">$(</span> <span class="nb">echo</span> <span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span> | <span class="nb">sed</span> <span class="nt">-E</span> <span class="s1">'s/.*drive\/(.*)\?.*/\1/'</span> <span class="si">)</span><span class="p">;</span> wget <span class="nt">-O</span> colab.ipynb <span class="s1">'https://docs.google.com/uc?export=download&amp;id='</span><span class="nv">$fileid</span><span class="p">;</span> <span class="o">}</span>
 
 <span class="c"># runs a notebook on command line, as if it were a python script.  </span>
-<span class="c"># usage: $ nbrun colab.ipynb.  </span>
+<span class="c"># usage: $ nbrun colab.ipynb  </span>
 <span class="c"># [Note for student nbs, run this from an access-reduced account!]</span>
 nbrun<span class="o">()</span> <span class="o">{</span> pip <span class="nb">install</span> <span class="nt">-Uqq</span> jupytext<span class="p">;</span> jupytext <span class="nt">--to</span> py <span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span><span class="p">;</span>  <span class="nb">mv</span>  <span class="s2">"</span><span class="k">${</span><span class="nv">1</span><span class="p">%.*</span><span class="k">}</span><span class="s2">"</span>.py run_this.ipy<span class="p">;</span> ipython run_this.ipy<span class="p">;</span><span class="o">}</span>
 
-<span class="c"># creates .tgz file from directory, runs in parallel;</span>
+<span class="c"># creates .tgz file from directory, runs in parallel</span>
 <span class="c"># $ usage: $ partar &lt;dir_name&gt;  [no / on end.   requires pigz: $ sudo apt install pigz</span>
 partar<span class="o">()</span> <span class="o">{</span> <span class="nb">tar</span> <span class="nt">-I</span> pigz <span class="nt">-cf</span> <span class="s2">"</span><span class="nv">$1</span><span class="s2">.tgz"</span> <span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span><span class="p">;</span>  <span class="o">}</span>
 
