@@ -44,6 +44,10 @@ partar() { tar -I pigz -cf "$1.tgz" "$1";  }
 # usage $ paruntar <.tgz file>
 paruntar() { tar -I pigz -xf "$1";  }  
 
+# long-list sorted by timestamp, with more-style pagination.  $@ is all arguments.
+# usage: ltt *.ipynb
+llt() { ls --color=auto -p -lth --color=always "$@" | less -R -X --quit-if-one-screen; }
+
 # which alias is this?  includes functions too.  
 # example: $ wa partar
 wa() { type "$1";}
