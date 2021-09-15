@@ -5,7 +5,7 @@ layout: post
 toc: false
 comments: true
 image: images/bash_functions_thumb.png
-date: 2021-09015 10:46:18
+date: 2021-09-15 10:46:18
 hide: false
 search_exclude: false
 typora-root-url: /Users/shawley
