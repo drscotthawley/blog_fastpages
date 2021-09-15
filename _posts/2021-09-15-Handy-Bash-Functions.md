@@ -30,11 +30,11 @@ gimme() { source ~/envs/"$1"/bin/activate; }
 grabcolab() { fileid=$( echo "$1" | sed -E 's/.*drive\/(.*)\?.*/\1/' ); wget -O colab.ipynb 'https://docs.google.com/uc?export=download&id='$fileid; }
 
 # runs a notebook on command line, as if it were a python script.  
-# usage: $ nbrun colab.ipynb.  
+# usage: $ nbrun colab.ipynb  
 # [Note for student nbs, run this from an access-reduced account!]
 nbrun() { pip install -Uqq jupytext; jupytext --to py "$1";  mv  "${1%.*}".py run_this.ipy; ipython run_this.ipy;}
 
-# creates .tgz file from directory, runs in parallel;
+# creates .tgz file from directory, runs in parallel
 # $ usage: $ partar <dir_name>  [no / on end.   requires pigz: $ sudo apt install pigz
 partar() { tar -I pigz -cf "$1.tgz" "$1";  }
 
