@@ -169,7 +169,8 @@ ol li li li{
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>One sometimes sees claims like <a href="https://towardsdatascience.com/loss-landscapes-and-the-blessing-of-dimensionality-46685e28e6a4">"within high dimensional spaces, if you choose random vectors, they tend to be orthogonal to each other,"</a> but is this true?</p>
 <p>The answer <strong>depends on whether you're talking about unit vectors or not</strong>.</p>
-<p>Let's do some direct computation. We'll vary the number of dimensions and compute a bunch of dot products between random vectors, and then plot histograms of these dot product values.  The sharper the distribution is around the value of zero, the more likely it is for vectors to be orthogonal.</p>
+<p>More to the point, it depends on the context in which the above nugget of wisdom is being applied, and on not so much orthogonality per se as what we might call "near orthogonality": Are we interested in cases when the <strong>dot product</strong> is nearly zero, or when the <strong>cosine</strong> of the angle between the vectors is nearly zero?  (In the case of exact orthogonality, the dot product and cosine are both exactly zero.) The latter statement is equivalent to restricting attention to unit vectors, and also is isomorphic to considering the Pearson correlation coefficient between two random signals.</p>
+<p>Let's do some direct computations. We'll vary the number of dimensions and compute a bunch of dot products between random vectors, and then plot histograms of these dot product values.  The sharper the distribution is around the value of zero, the more likely it is for vectors to be orthogonal.</p>
 
 </div>
 </div>
@@ -586,7 +587,7 @@ ol li li li{
 <h2 id='"Softmax-Vectors"'>
 <a class="anchor" href="#" softmax-vectors aria-hidden="true"><span class="octicon octicon-link"></span></a>"Softmax Vectors"<a class="anchor-link" href="#%22Softmax-Vectors%22"> </a>
 </h2>
-<p>If the vectors all have positive coefficients, e.g. because they are the output of a softmax function, then there's no way they can be orthogonal.  We might ask, what's the most common value for the dot product (i.e. the cosine similarity)?</p>
+<p>If the vectors all have positive coefficients, e.g. because they are the output of a softmax function, then there's no way they can be orthogonal.  We might ask, what's the most common value for the dot product?</p>
 <p>(Note that these are not unit vectors according to the L2/"Euclidean" norm, rather they are unit vectors according to an L1/"Manhattan distance" norm).</p>
 
 </div>
@@ -646,6 +647,8 @@ ol li li li{
 <h2 id="Cosine-Similarity-for-Softmax-Vectors">
 <a class="anchor" href="#Cosine-Similarity-for-Softmax-Vectors" aria-hidden="true"><span class="octicon octicon-link"></span></a>Cosine Similarity for Softmax Vectors<a class="anchor-link" href="#Cosine-Similarity-for-Softmax-Vectors"> </a>
 </h2>
+<p>What about the cosine between the vectors we just did?  That's equivalent to normalizing the softmax vectors according to an L2/Eucliean norm.  Here we go:</p>
+
 </div>
 </div>
 </div>
