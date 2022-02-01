@@ -114,7 +114,7 @@ ol li li li{
        • <span class="read-time" title="Estimated read time">
     
     
-      16 min read
+      17 min read
     
 </span></p>
 
@@ -146,7 +146,6 @@ ol li li li{
 
   <div class="post-content e-content" itemprop="articleBody">
     <ul class="section-nav">
-<li class="toc-entry toc-h3"><a href="#Last-update:Jan-26,-2021">Last update:Jan 26, 2021 </a></li>
 <li class="toc-entry toc-h2"><a href="#Motivations">Motivations </a></li>
 <li class="toc-entry toc-h2"><a href="#References-I'm-finding-to-be-helpful">References I&#39;m finding to be helpful </a></li>
 <li class="toc-entry toc-h2"><a href="#Other-resources-I-have-yet-to-read">Other resources I have yet to read </a></li>
@@ -159,6 +158,7 @@ ol li li li{
 <li class="toc-entry toc-h2"><a href="#How-Would-"Success"-Be-Measured?">How Would &quot;Success&quot; Be Measured? </a></li>
 <li class="toc-entry toc-h2"><a href="#Update:-MAIN-ISSUES-with-Doing-Ed-Research-for-Me:">Update: MAIN ISSUES with Doing Ed Research for Me: </a></li>
 <li class="toc-entry toc-h2"><a href="#TO-DO-/-Extras:">TO-DO / Extras: </a></li>
+<li class="toc-entry toc-h2"><a href="#Deleted:-Me-Messing-With-Python-clifford-package">Deleted: Me Messing With Python clifford package </a></li>
 </ul>
 </li>
 </ul><!--
@@ -177,11 +177,6 @@ ol li li li{
 <p>"...for geometry, you know, is the gate of science, and the gate is so low and small that one can only enter it as a little child."<br>
 -- William K. Clifford</p>
 </blockquote>
-<hr>
-<h3 id="Last-update:Jan-26,-2021">
-<a class="anchor" href="#Last-update:Jan-26,-2021" aria-hidden="true"><span class="octicon octicon-link"></span></a>Last update:Jan 26, 2021<a class="anchor-link" href="#Last-update:Jan-26,-2021"> </a>
-</h3>
-<hr>
 
 </div>
 </div>
@@ -327,8 +322,8 @@ ol li li li{
 <li>There's nothing inherently "quantum mechanical" about Pauli matrices &amp; Dirac spinors, or quaternions. Rather they are just manifestations of the geometry of 3D space! Futhermore, the fact that Pauli matrices are typically taught in such a unmotivated,/"here memorize these" kind of way is anathema --- or perhaps you benefited from the "Interlude: now let's inject a bunch of Group Theory" approach --- whereas with the GA approach they arise naturally.</li>
 <li>It's not yet clear to me how bivectors are to be represented in (computational) linear algebra: square, antisymmetric matrices, perhaps? </li>
 <li>The relation between complex numbers and GA in 2D is cool but I'm finding it a bit confusing, especially given that you can write complex numbers in ways that commute but the GA versions typically don't (or anti-)commute.</li>
-<li>Notation: I'm a bit confused when in 2D is that "$I$" is not the identity operator, rather it is a pseudoscalar/bivector that's akin to "$i$" (see point #6 above).  But I'm getting used to it.  Other choices such as $i$ and $j$ (in EE) are similarly...interesting.  Also noticing that the Brits seem to prefer $\sigma_i$ for basis vectors whereas I was raised on $\hat{e}_i$. I'm working on a dynamic "choose your own notation" interactive version of the materials I'm writing up, so that notation won't be a sticking point for anyone, they can just choose what they prefer. </li>
-<li>Terminology: I hate it when people say "outer product" in GA, b/c that term <a href="https://en.wikipedia.org/wiki/Outer_product">already means something different to the rest of the world</a> -- namely the "tensor product" aka "Kronecker product" -- something that does't (necessarily) anticommute!  Now, if the point is that we're looking for a "unified language," let's use a unified language and not conflate in one term two very different concepts, because this is bound to confuse students (and I confess, physics professors too).   Just say "wedge product."  Even "exterior product" is potentially confusing to students, since "exterior" is just a synonym of "outer". </li>
+<li>Notation choices: I'm a bit confused when in 2D is that "$I$" is not the identity operator, rather it is a pseudoscalar/bivector that's akin to "$i$" (see point #6 above).  But I'm getting used to it.  Other choices such as $i$ and $j$ (in EE) are similarly...interesting.  Also noticing that the Brits seem to prefer $\sigma_i$ for basis vectors whereas I was raised on $\hat{e}_i$. I'm working on a dynamic "choose your own notation" interactive version of the materials I'm writing up, so that notation won't be a sticking point for anyone, they can just choose what they prefer. </li>
+<li>Terminology: I find it to be a huge stumbling block when people say "outer product" in GA, b/c that term <a href="https://en.wikipedia.org/wiki/Outer_product">already means something different to the rest of the world</a> -- namely the "tensor product" aka "Kronecker product" -- something that does't (necessarily) anticommute!  Now, if the point is that we're looking for a "unified language," let's use a unified language and not conflate in one term two very different concepts, because this is bound to confuse students (and I confess, physics professors too).   Just say "wedge product."  Even "exterior product" is potentially confusing to students, since "exterior" is just a synonym of "outer". </li>
 <li>Re. (anti-)commutivity: many expressions one sees are written in terms of orthonormal vectors, and thus it's not always clear when these statements apply to general vectors/bivectors/etc.  When in doubt, the thing to do is (presumably) to write out each product in terms of an othonormal basis ($\hat{e}_1, \hat{e}_2$, etc.) and multiply and/or reverse things until you can show what you want to show.  </li>
 <li>In E&amp;M, GA gives you the relativistic Faraday tensor without even any relavity! Again it's just a manifestation of geometry. </li>
 <li>This quote from McRobie and Joan Lasenby -- <em>engineers, BTW!</em>:<blockquote>
@@ -494,6 +489,17 @@ We get rotors that naturally lead to spinors?  We get a geometric interpretation
 <li>
 <a href="http://bleyer.org/dw/doku.php?id=geometric_algebra">List</a><a href="http://bleyer.org/dw/doku.php?id=geometric_algebra"> </a><a href="http://bleyer.org/dw/doku.php?id=geometric_algebra">of</a><a href="http://bleyer.org/dw/doku.php?id=geometric_algebra"> </a><a href="http://bleyer.org/dw/doku.php?id=geometric_algebra">lots</a><a href="http://bleyer.org/dw/doku.php?id=geometric_algebra"> </a><a href="http://bleyer.org/dw/doku.php?id=geometric_algebra">of</a><a href="http://bleyer.org/dw/doku.php?id=geometric_algebra"> </a><a href="http://bleyer.org/dw/doku.php?id=geometric_algebra">people</a><a href="http://bleyer.org/dw/doku.php?id=geometric_algebra">'</a><a href="http://bleyer.org/dw/doku.php?id=geometric_algebra">s</a><a href="http://bleyer.org/dw/doku.php?id=geometric_algebra"> </a><a href="http://bleyer.org/dw/doku.php?id=geometric_algebra">personal</a><a href="http://bleyer.org/dw/doku.php?id=geometric_algebra"> </a><a href="http://bleyer.org/dw/doku.php?id=geometric_algebra">websites</a> by instructors, to check to see if they talk about pedagogy</li>
 </ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Deleted:-Me-Messing-With-Python-clifford-package">
+<a class="anchor" href="#Deleted:-Me-Messing-With-Python-clifford-package" aria-hidden="true"><span class="octicon octicon-link"></span></a>Deleted: Me Messing With Python <code>clifford</code> package<a class="anchor-link" href="#Deleted:-Me-Messing-With-Python-clifford-package"> </a>
+</h2>
+<p>This blog post used to feature ca. 10 pages of me screwing around with the Python <a href="https://clifford.readthedocs.io/en/latest/">clifford</a> packages, but deleted these as I didn't imagine they'd be much use to anyone else.</p>
 
 </div>
 </div>
