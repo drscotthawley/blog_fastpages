@@ -2,8 +2,6 @@
 layout: default
 ---
 <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
-<style>
-ol.bibliography li { list-style: none }
 
 ol li li{
     list-style-type: lower-alpha;
@@ -67,9 +65,6 @@ ol li li li{
 
   <div class="post-content e-content" itemprop="articleBody">
     {{ content | toc  }}
-    {% bibliography --cited %}
-    <hr>
-    <p>(c) 2020 Scott H. Hawley</p>
   </div>
   {%- if page.comments -%}
     {%- include utterances.html -%}
