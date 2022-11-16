@@ -1,0 +1,42 @@
+<!doctype html>
+<html itemscope itemtype="http://schema.org/Article">
+<head>
+  <link rel="stylesheet" href="https://unpkg.com/@iooxa/article/dist/iooxa.css">
+  <script async src="https://unpkg.com/@iooxa/article"></script>
+</head>
+<body>
+<article>
+
+  <r-var name="leakage" value="0.1" format=".4"></r-var>
+  <p style="text-align:center;">
+  <r-svg-chart width="400", height="250" xlim="[-3, 3]" ylim="[-2,3]" xlabel="x" ylabel="ReLU(x) or LeakyRelu(x)">
+    <r-svg-eqn eqn="Math.max(0, x)" stroke="blue" stroke-width="3" ></r-svg-eqn>
+
+      <r-svg-eqn eqn="Math.max(leakage*x, x)" stroke="orange" stroke-width="2" :listen="leakage"></r-svg-eqn>
+  </r-svg-chart>
+    Leakage: <r-dynamic bind="leakage" min="0" max="0.5" step="0.01"></r-dynamic>
+  </p>
+
+<div>
+  <p style="text-align:center;">
+  <r-var name="freq" value="1" format=".4"></r-var>
+  <r-svg-chart width="300", height="150" xlim="[-5, 5]" ylim="[-1.01,1.01]" xlabel="x" ylabel="sin(x) & HWR(sin(x))">
+    <r-svg-eqn eqn="Math.sin(freq*x)" stroke="blue" stroke-width="3" :listen="freq"></r-svg-eqn>
+      <r-svg-eqn eqn="Math.max(0, Math.sin(freq*x))" stroke="orange" stroke-width="2" :listen="freq"></r-svg-eqn>
+  </r-svg-chart>
+    Frequency: <r-dynamic bind="freq" min="0" max="10" after="Hz" step="0.01"></r-dynamic>
+  </p>
+</div>
+<div>
+  <p style="text-align:center;">
+  <r-var name="freq2" value="1" format=".4"></r-var>
+  <r-svg-chart width="300", height="150" xlim="[-5, 5]" ylim="[-1.01,1.01]" xlabel="x" ylabel="sin(x) & FWR(sin(x))">
+    <r-svg-eqn eqn="Math.sin(freq2*x)" stroke="blue" stroke-width="3" :listen="freq2"></r-svg-eqn>
+      <r-svg-eqn eqn="Math.abs(Math.sin(freq2*x))" stroke="orange" stroke-width="2" :listen="fre2q"></r-svg-eqn>
+  </r-svg-chart>
+    Frequency: <r-dynamic bind="freq2" min="0" max="10" after="Hz" step="0.01"></r-dynamic>
+  </p>
+</div>
+</article>
+</body>
+</html>
